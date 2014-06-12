@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/bg1"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:id="@+id/detail_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bg" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:weightSum="10" >
+
+            <ImageButton
+                android:id="@+id/smenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_weight="2"
+                android:background="@null"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/back" />
+
+            <ImageButton
+                android:id="@+id/likedimg"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@null"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/m_favo" />
+
+            <ImageButton
+                android:id="@+id/share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@null"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/share_nav" />
+
+            <ImageButton
+                android:id="@+id/fashionUpload"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:background="@null"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/camerabig" />
+
+            <!-- <ImageButton -->
+            <!-- android:id="@+id/addToCart" -->
+            <!-- android:layout_width="wrap_content" -->
+            <!-- android:layout_height="match_parent" -->
+            <!-- android:background="@null" -->
+            <!-- android:padding="10dp" -->
+            <!-- android:src="@drawable/cart" /> -->
+
+            <ImageButton
+                android:id="@+id/listview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:background="@null"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:src="@drawable/addtolist" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.hitasoft.apps.milymarket.BounceScrollView
+        android:id="@+id/scrollbar"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/tabbar"
+        android:layout_below="@+id/detail_top" >
+
+        <RelativeLayout
+            android:id="@+id/maindetailslay"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="20dp" >
+
+            <RelativeLayout
+                android:id="@+id/viepagerlay"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" >
+
+                <!-- <android.support.v4.view.ViewPager -->
+                <!-- android:id="@+id/detail_view_pager" -->
+                <!-- android:layout_width="fill_parent" -->
+                <!-- android:layout_height="795dp" -->
+                <!-- android:fitsSystemWindows="true" /> -->
+
+                <com.hitasoft.apps.milymarket.SmartViewPager
+                    android:id="@+id/detail_view_pager"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:fitsSystemWindows="true" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/gap"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:layout_below="@+id/viepagerlay"
+                android:orientation="vertical" />
+
+            <RelativeLayout
+                android:id="@+id/imgdetaillay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gap"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_bg"
+                android:padding="20dp" >
+
+                <RelativeLayout
+                    android:id="@+id/facycommentcamlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="#ffffff"
+                    android:padding="5dp" >
+
+                    <RelativeLayout
+                        android:id="@+id/facyitlay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginLeft="20dp" >
+
+                        <ImageView
+                            android:id="@+id/fancyimg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:src="@drawable/iem_dia" />
+
+                        <TextView
+                            android:id="@+id/detail_fancyit"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/fancyimg"
+                            android:clickable="false"
+                            android:singleLine="true"
+                            android:text="Count" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/fashionlay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true" >
+
+                        <ImageView
+                            android:id="@+id/fashionimg"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:src="@drawable/camera" />
+
+                        <TextView
+                            android:id="@+id/detail_fashiontxt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/fashionimg"
+                            android:clickable="false"
+                            android:singleLine="true"
+                            android:text="Count" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/commentlay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="20dp" >
+
+                        <ImageView
+                            android:id="@+id/comment_image"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:clickable="true"
+                            android:padding="5dp"
+                            android:src="@drawable/cmts" />
+
+                        <TextView
+                            android:id="@+id/detail_item_bottom_comments_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@+id/comment_image"
+                            android:clickable="false"
+                            android:paddingRight="10dp"
+                            android:singleLine="true"
+                            android:text="Cmts" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/border1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/facycommentcamlay"
+                    android:background="@drawable/div_line"
+                    android:padding="5dp" />
+
+                <RelativeLayout
+                    android:id="@+id/namedetaillay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/border1"
+                    android:layout_centerInParent="true"
+                    android:background="#ffffff"
+                    android:padding="5dp" >
+
+                    <TextView
+                        android:id="@+id/detail_item_bottom_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:singleLine="true"
+                        android:text="title"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/border2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/namedetaillay"
+                    android:background="@drawable/div_line"
+                    android:padding="5dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/border2"
+                    android:background="#ffffff"
+                    android:orientation="horizontal"
+                    android:padding="5dp" >
+
+                    <TextView
+                        android:id="@+id/detail_item_bottom_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="description" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/gap1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_below="@+id/imgdetaillay"
+                android:orientation="vertical" />
+
+            <RelativeLayout
+                android:id="@+id/userdetaillay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/gap1"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_bg"
+                android:padding="10dp" >
+
+                <RelativeLayout
+                    android:id="@+id/userimglay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff" >
+
+                    <com.hitasoft.apps.adapters.RoundedImageView
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/detailuserimage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        app:corner_radius="10dip"
+                        android:padding="5dp" />
+
+                    <RelativeLayout
+                        android:id="@+id/usernamelay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="5dp"
+                        android:layout_toRightOf="@+id/detailuserimage" >
+
+                        <TextView
+                            android:id="@+id/detail_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="user"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/followlay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:background="#dc143c"
+                            android:clickable="true"
+                            android:padding="6dp"
+                            android:textStyle="bold" >
+
+                            <TextView
+                                android:id="@+id/followtxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingRight="10dp"
+                                android:singleLine="true"
+                                android:text="status"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/detail_address"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/detail_username"
+                            android:layout_marginTop="15dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="address" />
+                    </RelativeLayout>
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/border3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/userimglay"
+                    android:background="@drawable/div_line"
+                    android:padding="5dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/border3"
+                    android:background="#ffffff"
+                    android:padding="10dp" >
+
+                    <TextView
+                        android:id="@+id/detail_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:singleLine="true"
+                        android:text="cost"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/addtocartlay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:background="@drawable/shapebg"
+                        android:clickable="true"
+                        android:padding="6dp"
+                        android:textStyle="bold" >
+
+                        <TextView
+                            android:id="@+id/addcart"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingRight="10dp"
+                            android:singleLine="true"
+                            android:text="Ajouter au panier"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/gap2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_below="@+id/userdetaillay"
+                android:orientation="vertical" />
+
+            <RelativeLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_below="@+id/gap2"
+                android:layout_margin="10dp"
+                android:background="@drawable/layout_bg"
+                android:padding="10dp" >
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="#ffffff" >
+
+                    <TextView
+                        android:id="@+id/morefrom_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:padding="5dp"
+                        android:text="Vous aimerez aussi"
+                        android:textStyle="bold" />
+
+                    <GridView
+                        android:id="@+id/more_product_grid"
+                        android:layout_width="wrap_content"
+                        android:layout_height="450dp"
+                        android:layout_below="@+id/morefrom_user"
+                        android:layout_centerHorizontal="true"
+                        android:horizontalSpacing="10dp"
+                        android:verticalSpacing="10dp"
+                        android:numColumns="3"
+                        android:padding="5dp" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </com.hitasoft.apps.milymarket.BounceScrollView>
+
+    <include
+        android:id="@+id/tabbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="0dp"
+        layout="@layout/tab" />
+
+</RelativeLayout>

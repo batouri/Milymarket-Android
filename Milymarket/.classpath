@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="gen"/>
+	<classpathentry kind="con" path="com.android.ide.eclipse.adt.ANDROID_FRAMEWORK"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
+	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
+	<classpathentry exported="true" kind="lib" path="/main/bin/main.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/acra-4.5.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/fluent-hc-4.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/httpcore-4.2.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/httpmime-4.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/org.apache.commons.io.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/PayPal_MPL.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/simple-social-sharing-1.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/twitter4j-core-3.0.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="libs/universal-image-loader-1.8.6-with-sources.jar"/>
+	<classpathentry exported="true" kind="lib" path="/google-play-services_lib/libs/google-play-services.jar"/>
+	<classpathentry exported="true" kind="lib" path="/main/lib/android-support-v4.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/hitasoft/Hitasoft/Eclipse/adt-bundle-linux-x86-20130219/sdk/extras/google/gcm/gcm-client/dist/gcm.jar"/>
+	<classpathentry exported="true" kind="lib" path="/home/hitasoft/Hitasoft/Eclipse/adt-bundle-linux-x86-20130219/sdk/extras/google/gcm/gcm-client/dist/gcm-src.jar"/>
+	<classpathentry kind="output" path="bin/classes"/>
+</classpath>

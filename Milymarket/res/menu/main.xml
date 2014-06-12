@@ -1,0 +1,33 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <!-- Location Found -->
+    <item android:id="@+id/filter" android:icon="@drawable/filter" android:showAsAction="ifRoom" android:title="filter" /><item
+        android:id="@+id/map"
+        android:icon="@drawable/ic_action_about"
+        android:showAsAction="ifRoom"
+        android:title="map"/>
+    
+
+    <!-- <item -->
+    <!-- android:id="@+id/map" -->
+    <!-- android:actionViewClass="com.actionbarsherlock.widget.SearchView" -->
+    <!-- android:icon="@drawable/search_btn" -->
+    <!-- android:showAsAction="ifRoom|collapseActionView" -->
+    <!-- android:title="map"/> -->
+
+
+    <!-- <item -->
+    <!-- android:id="@+id/menu_search" -->
+    <!-- android:actionViewClass="com.actionbarsherlock.widget.SearchView" -->
+    <!-- android:icon="@drawable/search_btn" -->
+    <!-- android:showAsAction="ifRoom|collapseActionView" -->
+    <!-- android:title="Search"/> -->
+    <!-- <item -->
+    <!-- android:id="@+id/signIn" -->
+    <!-- android:showAsAction="never" -->
+    <!--
+    android:title="SignIn"/> 
+    android:icon="@drawable/search_btn"
+    -->
+
+</menu>

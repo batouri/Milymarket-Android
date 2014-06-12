@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/new_border"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp" >
+
+            <TextView
+                android:id="@+id/merchantname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:ellipsize="marquee"
+                android:fadingEdge="horizontal"
+                android:lines="1"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="Order From"
+                android:textAppearance="@android:style/TextAppearance.Medium"
+                android:textColor="#000000" />
+
+            <!--  <ImageButton
+                android:id="@+id/proceed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:background="@null"
+                android:padding="5dp"
+                android:src="@drawable/proceed" />-->
+               
+        </RelativeLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#cccccc"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" />
+
+        <com.hitasoft.apps.adapters.HorizontalListView
+            android:id="@+id/cartListHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_margin="10dp"
+            android:background="#ffffff" >
+        </com.hitasoft.apps.adapters.HorizontalListView>
+
+        
+                
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:background="#cccccc"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" />
+    </LinearLayout>
+           <RelativeLayout
+               android:id="@+id/proceed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/main"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center_horizontal"
+                android:padding="7dp"
+                android:layout_margin="5dp"
+                android:background="#29a1ff">
+           <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:text="Effectuer le paiement"/>
+         </RelativeLayout>
+      <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1dip"
+            android:layout_below="@+id/proceed"
+            android:background="#cccccc"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp" />
+</RelativeLayout>

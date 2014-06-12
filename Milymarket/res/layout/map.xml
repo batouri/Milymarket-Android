@@ -1,0 +1,390 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reltlay"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".Map" >
+
+    <LinearLayout
+        android:id="@+id/detail_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/top_bg"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/smenu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@null"
+            android:padding="10dp"
+            android:src="@drawable/back" />
+
+        <TextView
+            android:id="@+id/userNameTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="10dp"
+            android:singleLine="true"
+            android:text="Information"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <com.hitasoft.apps.milymarket.BounceScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/detail_top" >
+
+        <LinearLayout
+            android:id="@+id/rel"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/sellerimg"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/imgview"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/infouserimage"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/imgview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sellerimg"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/presentation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Présentation"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#666666" />
+
+                <TextView
+                    android:id="@+id/infousername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/userimage"
+                    android:layout_below="@+id/textView1"
+                    android:text="username"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textStyle="bold" />
+
+                <com.hitasoft.apps.milymarket.util.TextViewEx
+                    android:id="@+id/infodescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/textView2"
+                    android:layout_marginLeft="3dp"
+                    android:layout_toRightOf="@+id/textView2"
+                    android:singleLine="false"
+                    android:text="Description" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view1"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/imgview"
+                android:background="#bdbdbd" />
+
+            <LinearLayout
+                android:id="@+id/addr"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgview"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="3dp"
+                    android:text="Adresse"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#666666" />
+
+                <TextView
+                    android:id="@+id/infoaddr1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Address1" />
+                 <TextView
+                    android:id="@+id/infophno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Addressph"
+                    android:textColor="#4169e1" />
+                
+
+                <TextView
+                    android:id="@+id/infoaddr2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView2"
+                    android:text="Address2" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view2"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/addr"
+                android:background="#bdbdbd" />
+
+            <LinearLayout
+                android:id="@+id/web"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/addr"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/website"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Web"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#666666" />
+
+                <TextView
+                    android:id="@+id/infoweb1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView1"
+                    android:text="Website1"
+                    android:textColor="#4169e1" />
+
+                <TextView
+                    android:id="@+id/infoweb2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView2"
+                    android:text="Website2"
+                    android:textColor="#4169e1" />
+                <TextView
+                    android:id="@+id/infoweb3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView2"
+                    android:text="Website3"
+                    android:textColor="#4169e1" />
+                
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view3"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/web"
+                android:background="#bdbdbd" />
+
+            <LinearLayout
+                android:id="@+id/mapl"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/web"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/view3"
+                    android:layout_gravity="center"
+                    android:text="Plan"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textColor="#666666" />
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.google.android.gms.maps.MapFragment"
+                    android:layout_width="fill_parent"
+                    android:layout_height="250dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/textView1" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view0"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/mapl"
+                android:background="#bdbdbd" />
+
+            <TextView
+                android:id="@+id/comments"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view0"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="message"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#666666" />
+
+            <LinearLayout
+                android:id="@+id/comt"
+                android:layout_width="fill_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/comments"
+                android:background="#ffffff"
+                android:orientation="horizontal" >
+
+               <com.hitasoft.apps.adapters.RoundedImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/infoimage1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="left"
+                    android:gravity="center"
+                    app:corner_radius="10dip"
+                    android:paddingTop="10dp" />
+                
+
+                <LinearLayout
+                    android:id="@+id/comts"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#ffffff"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/comments1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Small Text"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+                    <TextView
+                        android:id="@+id/photo12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="Small Text"
+                        android:textStyle="bold"
+                        android:layout_marginRight="10dp"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/countcmt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:gravity="left"
+                        android:text="Small Text"
+                        android:textStyle="bold"
+                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view4"
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/comt"
+                android:background="#bdbdbd" />
+
+            <TextView
+                android:id="@+id/photo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view4"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:text="Photo"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#666666" />
+
+            <LinearLayout
+                android:id="@+id/phot"
+                android:layout_width="fill_parent"
+                android:layout_height="150dp"
+                android:layout_below="@+id/photo"
+                android:background="#ffffff"
+                android:orientation="horizontal" >
+
+                <com.hitasoft.apps.adapters.RoundedImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/infoimage2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="left"
+                    android:gravity="center"
+                    app:corner_radius="10dip"
+                    android:paddingTop="10dp" />
+                
+
+                <TextView
+                    android:id="@+id/countph"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Small Text"
+                    android:textStyle="bold"
+                    android:textAppearance="?android:attr/textAppearanceMedium" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="150dp" />
+        </LinearLayout>
+</com.hitasoft.apps.milymarket.BounceScrollView>
+    <RelativeLayout
+        android:id="@+id/detail_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/top_bg"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/add_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="20dp"
+            android:singleLine="true"
+            android:text="Ajouter des photos"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/add_comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:singleLine="true"
+            android:text="Ajouter un message"
+            android:textColor="#666666"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</RelativeLayout>
