@@ -54,7 +54,7 @@ public class List_Detail extends Activity implements OnClickListener {
 	public static ArrayList<HashMap<String, String>> tmp;
 	HashMap<String, String> newary;
 	private static String userEntryAddToList = null;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,14 +65,14 @@ public class List_Detail extends Activity implements OnClickListener {
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 		home.setImageResource(R.drawable.tab_bar_product_selected);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		itemid = getIntent().getStringExtra("itemid");
 		Log.v("itemid", "" + itemid);
@@ -395,7 +395,7 @@ public class List_Detail extends Activity implements OnClickListener {
 			FragmentChangeActivity.rsnote = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			// Intent i = new Intent(CommentsActivity.this,
 			// ProfileTabHolder.class);
 			// i.putExtra("userId", GetSet.getUserId());

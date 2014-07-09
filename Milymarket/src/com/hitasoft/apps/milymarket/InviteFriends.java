@@ -57,7 +57,7 @@ import com.hitasoft.apps.milymarket.util.JSONParser;
 
 public class InviteFriends extends SherlockFragment implements OnClickListener,
 		ConnectionCallbacks, OnConnectionFailedListener, OnPersonLoadedListener {
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	LinearLayout fb, twit, gPlus, contact;
 	WebDialog dialog;
 	private LoginButton mLoginButton;
@@ -136,13 +136,13 @@ public class InviteFriends extends SherlockFragment implements OnClickListener,
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		fb = (LinearLayout) getView().findViewById(R.id.fb);
 		twit = (LinearLayout) getView().findViewById(R.id.twit);
 		gPlus = (LinearLayout) getView().findViewById(R.id.gogle);
@@ -403,14 +403,14 @@ public class InviteFriends extends SherlockFragment implements OnClickListener,
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MessagesFragment());
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
 			FragmentChangeActivity.menumap = true;
 			// getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			break;
 
 		}

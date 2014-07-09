@@ -52,7 +52,7 @@ import com.hitasoft.apps.milymarket.util.JSONParser;
 
 public class AddProduct extends SherlockFragment implements OnClickListener {
 
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	public static ImageView addphoto;
 	private Button send;
 	private String maincatid, msubcatid, msubcatid1, mgenderid, mshippingid,
@@ -102,7 +102,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		addphoto = (ImageView) getView().findViewById(R.id.add_uploadbtn);
 		mainCategory = (Spinner) getView().findViewById(R.id.categoryspinner1);
@@ -252,7 +252,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		addphoto.setOnClickListener(this);
 		send.setOnClickListener(this);
 		int colorBlack = getResources().getColor(R.color.black);
@@ -511,13 +511,13 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MessagesFragment());
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			break;
 
 		}

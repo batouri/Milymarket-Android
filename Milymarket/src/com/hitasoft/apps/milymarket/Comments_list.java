@@ -56,7 +56,7 @@ public class Comments_list extends Activity implements OnClickListener {
 	LazyAdapter adapter;
 	DisplayImageOptions defaultOptions;
 	ImageLoaderConfiguration config;
-	private ImageButton home, near, shop, alert, profile, back;
+	private ImageButton home, near, shop, alert, menu, back;
 	EditText commentText;
 	Button send;
 	private static String userId;
@@ -125,13 +125,13 @@ public class Comments_list extends Activity implements OnClickListener {
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		back = (ImageButton) findViewById(R.id.home);
 		back.setOnClickListener(new OnClickListener() {
@@ -443,8 +443,8 @@ public class Comments_list extends Activity implements OnClickListener {
 			FragmentChangeActivity.rsnote = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_profile:
-			FragmentChangeActivity.rsprofile = true;
+		case R.id.btn_menu:
+			FragmentChangeActivity.rsmenu = true;
 			invalidateOptionsMenu();
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;

@@ -119,7 +119,7 @@ public class CategoryFragment extends SherlockFragment implements
 	private static final int XHDPI_LANDSCAPE = 10;
 	private static int device = 0;
 	private static int layout = 0;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	String u1name, u1add, u1img;
 	ArrayList<HashMap<String, String>> datas = null;
 	ArrayList<HashMap<String, String>> datas2 = null;
@@ -162,14 +162,14 @@ public class CategoryFragment extends SherlockFragment implements
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		category.setOnClickListener(this);
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		context = CategoryFragment.this.getActivity();
 		imm = (InputMethodManager) context
@@ -932,7 +932,7 @@ public class CategoryFragment extends SherlockFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MessagesFragment());
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
 			FragmentChangeActivity.menumap = true;

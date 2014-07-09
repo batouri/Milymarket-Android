@@ -69,7 +69,7 @@ public class CartFragment extends SherlockFragment implements
 	private static int device = 0;
 	private static int layout = 0;
 	Button btn;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -93,13 +93,13 @@ public class CartFragment extends SherlockFragment implements
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		btn = (Button) getView().findViewById(R.id.pay);
 		btn.setOnClickListener(new OnClickListener() {
@@ -610,7 +610,7 @@ public class CartFragment extends SherlockFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MessagesFragment());
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();

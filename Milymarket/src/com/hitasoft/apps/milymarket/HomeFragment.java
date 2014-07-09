@@ -105,7 +105,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 	TextView centerHome;
 	private static final long DOUBLE_PRESS_INTERVAL = 750; // in millis
 	private long lastPressTime;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	private static boolean mHasDoubleClicked = false;
 	String u1name, u1add, u1img;
 	ArrayList<HashMap<String, String>> datas = null;
@@ -123,6 +123,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		homeImageLoader = ImageLoader.getInstance();
 		ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(
 				HomeFragment.this.getActivity()).build();
@@ -152,14 +153,14 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 		home.setImageResource(R.drawable.tab_bar_product_selected);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		centerHome = (TextView) getView().findViewById(R.id.homenulltext);
 		centerHome.setVisibility(View.INVISIBLE);
@@ -988,7 +989,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 		    ConstantValues.editor.clear();
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
@@ -996,7 +997,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			}
 			else{
 				Intent i=new Intent(HomeFragment.this.getActivity(),LoginActivity.class);

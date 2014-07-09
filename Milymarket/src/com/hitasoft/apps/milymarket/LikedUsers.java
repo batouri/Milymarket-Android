@@ -68,7 +68,7 @@ public class LikedUsers extends Activity implements OnClickListener{
 	private static final int XHDPI_LANDSCAPE = 10;
 	private static int device = 0;
 	private static int layout = 0;
-	private ImageButton home, near, shop, alert, profile, back, upload;
+	private ImageButton home, near, shop, alert, menu, back, upload;
 	StaggeredGridView gv;
 	ImageLoader imageLoader;
 	AdapterForHdpis adapter;
@@ -89,13 +89,13 @@ public class LikedUsers extends Activity implements OnClickListener{
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		back = (ImageButton) findViewById(R.id.smenu);
 		
 		TextView title = (TextView) findViewById(R.id.userNameTitle);
@@ -524,7 +524,7 @@ public class LikedUsers extends Activity implements OnClickListener{
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.rsprofile = true;
 			invalidateOptionsMenu();

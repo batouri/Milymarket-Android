@@ -68,7 +68,7 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 	TextView username, fullname;
 	ImageView userimage;
 	Button statususer;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	AlertDialog adialog;
 	private Context profcontext = this;
 	HashMap<String, String> tempMap;
@@ -88,13 +88,13 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 		
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		/*
 		 * StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder()
 		 * 
@@ -661,9 +661,9 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
-			FragmentChangeActivity.rsprofile = true;
+			FragmentChangeActivity.rsmenu = true;
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon=false;
 			invalidateOptionsMenu();

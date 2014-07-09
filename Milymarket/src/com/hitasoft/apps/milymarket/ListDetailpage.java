@@ -71,7 +71,7 @@ public class ListDetailpage extends Activity implements OnScrollListener,
 	TextView nullText;
 	LinearLayout bottom;
 	ImageButton back;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 
 	@SuppressLint("UseSparseArrays")
 	@Override
@@ -83,13 +83,13 @@ public class ListDetailpage extends Activity implements OnScrollListener,
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		back = (ImageButton) findViewById(R.id.smenu);
 		back.setOnClickListener(new OnClickListener() {
@@ -596,7 +596,7 @@ public class ListDetailpage extends Activity implements OnScrollListener,
 			FragmentChangeActivity.rsnote = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			Intent i = new Intent(ListDetailpage.this, ProfileTabHolder.class);
 			i.putExtra("userId", GetSet.getUserId());
 			startActivity(i);

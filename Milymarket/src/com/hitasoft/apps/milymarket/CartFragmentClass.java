@@ -48,7 +48,7 @@ public class CartFragmentClass extends SherlockFragment implements
 	ListView lv;
 	LazyAdapter adapter;
 	TextView nomore;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -72,13 +72,13 @@ public class CartFragmentClass extends SherlockFragment implements
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		nomore = (TextView) getView().findViewById(R.id.nomoreItems);
 		nomore.setVisibility(View.INVISIBLE);
@@ -372,7 +372,7 @@ public class CartFragmentClass extends SherlockFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MessagesFragment());
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon=false;
 			getActivity().supportInvalidateOptionsMenu();

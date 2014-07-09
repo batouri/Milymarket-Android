@@ -66,7 +66,7 @@ public class UserAddedItem extends Activity implements OnItemClickListener,OnCli
 	private static String type = null;
 	AdapterForHdpiprof hdpiAdapterprof;
 	ImageLoader profileLoader;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	public static ArrayList<HashMap<String, String>> tmp2;
 	public static HashMap<String, String> tmpMap2;
 	ArrayList<HashMap<String, String>> datas2 = null;
@@ -86,13 +86,13 @@ public class UserAddedItem extends Activity implements OnItemClickListener,OnCli
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 		
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		profileLoader = ImageLoader.getInstance();
 		TextView title = (TextView) findViewById(R.id.userNameTitle);
@@ -707,7 +707,7 @@ public class UserAddedItem extends Activity implements OnItemClickListener,OnCli
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.rsprofile = true;
 			FragmentChangeActivity.menumap = true;

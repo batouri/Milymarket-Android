@@ -124,7 +124,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 	public static String item_id=null;
 	public static String sellerid=null;
 	int x, j, v = 0, length = 0,inc=0;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	public static LoadmoreAdapter loadmore;
 	public static ArrayList<HashMap<String, String>> tmp2;
 	public static HashMap<String, String> tmpMap2;
@@ -155,7 +155,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 		fancy = (TextView) findViewById(R.id.detail_fancyit);
 		followtxt = (TextView) findViewById(R.id.followtxt);
 
@@ -163,7 +163,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		
 		//sview.fullScroll(View.FOCUS_UP);
 		//sview.smoothScrollTo(0, 0);
@@ -1682,7 +1682,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.rsprofile = true;
 			FragmentChangeActivity.menumap = true;

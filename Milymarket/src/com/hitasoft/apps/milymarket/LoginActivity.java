@@ -216,7 +216,7 @@ public class LoginActivity extends Activity implements OnClickListener,
 	private LinearLayout horizontalOuterLayout1;
 	private HorizontalScrollView horizontalScrollview1;
 	private String[] imageNameArray;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	
 	//GCM variables
 	 AsyncTask<Void, Void, Void> mRegisterTask;
@@ -235,14 +235,14 @@ public class LoginActivity extends Activity implements OnClickListener,
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 		
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		
 		IntentFilter filter = new IntentFilter(
 				ConnectivityManager.CONNECTIVITY_ACTION);
@@ -387,7 +387,7 @@ public class LoginActivity extends Activity implements OnClickListener,
 				startActivity(j);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.rsprofile = true;
 			FragmentChangeActivity.menumap = true;

@@ -129,7 +129,7 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 	private static final int XHDPI_LANDSCAPE = 10;
 	private static int device = 0;
 	private static int layout = 0;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	String u1name, u1add, u1img;
 	ArrayList<HashMap<String, String>> datas = null;
 	ArrayList<HashMap<String, String>> datas2 = null;
@@ -195,7 +195,7 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 		shop.setImageResource(R.drawable.tab_bar_shop_selected);
 
 		btn_search.setOnClickListener(this);
@@ -203,7 +203,7 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		searchbar = (EditText) getView().findViewById(R.id.searchbar);
 		context = ShopFragment.this.getActivity();
@@ -2592,7 +2592,7 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();

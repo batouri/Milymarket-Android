@@ -29,7 +29,7 @@ public class EmailSettings extends Activity implements OnClickListener {
 	ImageButton smenu;
 	HashMap<String, String> tempMap = new HashMap<String, String>();
 	HashMap<String, String> dataMap = new HashMap<String, String>();
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -44,13 +44,13 @@ public class EmailSettings extends Activity implements OnClickListener {
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		smenu = (ImageButton) findViewById(R.id.smenu);
 		smenu.setOnClickListener(new OnClickListener() {
@@ -212,7 +212,7 @@ public class EmailSettings extends Activity implements OnClickListener {
 			FragmentChangeActivity.rsnote = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			FragmentChangeActivity.rsprofile = true;
 			Intent i = new Intent(EmailSettings.this, ProfileTabHolder.class);
 			i.putExtra("userId", GetSet.getUserId());

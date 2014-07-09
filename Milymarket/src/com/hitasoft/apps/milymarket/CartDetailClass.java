@@ -77,7 +77,7 @@ public class CartDetailClass extends Activity implements OnClickListener {
 	String datasss = null, name;
 	LinearLayout cartBottom, carttop;
 	private static boolean shipable = true;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -92,13 +92,13 @@ public class CartDetailClass extends Activity implements OnClickListener {
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		Nomore = (TextView) findViewById(R.id.noitem);
 		Nomore.setVisibility(View.INVISIBLE);
@@ -1074,7 +1074,7 @@ public class CartDetailClass extends Activity implements OnClickListener {
 			FragmentChangeActivity.rsnote = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			/*
 			 * Intent i = new Intent(CartDetailClass.this,
 			 * ProfileTabHolder.class); i.putExtra("userId",

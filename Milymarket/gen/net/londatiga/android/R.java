@@ -49,14 +49,14 @@ public final class R {
 		public static final int textfield_default = 0x7f020141;
 	}
 	public static final class id {
-		public static final int arrow_down = 0x7f050151;
-		public static final int arrow_up = 0x7f050150;
-		public static final int footer = 0x7f050154;
-		public static final int header2 = 0x7f050152;
+		public static final int arrow_down = 0x7f050147;
+		public static final int arrow_up = 0x7f050146;
+		public static final int footer = 0x7f05014a;
+		public static final int header2 = 0x7f050148;
 		public static final int iv_icon = 0x7f05003e;
-		public static final int scroll = 0x7f050153;
-		public static final int scroller = 0x7f05014e;
-		public static final int tracks = 0x7f05014f;
+		public static final int scroll = 0x7f050149;
+		public static final int scroller = 0x7f050144;
+		public static final int tracks = 0x7f050145;
 		public static final int tv_title = 0x7f05003f;
 	}
 	public static final class layout {

@@ -29,7 +29,7 @@ public class ProfileTabHolder extends SherlockFragmentActivity implements
 	protected static ImageButton smenu;
 	String userId = null;
 	private static ImageView tabIndictr;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -39,13 +39,13 @@ public class ProfileTabHolder extends SherlockFragmentActivity implements
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		tabIndictr = (ImageView) findViewById(R.id.customTabIndicator);
 		tabIndictr.setImageResource(R.drawable.profile);
 		List<Fragment> fragments = new Vector<Fragment>();

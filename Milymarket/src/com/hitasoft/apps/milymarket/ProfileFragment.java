@@ -135,7 +135,7 @@ public class ProfileFragment extends SherlockFragment implements
 	// CustomListViewAdapter adapter;
 	DisplayImageOptions defaultOptions;
 	ImageLoaderConfiguration config;
-	private ImageButton home, near, shop, alert, btn_profile;
+	private ImageButton home, near, shop, alert, menu;
 	ArrayList<HashMap<String, String>> datas = null;
 	ArrayList<HashMap<String, String>> datas2 = null;
 	public static ArrayList<HashMap<String, String>> tmp2;
@@ -185,8 +185,8 @@ public class ProfileFragment extends SherlockFragment implements
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		btn_profile = (ImageButton) getView().findViewById(R.id.btn_profile);
-		btn_profile.setImageResource(R.drawable.tab_bar_profile_selected);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
+		menu.setImageResource(R.drawable.tab_bar_profile_selected);
 	
 
 		home.setOnClickListener(this);
@@ -200,7 +200,7 @@ public class ProfileFragment extends SherlockFragment implements
 		// RelativeLayout tabrelative = (RelativeLayout) getView().findViewById(
 		// R.id.tabrelative);
 		// mcontext=(Fragment)getView().findViewById(R.id.profile_gridfragment);
-		btn_profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		bottomLoading = (LinearLayout) getView().findViewById(R.id.bottomhome);
 		bottomLoading.setVisibility(View.VISIBLE);
 		mainLayout = (LinearLayout) getView().findViewById(R.id.profile_view);
@@ -1814,7 +1814,7 @@ public class ProfileFragment extends SherlockFragment implements
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			ConstantValues.editor.clear();
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());

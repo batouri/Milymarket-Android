@@ -59,7 +59,7 @@ public class MessagesFragment extends SherlockFragment implements
 	public static ArrayList<HashMap<String, String>> Messagepageitems;
 	public static String noti_user_id = null, notifiid = null,
 			notif_itemid = null;
-	ImageButton home, near, shop, alert, profile;
+	ImageButton home, near, shop, alert, menu;
 	TextView nulltxt;
 
 	@Override
@@ -89,14 +89,14 @@ public class MessagesFragment extends SherlockFragment implements
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 		alert.setImageResource(R.drawable.tab_bar_alert_selected);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		nulltxt = (TextView) getView().findViewById(R.id.notenulltxt);
 		notelist = (ListView) getView().findViewById(R.id.notify_list);
 		Messagepageitems = new ArrayList<HashMap<String, String>>();
@@ -680,7 +680,7 @@ public class MessagesFragment extends SherlockFragment implements
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();

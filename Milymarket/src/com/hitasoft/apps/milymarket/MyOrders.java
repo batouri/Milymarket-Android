@@ -70,7 +70,7 @@ public class MyOrders extends SherlockFragment implements OnItemClickListener,
 	LinearLayout bottomHome;
 	RelativeLayout main;
 	TextView centerText;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -93,13 +93,13 @@ public class MyOrders extends SherlockFragment implements OnItemClickListener,
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		centerText = (TextView) getView().findViewById(R.id.homenulltext);
 		centerText.setVisibility(View.INVISIBLE);
@@ -561,7 +561,7 @@ public class MyOrders extends SherlockFragment implements OnItemClickListener,
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MessagesFragment());
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();

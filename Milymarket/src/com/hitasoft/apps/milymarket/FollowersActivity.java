@@ -64,7 +64,7 @@ public class FollowersActivity extends Activity implements OnItemClickListener,O
 	TextView username, fullname;
 	ImageView userimage;
 	Button statususer;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	AlertDialog adialog;
 	HashMap<String, String> tempMap;
 	String uId;
@@ -79,14 +79,14 @@ public class FollowersActivity extends Activity implements OnItemClickListener,O
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 		
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		TextView title = (TextView) findViewById(R.id.userNameTitle);
 		title.setText("Aboonements");
 		profileLoader = ImageLoader.getInstance();
@@ -529,9 +529,9 @@ public class FollowersActivity extends Activity implements OnItemClickListener,O
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
-			FragmentChangeActivity.rsprofile = true;
+			FragmentChangeActivity.rsmenu = true;
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon=false;
 			invalidateOptionsMenu();

@@ -147,7 +147,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 	HashMap<String, ArrayList<String>> url;
 	ImageView sellerimg, productimg;
 	private static String userEntryAddToList = null;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	public static LoadmoreAdapter loadmore;
 	HashMap<String, String> loadmore_map = new HashMap<String, String>();
 	private HashMap<String, String> tempMap;
@@ -200,7 +200,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 		followtxt = (TextView) findViewById(R.id.followtxt);
 		likeslayout=(RelativeLayout) findViewById(R.id.facyitlay);
 
@@ -208,7 +208,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		dialog2 = new ProgressDialog(DetailActivitynew.this);
 		HomePageItems = new ArrayList<HashMap<String, String>>();
 		itemsMap = new HashMap<Integer, ArrayList<HashMap<String, String>>>();
@@ -2783,11 +2783,8 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 			FragmentChangeActivity.rsnote = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_profile:
-			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
-			Log.v("present userid", "" + GetSet.getUserId());
-			ConstantValues.editor.commit();
-			FragmentChangeActivity.rsprofile = true;
+		case R.id.btn_menu:
+			FragmentChangeActivity.rsmenu = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			/*
 			 * Intent i = new Intent(DetailActivity.this,

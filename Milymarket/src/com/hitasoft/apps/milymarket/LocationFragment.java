@@ -111,7 +111,7 @@ public class LocationFragment extends SherlockFragment implements
 	TextView centerHome;
 	private static final long DOUBLE_PRESS_INTERVAL = 750; // in millis
 	private long lastPressTime;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	private static boolean mHasDoubleClicked = false;
 	String u1name, u1add, u1img;
 	ArrayList<HashMap<String, String>> datas = null;
@@ -157,14 +157,14 @@ public class LocationFragment extends SherlockFragment implements
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 		near.setImageResource(R.drawable.tab_bar_near_selected);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		 adialog=new AlertDialog.Builder(LocationFragment.this.getActivity()).create();
 			adialog.setTitle("Alert");
 			adialog.setMessage("S'il vous plaît connecter Pour continuer!!!");
@@ -1661,14 +1661,14 @@ public class LocationFragment extends SherlockFragment implements
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			}
 			else{
 				Intent i=new Intent(LocationFragment.this.getActivity(),LoginActivity.class);

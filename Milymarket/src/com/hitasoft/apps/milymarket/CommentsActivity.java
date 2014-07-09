@@ -62,7 +62,7 @@ public class CommentsActivity extends Activity implements OnClickListener {
 	ImageButton back;
 	private BroadcastReceiver networkStateReceiver;
 	private static String itemId=null;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	AlertDialog adialog;
 	public static int inc=0;
 	Boolean cond=false;
@@ -94,13 +94,13 @@ public class CommentsActivity extends Activity implements OnClickListener {
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		commentTitle = (TextView) findViewById(R.id.commentTitle);
 		commentTitle.setText(this.getIntent().getExtras().getString("title"));
@@ -417,9 +417,9 @@ public class CommentsActivity extends Activity implements OnClickListener {
 				startActivity(i);
 			}
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
-			FragmentChangeActivity.rsprofile = true;
+			FragmentChangeActivity.rsmenu = true;
 			invalidateOptionsMenu();
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			}

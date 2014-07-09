@@ -83,6 +83,7 @@ public class FragmentChangeActivity extends SlidingFragmentActivity {
 	public static boolean rsshop = false;
 	public static boolean rsnote = false;
 	public static boolean rsprofile = false;
+	public static boolean rsmenu = false;
 	public static boolean rsmostp = false;
 	public static boolean rscatg = false;
 	public static boolean rssetg=false;
@@ -160,6 +161,9 @@ public class FragmentChangeActivity extends SlidingFragmentActivity {
 		setBehindContentView(R.layout.menu_frame);
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.menu_frame, new MenuFragment()).commit();
+		getSlidingMenu().setTouchModeAbove(SlidingMenu.TOUCHMODE_NONE);
+		getSlidingMenu().setSlidingEnabled(false);
+
 	}
 
 	@Override
@@ -377,8 +381,13 @@ public class FragmentChangeActivity extends SlidingFragmentActivity {
 			filter_icon = false;
 			supportInvalidateOptionsMenu();
 			switchContent(new CategoryFragment());
-		}
-		else if (rssetg) {
+		}else if (rsmenu) {
+			rsmenu = false;
+			menumap = false;
+			filter_icon = false;
+			supportInvalidateOptionsMenu();
+			switchContent(new MenuFragment());
+		}else if (rssetg) {
 			rssetg = false;
 			menumap = false;
 			filter_icon = false;

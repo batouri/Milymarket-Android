@@ -39,7 +39,7 @@ import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 public class FindFriends extends SherlockFragment implements OnClickListener {
 
 	LinearLayout fb, twit, gPlus, contact;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 	private GridView grid;
 	AdapterForHdpis hdpiAdapterprofile;
 	ArrayList<HashMap<String, String>> followingdatas = new ArrayList<HashMap<String, String>>();
@@ -66,14 +66,14 @@ public class FindFriends extends SherlockFragment implements OnClickListener {
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 		grid = (GridView) getView().findViewById(R.id.gridView1);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		int colorBlack = getResources().getColor(R.color.black);
 		String text = "Find Friends";
 		SpannableString spannable = new SpannableString(text);
@@ -293,7 +293,7 @@ public class FindFriends extends SherlockFragment implements OnClickListener {
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MessagesFragment());
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			Log.v("present userid", "" + GetSet.getUserId());
 			ConstantValues.editor.commit();
@@ -301,7 +301,7 @@ public class FindFriends extends SherlockFragment implements OnClickListener {
 			getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			break;
 
 		}

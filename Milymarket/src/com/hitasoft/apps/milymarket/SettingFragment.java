@@ -82,7 +82,7 @@ public class SettingFragment extends SherlockFragment implements
 	TextView firstName, userName, versionno;
 	HashMap<String, String> emailSettingsValues = new HashMap<String, String>();
 	ProgressDialog pgsDialog;
-	private ImageButton home, near, shop, alert, profile;
+	private ImageButton home, near, shop, alert, menu;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -107,13 +107,13 @@ public class SettingFragment extends SherlockFragment implements
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
-		profile = (ImageButton) getView().findViewById(R.id.btn_profile);
+		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 
 		pgsDialog = new ProgressDialog(SettingFragment.this.getActivity());
 		SettingFragment.this.getView().setVisibility(View.INVISIBLE);
@@ -611,7 +611,7 @@ public class SettingFragment extends SherlockFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MessagesFragment());
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();

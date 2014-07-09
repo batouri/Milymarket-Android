@@ -55,7 +55,7 @@ public class photosgrid extends Activity implements OnClickListener {
 	ImageLoaderConfiguration config;
 	TextView title;
 	public static ArrayList<HashMap<String, String>> ary = null;
-	private ImageButton home, near, shop, alert, profile, back, upload;
+	private ImageButton home, near, shop, alert, menu, back, upload;
 	Button send;
 	private BroadcastReceiver networkStateReceiver;
 	public static HashMap<String, String> comment = new HashMap<String, String>();
@@ -117,13 +117,13 @@ public class photosgrid extends Activity implements OnClickListener {
 		near = (ImageButton) findViewById(R.id.btn_near);
 		shop = (ImageButton) findViewById(R.id.btn_shop);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
-		profile = (ImageButton) findViewById(R.id.btn_profile);
+		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
-		profile.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		
 		uname=getIntent().getStringExtra("uname");
         title=(TextView) findViewById(R.id.imgstitle);
@@ -408,7 +408,7 @@ public class photosgrid extends Activity implements OnClickListener {
 			FragmentChangeActivity.rsnote = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_profile:
+		case R.id.btn_menu:
 			FragmentChangeActivity.rsprofile = true;
 			invalidateOptionsMenu();
 			startActivity(new Intent(this, FragmentChangeActivity.class));
