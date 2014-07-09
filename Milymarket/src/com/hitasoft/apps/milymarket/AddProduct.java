@@ -112,12 +112,12 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		item_desc = (EditText) getView().findViewById(R.id.add_itemdesc);
 		item_price = (EditText) getView().findViewById(R.id.add_itemprice);
 		item_quan = (EditText) getView().findViewById(R.id.add_itemquan);
-		addprice1 = (EditText) getView().findViewById(R.id.add_price1);
+		/*addprice1 = (EditText) getView().findViewById(R.id.add_price1);
 		addprice2 = (EditText) getView().findViewById(R.id.add_price2);
 		relation = (Spinner) getView().findViewById(R.id.add_Relationship);
 		country = (Spinner) getView().findViewById(R.id.add_editcountry);
 		gender = (Spinner) getView().findViewById(R.id.add_gender);
-		shipping = (Spinner) getView().findViewById(R.id.add_shipping);
+		shipping = (Spinner) getView().findViewById(R.id.add_shipping);*/
 		send = (Button) getView().findViewById(R.id.sendpro);
 
 		CategoryItems = new ArrayList<HashMap<String, String>>();
@@ -189,7 +189,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 
 		});
 
-		gender.setOnItemSelectedListener(new OnItemSelectedListener() {
+		/*gender.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
@@ -246,7 +246,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			public void onNothingSelected(AdapterView<?> arg0) {
 
 			}
-		});
+		});*/
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
@@ -300,7 +300,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			/*
 			 * RELATIONSHIP
 			 */
-			relationspin.add("Relation");
+			/*relationspin.add("Relation");
 			relationID.add(null);
 			for (int i = 0; i < relationlist.size(); i++) {
 				String jsn = relationlist.get(i);
@@ -318,12 +318,12 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 					android.R.layout.simple_spinner_item, relationspin);
 			reladapter
 					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			relation.setAdapter(reladapter);
+			relation.setAdapter(reladapter);*/
 
 			/*
 			 * COUNTRY
 			 */
-			countryspin.add("Sélectionnez un pays");
+			/*countryspin.add("Sélectionnez un pays");
 
 			countryID.add(null);
 			for (int i = 0; i < countrylist.size(); i++) {
@@ -348,7 +348,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			 * GENDER
 			 */
 
-			genderspin.add("Sexe");
+			/*genderspin.add("Sexe");
 			genderID.add(null);
 			for (int i = 0; i < genderlist.size(); i++) {
 				String jsn = genderlist.get(i);
@@ -371,7 +371,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			/*
 			 * SHIPPING
 			 */
-			shippingspin.add("Livraison");
+			/*shippingspin.add("Livraison");
 			shippingID.add(null);
 			for (int i = 0; i < shippinglist.size(); i++) {
 				String jsn = shippinglist.get(i);
@@ -389,7 +389,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 					android.R.layout.simple_spinner_item, shippingspin);
 			shippingadapter
 					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			shipping.setAdapter(shippingadapter);
+			shipping.setAdapter(shippingadapter);*/
 
 		}
 	}
