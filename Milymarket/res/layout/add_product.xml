@@ -169,11 +169,12 @@
                     android:textAppearance="?android:attr/textAppearanceLarge" />
             </LinearLayout>
 
-            <LinearLayout
+            <!-- <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="5dp" >
+                android:padding="5dp"
+                android:visibility="invisible" >
 
                 <TextView
                     android:id="@+id/add_moreinf0"
@@ -233,7 +234,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="5dp" >
+                android:padding="5dp"
+                android:visibility="invisible" >
 
                 <TextView
                     android:id="@+id/add_country"
@@ -265,7 +267,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="5dp" >
+                android:padding="5dp"
+                android:visibility="invisible" >
 
                 <TextView
                     android:id="@+id/add_country"
@@ -360,7 +363,7 @@
                         android:paddingLeft="5dp"
                         android:textAppearance="?android:attr/textAppearanceLarge" />
                 </LinearLayout>
-            </LinearLayout>
+            </LinearLayout> -->
 
             <Button
                 android:id="@+id/sendpro"

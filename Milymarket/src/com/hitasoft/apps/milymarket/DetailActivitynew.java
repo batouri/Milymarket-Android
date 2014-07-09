@@ -220,7 +220,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		newarry = new ArrayList<String>();
 		detailImageLoader = ImageLoader.getInstance();
 		url = new HashMap<String, ArrayList<String>>();
-		cost = (TextView) findViewById(R.id.detail_cost);
+		//cost = (TextView) findViewById(R.id.detail_cost);
 		sellername = (TextView) findViewById(R.id.detail_username);
 		address = (TextView) findViewById(R.id.detail_address);
 		title = (TextView) findViewById(R.id.detail_item_bottom_title);

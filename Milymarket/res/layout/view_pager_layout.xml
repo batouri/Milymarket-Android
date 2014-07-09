@@ -134,16 +134,35 @@
                     android:layout_centerHorizontal="true"
                     android:background="#ffffff"
                     android:padding="5dp" >
-
+					<RelativeLayout
+                        android:id="@+id/titlelay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true">
+                        
                     <TextView
                         android:id="@+id/detail_item_bottom_title"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
+                        android:layout_alignParentLeft="true"
                         android:singleLine="true"
                         android:text="title"
                         android:textSize="16dp"
                         android:textStyle="bold" />
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:id="@+id/costlay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true">
+                    <TextView
+                        android:id="@+id/detail_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="cost"
+                        android:textStyle="bold" />
+                    </RelativeLayout>
                 </RelativeLayout>
 
                 <ImageView
@@ -315,26 +334,6 @@
                             android:text="user"
                             android:textStyle="bold" />
 
-                        <LinearLayout
-                            android:id="@+id/followlay"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:background="#dc143c"
-                            android:clickable="true"
-                            android:padding="6dp"
-                            android:textStyle="bold" >
-
-                            <TextView
-                                android:id="@+id/followtxt"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingRight="10dp"
-                                android:singleLine="true"
-                                android:text="status"
-                                android:textStyle="bold" />
-                        </LinearLayout>
-
                         <TextView
                             android:id="@+id/detail_address"
                             android:layout_width="wrap_content"
@@ -362,14 +361,25 @@
                     android:background="#ffffff"
                     android:padding="10dp" >
 
-                    <TextView
-                        android:id="@+id/detail_cost"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:paddingRight="10dp"
-                        android:singleLine="true"
-                        android:text="cost"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                            android:id="@+id/followlay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:background="#dc143c"
+                            android:clickable="true"
+                            android:padding="6dp"
+                            android:textStyle="bold" >
+
+                            <TextView
+                                android:id="@+id/followtxt"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingLeft="10dp"
+                                android:singleLine="true"
+                                android:text="status"
+                                android:textStyle="bold" />
+                        </LinearLayout>
 
                     <LinearLayout
                         android:id="@+id/addtocartlay"
