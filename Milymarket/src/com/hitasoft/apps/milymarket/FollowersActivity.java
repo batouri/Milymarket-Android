@@ -88,7 +88,7 @@ public class FollowersActivity extends Activity implements OnItemClickListener,O
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		TextView title = (TextView) findViewById(R.id.userNameTitle);
-		title.setText("Aboonements");
+		title.setText("Abonnements");
 		profileLoader = ImageLoader.getInstance();
 		gridView = (StaggeredGridView) findViewById(R.id.gridView1);
 		ImageButton back = (ImageButton) findViewById(R.id.smenu);
@@ -310,8 +310,8 @@ public class FollowersActivity extends Activity implements OnItemClickListener,O
 					ConstantValues.editor.putString("userprefid",followingdatas.get(position).get("userId"));
 					ConstantValues.editor.commit();
 					FragmentChangeActivity.rsprofile = true;
-					FragmentChangeActivity.menumap = true;
-					FragmentChangeActivity.filter_icon=false;
+					//FragmentChangeActivity.menumap = true;
+					//FragmentChangeActivity.filter_icon=false;
 					invalidateOptionsMenu();
 					startActivity(new Intent(FollowersActivity.this, FragmentChangeActivity.class));
 			
@@ -532,8 +532,8 @@ public class FollowersActivity extends Activity implements OnItemClickListener,O
 		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.rsmenu = true;
-			FragmentChangeActivity.menumap = true;
-			FragmentChangeActivity.filter_icon=false;
+			//FragmentChangeActivity.menumap = true;
+			//FragmentChangeActivity.filter_icon=false;
 			invalidateOptionsMenu();
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			}

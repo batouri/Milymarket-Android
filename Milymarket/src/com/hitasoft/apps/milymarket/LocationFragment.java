@@ -166,8 +166,8 @@ public class LocationFragment extends SherlockFragment implements
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		 adialog=new AlertDialog.Builder(LocationFragment.this.getActivity()).create();
-			adialog.setTitle("Alert");
-			adialog.setMessage("S'il vous plaît connecter Pour continuer!!!");
+			adialog.setTitle("Message");
+			adialog.setMessage("Connectez vous pour continuer!!!");
 			adialog.setButton("OK",new DialogInterface.OnClickListener() {
 				
 				@Override
@@ -189,7 +189,7 @@ public class LocationFragment extends SherlockFragment implements
 			onLocationChanged(locate);
 		}
 
-		centerHome = (TextView) getView().findViewById(R.id.homenulltext);
+		centerHome = (TextView) getView().findViewById(R.id.homenulltext2);
 		centerHome.setVisibility(View.INVISIBLE);
 		bottomLoading = (LinearLayout) getView().findViewById(R.id.bottomhome);
 		bottomLoading.setVisibility(View.VISIBLE);
@@ -422,7 +422,7 @@ public class LocationFragment extends SherlockFragment implements
 				}
 				if (NearmePageItems.size() == 0) {
 					centerHome.setVisibility(View.VISIBLE);
-					exit();
+					//exit();
 				}
 				LoagingLayout.setVisibility(View.GONE);
 				hdpiAdapter.notifyDataSetChanged();
@@ -1563,7 +1563,7 @@ public class LocationFragment extends SherlockFragment implements
 		fca.switchContent(new LocationFragment());
 		return super.onOptionsItemSelected(item);
 	}
-
+	
 	public void exit() {
 		final Dialog settingsDialog = new Dialog(
 				LocationFragment.this.getActivity());
@@ -1572,7 +1572,7 @@ public class LocationFragment extends SherlockFragment implements
 				.inflate(R.layout.alert_for_error, null));
 		settingsDialog.setCancelable(false);
 		settingsDialog.setCanceledOnTouchOutside(false);
-		settingsDialog.setTitle("Network Problem");
+		settingsDialog.setTitle("Oups, un petit problème");
 		Button retry = (Button) settingsDialog.findViewById(R.id.alertTryAgain);
 		Button exit = (Button) settingsDialog.findViewById(R.id.alertExit);
 		retry.setOnClickListener(new OnClickListener() {
@@ -1700,7 +1700,7 @@ public class LocationFragment extends SherlockFragment implements
 					}
 				}, 1500);
 			} else {
-				Toast.makeText(getActivity(), "Please Login To continue",
+				Toast.makeText(getActivity(), "Connectez vous pour profiter de Milymarket",
 						Toast.LENGTH_LONG).show();
 			}
 

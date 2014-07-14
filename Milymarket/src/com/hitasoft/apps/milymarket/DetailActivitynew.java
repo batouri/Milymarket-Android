@@ -113,7 +113,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 	String u1img = null;
 	public ImageLoader detailImageLoader;
 	ViewPager viewPager;
-	ImageButton back, fashionupload, like, listview;
+	ImageButton back;
 	private LinearLayout addtocartlay, followlay;
 	ProgressDialog dialog2;// =new ProgressDialog(DetailActivitynew.this);;
 	public static HashMap<Integer, ArrayList<HashMap<String, String>>> photosMap = null;
@@ -147,7 +147,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 	HashMap<String, ArrayList<String>> url;
 	ImageView sellerimg, productimg;
 	private static String userEntryAddToList = null;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, shop, alert, menu, contactSeller;
 	public static LoadmoreAdapter loadmore;
 	HashMap<String, String> loadmore_map = new HashMap<String, String>();
 	private HashMap<String, String> tempMap;
@@ -186,7 +186,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		sview=(BounceScrollView) findViewById(R.id.scrollbar);
 		 adialog=new AlertDialog.Builder(DetailActivitynew.this).create();
 			adialog.setTitle("Alert");
-			adialog.setMessage("You are not logged in!!! Login to continue!!!");
+			adialog.setMessage("Vous n'êtes pas connecter!!! Connectez vous pour profiter de Milymarket!!!");
 			adialog.setButton("OK",new DialogInterface.OnClickListener() {
 				
 				@Override
@@ -204,11 +204,14 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		followtxt = (TextView) findViewById(R.id.followtxt);
 		likeslayout=(RelativeLayout) findViewById(R.id.facyitlay);
 
+		contactSeller = (ImageButton) findViewById(R.id.btn_contactSeller);
+
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
+		contactSeller.setOnClickListener(this);
 		dialog2 = new ProgressDialog(DetailActivitynew.this);
 		HomePageItems = new ArrayList<HashMap<String, String>>();
 		itemsMap = new HashMap<Integer, ArrayList<HashMap<String, String>>>();
@@ -263,43 +266,10 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		Log.v("tempmap", "" + tempMap);
 		item_id = getIntent().getStringExtra("item_id");
 		commentsMap = new HashMap<Integer, ArrayList<HashMap<String, String>>>();
-		fashionupload = (ImageButton) findViewById(R.id.fashionUpload);
 		back = (ImageButton) findViewById(R.id.smenu);
-		like = (ImageButton) findViewById(R.id.likedimg);
-		listview = (ImageButton) findViewById(R.id.listview);
 		// AddtoCart = (ImageButton) findViewById(R.id.addToCart);
 		addtocartlay = (LinearLayout) findViewById(R.id.addtocartlay);
 
-		like.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (GetSet.isLogged() == false) {
-					adialog.show();
-				} else {
-					String id = item_id;
-					// new likeStatus().execute(id);
-					new SendFancy().execute(Integer.parseInt(id));
-				}
-			}
-
-		});
-		fashionupload.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if(GetSet.isLogged()==true){
-				Intent i = new Intent(DetailActivitynew.this,
-						Fashion_uploads.class);
-				i.putExtra("position", tempMap.get(ConstantValues.TAG_ID));
-				startActivity(i);
-				}
-				else{
-					adialog.show();
-				}
-			}
-
-		});
 		back.setOnClickListener(new OnClickListener() {
 
 			@Override
@@ -311,22 +281,6 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 			}
 		});
 
-		listview.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if(GetSet.isLogged()==true){
-				Intent i = new Intent(DetailActivitynew.this, List_Detail.class);
-				i.putExtra("itemid", item_id);
-				startActivity(i);
-				}
-				else{
-					adialog.show();
-				}
-
-			}
-
-		});
 		try {
 			String Id = ConstantValues.pref.getString("itemid", "");
 			int itemid = Integer.parseInt(Id);
@@ -489,17 +443,8 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		 * @Override public void onDismiss() { } });
 		 */
 		Moreproduct();
-
-		ImageButton share = (ImageButton) findViewById(R.id.share);
-		share.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				mQuickAction.show(arg0);
-			}
-		});
-		itemss = (mItems[]) getLastNonConfigurationInstance();
 	}
+
 
 	public void shareImage() {
 		String[] values = new String[] { "Save", "Copy", "E_mail", "Facebook",
@@ -783,9 +728,9 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		};
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Please Login to continue..")
-				.setPositiveButton("Login", dialogClickListener)
-				.setNegativeButton("Not now", dialogClickListener).show();
+		builder.setMessage("Connectez vous pour profiter de Milymarket")
+				.setPositiveButton("Connexion", dialogClickListener)
+				.setNegativeButton("Pas tout de suite", dialogClickListener).show();
 	}
 
 	class GetFollowUserID extends AsyncTask<Void, Void, ArrayList<String>> {
@@ -948,10 +893,6 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 				String liked = tempmap.get(ConstantValues.TAG_LIKED);
 				Log.v("likemap", "" + liked);
 
-				if (liked.equalsIgnoreCase("Yes")) {
-					like.setImageResource(R.drawable.m_favo);
-				} else
-					like.setImageResource(R.drawable.unliked);
 				comment_image.setOnClickListener(new OnClickListener() {
 
 					@Override
@@ -1973,7 +1914,6 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 							"Item Liked")) {
 						Toast.makeText(getBaseContext(), "Item Fantacy'd",
 								Toast.LENGTH_LONG).show();
-						like.setImageResource(R.drawable.m_favo);
 						String c = fancy.getText().toString();
 						Log.v("c", "" + c);
 						int m = Integer.parseInt(c) + 1;
@@ -2012,7 +1952,6 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 					} else {
 						Toast.makeText(getBaseContext(), "Item UnFantacy'd",
 								Toast.LENGTH_LONG).show();
-						like.setImageResource(R.drawable.unliked);
 						String c = fancy.getText().toString();
 						Log.v("c", "" + c);
 						int m = Integer.parseInt(c) - 1;
@@ -2762,11 +2701,23 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		}
 		return result;
 	}
+	
+	
+	private void contactSeller(){
+		Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+	            "mailto","service@milymarket.com", null));
+	emailIntent.putExtra(Intent.EXTRA_SUBJECT, "EXTRA_SUBJECT");
+	startActivity(Intent.createChooser(emailIntent, "Send email..."));
+
+	}
+	
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-
+		case R.id.btn_contactSeller:
+			contactSeller();
+			break;
 		case R.id.btn_home:
 			FragmentChangeActivity.rshome = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));

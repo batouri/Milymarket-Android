@@ -23,7 +23,6 @@ import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Point;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -40,9 +39,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AbsListView;
 import android.widget.BaseAdapter;
-import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -56,12 +53,7 @@ import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.etsy.android.grid.StaggeredGridView;
-import com.hitasoft.apps.adapters.Item;
-import com.hitasoft.apps.adapters.RoundedCornerBitmap;
 import com.hitasoft.apps.milymarket.R;
-import com.hitasoft.apps.milymarket.DetailActivity.FollowResults;
-import com.hitasoft.apps.milymarket.DetailActivity.GetFollowUserID;
-import com.hitasoft.apps.milymarket.DetailActivity.UnFollowResults;
 import com.hitasoft.apps.milymarket.util.ConstantValues;
 import com.hitasoft.apps.milymarket.util.DBController;
 import com.hitasoft.apps.milymarket.util.GetSet;
@@ -82,38 +74,21 @@ public class ProfileFragment extends SherlockFragment implements
 	// ArrayList<HashMap<String, String>>();
 	public static ArrayList<HashMap<String, String>> HomePageItems;
 	HashMap<String, String> tempMap = new HashMap<String, String>();
-	private MenuItem msearch;
-	private MenuItem info;
 	public static boolean menumap = false;
 	public static boolean filter_icon = false;
 	Boolean cond;
-	private int previousTotal = 0;
-	private int visibleThreshold = 0;
-	private boolean loading = true;
 	// private Fragment mContent
 	private HashMap<Integer, ArrayList<HashMap<String, String>>> commentsMap = null;
 	public static HashMap<Integer, ArrayList<HashMap<String, String>>> photosMap = null;
 	public static HashMap<Integer, ArrayList<HashMap<String, String>>> likesMap = null;
 	HashMap<String, String> userDatas;
-	private static final int LDPI_PORTRAID = 1;
-	private static final int LDPI_LANDSCAPE = 2;
-	private static final int MDPI_PORTRAID = 3;
-	private static final int MDPI_LANDSCAPE = 4;
-	private static final int HDPI_PORTRAID = 5;
-	private static final int HDPI_LANDSCAPE = 6;
-	private static final int LARGE_MDPI_PORTRAID = 7;
-	private static final int LARGE_MDPI_LANDSCAPE = 8;
-	private static final int XHDPI_PORTRAID = 9;
-	private static final int XHDPI_LANDSCAPE = 10;
 	public static double lat, lon;
-	private static int device = 0;
 	private static int layout = 0;
 	RelativeLayout LoagingLayout;
 	String u1name, u1add, u1img;
 	TextView centerHome;
 	LinearLayout bottomLoading,followlay;
 	AlertDialog adialog;
-	private static String type = null;
 	private int currentPage = 0;
 	static AdapterForHdpi hdpiAdapter;
 	ImageView userImage;
@@ -123,11 +98,11 @@ public class ProfileFragment extends SherlockFragment implements
 	ArrayList<String> map = null;
 	int i, j, v = 0, length = 0;
 	public static String currentshop;
-	TextView userName, userId, followingCount, followersCount, favouratedcount,
+	TextView userName, userId, followingCount, followersCount, 
 			addedcount, about,followtxt;
 	private StaggeredGridView gridView;
 	RelativeLayout profile;
-	LinearLayout followers, following, favourated, added, mainLayout;
+	LinearLayout followers, following, added, mainLayout;
 	private static ImageLoader profileLoader;
 	
 	// ListView lv;
@@ -186,13 +161,14 @@ public class ProfileFragment extends SherlockFragment implements
 		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
-		menu.setImageResource(R.drawable.tab_bar_profile_selected);
+		//menu.setImageResource(R.drawable.tab_bar_profile_selected);
 	
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
+		menu.setOnClickListener(this);
 		
 	//	FragmentChangeActivity.menumap = true;
 	//	FragmentChangeActivity.filter_icon = false;
@@ -200,7 +176,6 @@ public class ProfileFragment extends SherlockFragment implements
 		// RelativeLayout tabrelative = (RelativeLayout) getView().findViewById(
 		// R.id.tabrelative);
 		// mcontext=(Fragment)getView().findViewById(R.id.profile_gridfragment);
-		menu.setOnClickListener(this);
 		bottomLoading = (LinearLayout) getView().findViewById(R.id.bottomhome);
 		bottomLoading.setVisibility(View.VISIBLE);
 		mainLayout = (LinearLayout) getView().findViewById(R.id.profile_view);
@@ -212,7 +187,7 @@ public class ProfileFragment extends SherlockFragment implements
 		followtxt = (TextView) getView().findViewById(R.id.followtxt);
 		LoagingLayout = (RelativeLayout) (getView()
 				.findViewById(R.id.loadImageLayout));
-		centerHome = (TextView) getView().findViewById(R.id.homenulltext);
+		centerHome = (TextView) getView().findViewById(R.id.homenulltext2);
 		centerHome.setVisibility(View.INVISIBLE);
 		
 		/*
@@ -223,8 +198,8 @@ public class ProfileFragment extends SherlockFragment implements
 		 * =ConstantValues.pref.edit();
 		 */
 		adialog=new AlertDialog.Builder(ProfileFragment.this.getActivity()).create();
-		adialog.setTitle("Alert");
-		adialog.setMessage("You are not logged in!!! Login to continue!!!");
+		adialog.setTitle("Message");
+		adialog.setMessage("Connectez vous pour continuer");
 		adialog.setButton("OK",new DialogInterface.OnClickListener() {
 			
 			@Override
@@ -258,10 +233,10 @@ public class ProfileFragment extends SherlockFragment implements
 		// lv = (ListView) getView().findViewById(R.id.similar_user_list);
 		followers = (LinearLayout) getView().findViewById(R.id.followersLayout);
 		following = (LinearLayout) getView().findViewById(R.id.followingLayout);
-		favourated = (LinearLayout) getView().findViewById(R.id.itemfavourated);
+		//favourated = (LinearLayout) getView().findViewById(R.id.itemfavourated);
 		added = (LinearLayout) getView().findViewById(R.id.itemadded);
 		followers.setOnClickListener(this);
-		favourated.setOnClickListener(this);
+		//favourated.setOnClickListener(this);
 		following.setOnClickListener(this);
 		added.setOnClickListener(this);
 		userImage = (ImageView) getView().findViewById(R.id.profilePic);
@@ -275,8 +250,8 @@ public class ProfileFragment extends SherlockFragment implements
 				R.id.prifilePage_following_count);
 		followersCount = (TextView) getView().findViewById(
 				R.id.prifilePage_followers_count);
-		favouratedcount = (TextView) getView().findViewById(
-				R.id.prifilePage_favourated_count);
+		//favouratedcount = (TextView) getView().findViewById(
+				//R.id.prifilePage_favourated_count);
 		about = (TextView) getView().findViewById(R.id.about);
 		addedcount = (TextView) getView().findViewById(
 				R.id.prifilePage_added_count);
@@ -393,42 +368,33 @@ public class ProfileFragment extends SherlockFragment implements
 		int screenWidth = display.getWidth();
 		if (screenWidth < 280
 				&& getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-			device = LDPI_PORTRAID;
 			// gridView.setNumColumns(1);//1
 			layout = R.layout.home_page_grid_item_port_for_ldpi;
 		} else if (screenWidth < 350
 				&& getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-			device = LDPI_LANDSCAPE;
 			layout = R.layout.home_page_grid_item_port_for_ldpi;
 		} else if (screenWidth < 350
 				&& getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-			device = MDPI_PORTRAID;
 			// gridView.setNumColumns(1);//1
 			layout = R.layout.home_page_grid_item_port_for_mdpi;
 		} else if (screenWidth < 500
 				&& getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-			device = MDPI_LANDSCAPE;
 			layout = R.layout.home_page_grid_item_port_for_mdpi;
 		} else if (screenWidth < 500
 				&& getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-			device = HDPI_PORTRAID;
 			// gridView.setNumColumns(1);//1
 			layout = R.layout.home_page_grid_item_port_for_hdpi;
 		} else if (screenWidth < 900
 				&& getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-			device = HDPI_LANDSCAPE;
 			layout = R.layout.home_page_grid_item_port_for_mdpi;
 		} else if (screenWidth < 700
 				&& getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-			device = LARGE_MDPI_PORTRAID;
 			layout = R.layout.home_page_grid_item_port_for_mdpi;
 		} else if (screenWidth < 1000
 				&& getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-			device = LARGE_MDPI_LANDSCAPE;
 			layout = R.layout.home_page_grid_item_port_for_mdpi;
 		} else if (screenWidth < 800
 				&& getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_PORTRAIT) {
-			device = XHDPI_PORTRAID;
 			boolean tabletSize = getResources().getBoolean(R.bool.isTablet);
 			if (!tabletSize) {
 				// gridView.setNumColumns(1);//1
@@ -436,10 +402,8 @@ public class ProfileFragment extends SherlockFragment implements
 			layout = R.layout.home_page_grid_item_port_for_hdpi;
 		} else if (screenWidth < 1400
 				&& getResources().getConfiguration().orientation == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE) {
-			device = XHDPI_LANDSCAPE;
 			layout = R.layout.home_page_grid_item_port_for_hdpi;
 		} else {
-			device = HDPI_PORTRAID;
 			// gridView.setNumColumns(1);
 			layout = R.layout.home_page_grid_item_port_for_hdpi;
 		}
@@ -645,7 +609,7 @@ public class ProfileFragment extends SherlockFragment implements
 				try {
 					setAdapter();
 					setUserValues();
-					if(latitude.equalsIgnoreCase("null")&&longitude.equalsIgnoreCase("null")){
+					/*if(latitude.equalsIgnoreCase("null")&&longitude.equalsIgnoreCase("null")){
 						Log.v("in if",""+"true");
 						FragmentChangeActivity.menumap = false;
 						FragmentChangeActivity.filter_icon = false;
@@ -660,7 +624,7 @@ public class ProfileFragment extends SherlockFragment implements
 						FragmentChangeActivity.menumap = true;
 						FragmentChangeActivity.filter_icon = false;
 						getActivity().supportInvalidateOptionsMenu();
-					}
+					}*/
 					
 					
 					
@@ -760,8 +724,8 @@ public class ProfileFragment extends SherlockFragment implements
 						.getString(ConstantValues.TAG_PROFILE_FOLLOWING);
 				String followers = results
 						.getString(ConstantValues.TAG_PROFILE_FOLLOWERS);
-				String favourates = results
-						.getString(ConstantValues.TAG_PROFILE_FAVOURATED);
+				//String favourates = results
+				//		.getString(ConstantValues.TAG_PROFILE_FAVOURATED);
 				String added = results
 						.getString(ConstantValues.TAG_PROFILE_ADDED);
 				String shop_name = results.getString("shop_address");
@@ -771,8 +735,8 @@ public class ProfileFragment extends SherlockFragment implements
 				userDatas.put("imageName70", imageName70);
 				userDatas.put("imageName150", imageName150);
 				userDatas.put(ConstantValues.TAG_PROFILE_FOLLOWING, following);
-				userDatas
-						.put(ConstantValues.TAG_PROFILE_FAVOURATED, favourates);
+				//userDatas
+				//		.put(ConstantValues.TAG_PROFILE_FAVOURATED, favourates);
 				userDatas.put(ConstantValues.TAG_PROFILE_ADDED, added);
 				userDatas.put(ConstantValues.TAG_PROFILE_FOLLOWERS, followers);
 
@@ -871,8 +835,8 @@ public class ProfileFragment extends SherlockFragment implements
 				.get(ConstantValues.TAG_PROFILE_FOLLOWERS));
 		followingCount.setText(userDatas
 				.get(ConstantValues.TAG_PROFILE_FOLLOWING));
-		favouratedcount.setText(userDatas
-				.get(ConstantValues.TAG_PROFILE_FAVOURATED));
+		//favouratedcount.setText(userDatas
+		//		.get(ConstantValues.TAG_PROFILE_FAVOURATED));
 		addedcount.setText(userDatas.get(ConstantValues.TAG_PROFILE_ADDED));
 		about.setText(userDatas.get(ConstantValues.TAG_PROFILE_ABOUT));
 		//Log.v("setabout", "" + userDatas.get(ConstantValues.TAG_PROFILE_ABOUT));
@@ -936,7 +900,7 @@ public class ProfileFragment extends SherlockFragment implements
 				
 				else{
 					Log.v("in if",""+"false");
-					FragmentChangeActivity.menumap = true;
+					FragmentChangeActivity.menumap = false;
 					FragmentChangeActivity.filter_icon = false;
 					getActivity().supportInvalidateOptionsMenu();
 				}
@@ -975,10 +939,11 @@ public class ProfileFragment extends SherlockFragment implements
 
 		JSONArray items;
 		HashMap<String, String> map;
-		String url = ConstantValues.profile_imageloader;
+		//String url = ConstantValues.profile_imageloader;
 		// urlAddr=ConstantValues.home;
+		String urlAddr = ConstantValues.home + "?userAdded=" + page;
 		
-			String urlAddr = url + "?userId=" + page;
+			//String urlAddr = url + "?userId=" + page;
 			Log.v("user_userid", "" + page);
 		
 		JSONParser jParser = new JSONParser();
@@ -997,7 +962,7 @@ public class ProfileFragment extends SherlockFragment implements
 				for (int i = 0; i < items.length(); i++) {
 					map = new HashMap<String, String>();
 					String item_url_main_70 = null,user_url_main_70 = null, user_url_main_350 = null, item_url_main_350 = null, item_url_main_original = null;
-					String comment_id = null, comment = null, user_id = null, user_img = null, username = null, fid = null, fimg = null,height=null,width=null;
+					String comment_id = null, comment = null, user_id = null, user_img = null, fid = null, fimg = null,height=null,width=null;
 					JSONObject temp = items.getJSONObject(i);
 					String id = temp.getString(ConstantValues.TAG_ID);
 					String item_title = temp
@@ -1063,7 +1028,7 @@ public class ProfileFragment extends SherlockFragment implements
 								.getString(ConstantValues.TAG_USER_ID);
 						user_img = commentsTemp
 								.getString(ConstantValues.TAG_USER_IMG);
-						username = commentsTemp
+						commentsTemp
 								.getString(ConstantValues.TAG_USERNAME);
 
 						tmpMap.put(ConstantValues.TAG_COMMENT_ID, comment_id);
@@ -1468,10 +1433,7 @@ public class ProfileFragment extends SherlockFragment implements
 							//Bitmap rdbitmap = RoundedCornerBitmap
 							//		.getRoundedCornerBitmap(loadedImage, 10);
 							image.setImageBitmap(loadedImage);
-							// final Bitmap bm =
-							// Bitmap.createScaledBitmap(loadedImage, 480, 500,
-							// );
-							HashMap<String, String> map = HomePageItems
+							HomePageItems
 									.get(Integer.parseInt(image.getTag()
 											.toString()));
 							loader.setVisibility(View.INVISIBLE);
@@ -1524,10 +1486,7 @@ public class ProfileFragment extends SherlockFragment implements
 							//Bitmap rdbitmap = RoundedCornerBitmap
 							//		.getRoundedCornerBitmap(loadedImage, 10);
 							sellerimage.setImageBitmap(loadedImage);
-							// final Bitmap bm =
-							// Bitmap.createScaledBitmap(loadedImage, 480, 500,
-							// );
-							HashMap<String, String> map = HomePageItems
+							HomePageItems
 									.get(Integer.parseInt(sellerimage.getTag()
 											.toString()));
 							// final int id = Integer.parseInt(map
@@ -1774,12 +1733,12 @@ public class ProfileFragment extends SherlockFragment implements
 					userDatas.get(ConstantValues.TAG_PROFILE_FULLNAME));
 			startActivity(followingIntent);
 			break;
-		case R.id.itemadded:
+		/*case R.id.itemadded:
 			Intent addedIntent = new Intent(ProfileFragment.this.getActivity(),
 					UserAddedItem.class);
 			startActivity(addedIntent);
 
-			break;
+			break;*/
 		case R.id.btn_home:
 			FragmentChangeActivity.menumap = false;
 			// getActivity().supportInvalidateOptionsMenu();
@@ -1816,15 +1775,13 @@ public class ProfileFragment extends SherlockFragment implements
 			break;
 		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
-			ConstantValues.editor.clear();
+		    ConstantValues.editor.clear();
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
-			Log.v("present userid", "" + GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
-			// getActivity().supportInvalidateOptionsMenu();
+			//FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			}
 			else{
 				Intent i=new Intent(ProfileFragment.this.getActivity(),LoginActivity.class);

@@ -1958,7 +1958,7 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 					ConstantValues.editor.commit();
 					FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
 					FragmentChangeActivity.rsprofile = true;
-					FragmentChangeActivity.menumap = true;
+					//FragmentChangeActivity.menumap = true;
 					FragmentChangeActivity.filter_icon=false;
 					getActivity().supportInvalidateOptionsMenu();
 					fca.switchContent(new ProfileFragment());
@@ -2287,7 +2287,7 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 					ConstantValues.editor.commit();
 					FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
 					FragmentChangeActivity.rsprofile = true;
-					FragmentChangeActivity.menumap = true;
+					//FragmentChangeActivity.menumap = true;
 					FragmentChangeActivity.filter_icon=false;
 					getActivity().supportInvalidateOptionsMenu();
 					fca.switchContent(new ProfileFragment());
@@ -2596,11 +2596,11 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 			if(GetSet.isLogged()==true){
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
+			//FragmentChangeActivity.menumap = true;
 			// getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			}
 			else{
 				Intent i=new Intent(ShopFragment.this.getActivity(),LoginActivity.class);

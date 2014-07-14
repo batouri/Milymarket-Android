@@ -66,7 +66,7 @@ public class ProfileListFragment extends SherlockFragment implements
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		bottomhome = (LinearLayout) getView().findViewById(R.id.bottomhome);
-		txt = (TextView) getView().findViewById(R.id.homenulltext);
+		txt = (TextView) getView().findViewById(R.id.homenulltext2);
 		txt.setVisibility(View.GONE);
 		orientation = ProfileListFragment.this.getActivity().getWindowManager()
 				.getDefaultDisplay().getOrientation();

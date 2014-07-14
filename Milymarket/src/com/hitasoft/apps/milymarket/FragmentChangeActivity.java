@@ -43,6 +43,7 @@ import android.content.res.Configuration;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -126,8 +127,12 @@ public class FragmentChangeActivity extends SlidingFragmentActivity {
 		if (savedInstanceState != null)
 			mContent = getSupportFragmentManager().getFragment(
 					savedInstanceState, "mContent");
-		if (mContent == null)
+		if (mContent == null){
+			menumap = false;
+			filter_icon = false;
+			rshome =false;
 			mContent = new HomeFragment();
+		}
 		setContentView(R.layout.content_frame);
 		sm = getSlidingMenu();
 
@@ -150,9 +155,11 @@ public class FragmentChangeActivity extends SlidingFragmentActivity {
 		setSlidingActionBarEnabled(false);
 		// set the Above View
 		ActionBar ab = getSupportActionBar();
-		ab.setLogo(R.drawable.ac_bar_logo);
-		ab.setHomeButtonEnabled(true);
+		//ab.setLogo(R.drawable.ac_bar_logo);
+		ab.setHomeButtonEnabled(false);
 		ab.setTitle("");
+		ab.setIcon(
+				   new ColorDrawable(getResources().getColor(android.R.color.transparent)));
 		Drawable d = getResources().getDrawable(R.drawable.top_bg);
 		ab.setBackgroundDrawable(d);
 		getSlidingMenu().setMode(SlidingMenu.LEFT);

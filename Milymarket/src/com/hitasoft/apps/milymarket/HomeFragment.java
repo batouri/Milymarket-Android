@@ -162,7 +162,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
-		centerHome = (TextView) getView().findViewById(R.id.homenulltext);
+		centerHome = (TextView) getView().findViewById(R.id.homenulltext2);
 		centerHome.setVisibility(View.INVISIBLE);
 		bottomLoading = (LinearLayout) getView().findViewById(R.id.bottomhome);
 		bottomLoading.setVisibility(View.VISIBLE);
@@ -189,6 +189,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 		int colorBlack = getResources().getColor(R.color.black);
 		String text = getString(R.string.home);
 		SpannableString spannable = new SpannableString(text);
+		
 		spannable.setSpan(new ForegroundColorSpan(colorBlack), 0,
 				text.length(), 0);
 
@@ -614,7 +615,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 					ConstantValues.editor.clear();
 					ConstantValues.editor.putString("userprefid",HomePageItems.get(position).get(ConstantValues.TAG_SELLERID));
 					ConstantValues.editor.commit();
-					FragmentChangeActivity.menumap = true;
+					//FragmentChangeActivity.menumap = true;
 					FragmentChangeActivity.filter_icon = false;
 					getActivity().supportInvalidateOptionsMenu();
 					fca.switchContent(new ProfileFragment());
@@ -994,7 +995,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 		    ConstantValues.editor.clear();
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
+			//FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MenuFragment());
@@ -1047,7 +1048,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 					}
 				}, 1500); // 3 seconds
 			} else {
-				Toast.makeText(getActivity(), "Please Login To continue",
+				Toast.makeText(getActivity(), "Connectez vous pour profiter de Milymarket",
 						Toast.LENGTH_LONG).show();
 			}
 

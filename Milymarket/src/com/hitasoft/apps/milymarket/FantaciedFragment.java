@@ -102,7 +102,7 @@ public class FantaciedFragment extends SherlockFragment implements
 
 		hometab = (LinearLayout) getView().findViewById(R.id.tabbar);
 		hometab.setVisibility(View.INVISIBLE);
-		nulltext = (TextView) getView().findViewById(R.id.homenulltext);
+		nulltext = (TextView) getView().findViewById(R.id.homenulltext2);
 		bottom = (LinearLayout) getView().findViewById(R.id.bottomhome);
 		orientation = FantaciedFragment.this.getActivity().getWindowManager()
 				.getDefaultDisplay().getOrientation();

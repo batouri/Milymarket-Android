@@ -67,8 +67,7 @@ import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 public class SettingFragment extends SherlockFragment implements
 		OnClickListener {
 
-	private TextView semail, passchange, languageSelction;
-	private static CheckBox everything, following;
+	private TextView  manageSeller;
 	HashMap<String, String> tempMap = new HashMap<String, String>();
 	public static Dialog dialog;
 	private EditText oldpassword, newpassword, confirmpassword;
@@ -79,7 +78,7 @@ public class SettingFragment extends SherlockFragment implements
 	String confirmpass;
 	ImageLoader settngsLodre;
 	ImageView profileImage;
-	TextView firstName, userName, versionno;
+	TextView firstName, userName;
 	HashMap<String, String> emailSettingsValues = new HashMap<String, String>();
 	ProgressDialog pgsDialog;
 	private ImageButton home, near, shop, alert, menu;
@@ -117,16 +116,7 @@ public class SettingFragment extends SherlockFragment implements
 
 		pgsDialog = new ProgressDialog(SettingFragment.this.getActivity());
 		SettingFragment.this.getView().setVisibility(View.INVISIBLE);
-		versionno = (TextView) getView().findViewById(R.id.versionno);
-		PackageInfo pInfo;
-		try {
-			pInfo = getActivity().getPackageManager().getPackageInfo(
-					getActivity().getPackageName(), 0);
-			String version = pInfo.versionName;
-			versionno.setText("v " + version);
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
+		
 		profileImage = (ImageView) getView().findViewById(R.id.profileImage);
 		firstName = (TextView) getView().findViewById(R.id.firstName);
 		userName = (TextView) getView().findViewById(R.id.userName);
@@ -155,80 +145,21 @@ public class SettingFragment extends SherlockFragment implements
 				new GetSettings().execute();
 			}
 		} else {
-			Toast.makeText(getActivity(), "Please Login to continue",
+			Toast.makeText(getActivity(), "Connectez vous pour profiter de Milymarket",
 					Toast.LENGTH_LONG).show();
 		}
-		passchange = (TextView) getView().findViewById(R.id.passchange);
-		passchange.setOnClickListener(new OnClickListener() {
+		
+		manageSeller = (TextView) getView().findViewById(R.id.sellermanage);
+		manageSeller.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				dialog = new Dialog(getActivity());
-				dialog.setContentView(R.layout.change_password);
-				dialog.setTitle("Changer de mot de passe");
-				dialog.setCancelable(true);
-				dialog.setCanceledOnTouchOutside(true);
-				dialog.show();
-				passchangebutton();
-
+				Intent i = new Intent(SettingFragment.this.getActivity(),
+						ManageSellerFragment.class);
+				startActivity(i);
 			}
 		});
 
-		semail = (TextView) getView().findViewById(R.id.semail);
-		semail.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-                Log.v("emailSettingsValues",""+emailSettingsValues);
-				Intent emailsetting = new Intent(getActivity(),
-						EmailSettings.class);
-				emailsetting.putExtra("data", emailSettingsValues);
-				startActivity(emailsetting);
-			}
-		});
-		everything = (CheckBox) getView().findViewById(R.id.everything);
-		everything.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@SuppressWarnings("unchecked")
-			@Override
-			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-
-				if (arg1) {
-
-					tempMap.put("id", "1");
-					tempMap.put("action", "true");
-					new CheckedSetting().execute(tempMap);
-				} else {
-
-					tempMap.put("id", "1");
-					tempMap.put("action", "false");
-					new CheckedSetting().execute(tempMap);
-				}
-
-			}
-		});
-
-		following = (CheckBox) getView().findViewById(R.id.following);
-		following.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@SuppressWarnings("unchecked")
-			@Override
-			public void onCheckedChanged(CompoundButton arg0, boolean arg1) {
-
-				if (arg1) {
-
-					tempMap.put("id", "2");
-					tempMap.put("action", "true");
-					new CheckedSetting().execute(tempMap);
-				} else {
-
-					tempMap.put("id", "2");
-					tempMap.put("action", "false");
-					new CheckedSetting().execute(tempMap);
-				}
-
-			}
-		});
 
 		/*languageSelction = (TextView) getView().findViewById(R.id.lang);
 		languageSelction.setOnClickListener(new OnClickListener() {
@@ -284,57 +215,6 @@ public class SettingFragment extends SherlockFragment implements
 			}
 		});
 		dialog.show();
-	}
-
-	public void passchangebutton() {
-
-		oldpassword = (EditText) dialog.findViewById(R.id.oldpassword);
-		newpassword = (EditText) dialog.findViewById(R.id.newpassword);
-		confirmpassword = (EditText) dialog.findViewById(R.id.confirmpassword);
-
-		oldpass = oldpassword.getText().toString();
-		newpass = newpassword.getText().toString();
-		confirmpass = confirmpassword.getText().toString();
-
-		save = (Button) SettingFragment.dialog.findViewById(R.id.save);
-		save.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				Log.v("current", GetSet.getPassword());
-				if (GetSet.getPassword().equals(
-						oldpassword.getText().toString())) {
-					Log.v("old", oldpassword.getText().toString());
-					Log.v("newpass", newpass);
-					Log.v("confirmpass", confirmpass);
-					if ((oldpassword.getText().toString()).equals("")
-							|| (newpassword.getText().toString()).equals("")
-							|| (confirmpassword.getText().toString())
-									.equals("")) {
-						oldpassword.setError("Please fill the fields");
-					} else if ((newpassword.getText().toString())
-							.equals(confirmpassword.getText().toString())) {
-						Log.v("success", newpass);
-						new ChangePass().execute();
-					} else {
-						confirmpassword.setError("password Mismatched.");
-					}
-				} else {
-					oldpassword.setError("Wrong Password.");
-
-				}
-			}
-		});
-
-		cancel = (Button) SettingFragment.dialog.findViewById(R.id.cancel);
-		cancel.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				SettingFragment.dialog.cancel();
-
-			}
-		});
 	}
 
 	class CheckedSetting extends
@@ -517,18 +397,6 @@ public class SettingFragment extends SherlockFragment implements
 								});
 						JSONObject timeline = values
 								.getJSONObject("userTimeLineDetails");
-						String everything = timeline.getString("Everything");
-						String Following = timeline.getString("Following");
-						if (everything.equalsIgnoreCase("true")) {
-							SettingFragment.everything.setChecked(true);
-						} else {
-							SettingFragment.everything.setChecked(false);
-						}
-						if (Following.equalsIgnoreCase("true")) {
-							SettingFragment.following.setChecked(true);
-						} else {
-							SettingFragment.following.setChecked(false);
-						}
 						emailSettingsValues.put("someoneFollow",
 								values.getString("someoneFollow"));
 						emailSettingsValues.put("someoneShows",
@@ -612,10 +480,10 @@ public class SettingFragment extends SherlockFragment implements
 			fca.switchContent(new MessagesFragment());
 			break;
 		case R.id.btn_menu:
-			FragmentChangeActivity.menumap = true;
+			//FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			break;
 		}
 	}

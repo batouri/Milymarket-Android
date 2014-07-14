@@ -687,7 +687,7 @@ public class MessagesFragment extends SherlockFragment implements
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			}
 			else{
 				Intent i=new Intent(MessagesFragment.this.getActivity(),LoginActivity.class);

@@ -101,7 +101,7 @@ public class MyOrders extends SherlockFragment implements OnItemClickListener,
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
-		centerText = (TextView) getView().findViewById(R.id.homenulltext);
+		centerText = (TextView) getView().findViewById(R.id.homenulltext2);
 		centerText.setVisibility(View.INVISIBLE);
 		bottomHome = (LinearLayout) getView().findViewById(R.id.bottomhome);
 		main = (RelativeLayout) getView().findViewById(R.id.main);

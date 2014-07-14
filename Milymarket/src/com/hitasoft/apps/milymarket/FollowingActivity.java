@@ -140,8 +140,8 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 			@Override
 			public void onClick(View arg0) {
 				FragmentChangeActivity.rsprofile = true;
-				FragmentChangeActivity.menumap = true;
-				FragmentChangeActivity.filter_icon=false;
+				//FragmentChangeActivity.menumap = true;
+				//FragmentChangeActivity.filter_icon=false;
 				invalidateOptionsMenu();
 				startActivity(new Intent(FollowingActivity.this, FragmentChangeActivity.class));
 				//FollowingActivity.this.finish();
@@ -421,8 +421,8 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 					Log.v("userprefid",""+followingdatas.get(position).get("userId"));
 					ConstantValues.editor.commit();
 					FragmentChangeActivity.rsprofile = true;
-					FragmentChangeActivity.menumap = true;
-					FragmentChangeActivity.filter_icon=false;
+					//FragmentChangeActivity.menumap = true;
+					//FragmentChangeActivity.filter_icon=false;
 				    invalidateOptionsMenu();
 					startActivity(new Intent(FollowingActivity.this, FragmentChangeActivity.class));
 			
@@ -664,8 +664,8 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.rsmenu = true;
-			FragmentChangeActivity.menumap = true;
-			FragmentChangeActivity.filter_icon=false;
+			//FragmentChangeActivity.menumap = true;
+			//FragmentChangeActivity.filter_icon=false;
 			invalidateOptionsMenu();
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			}

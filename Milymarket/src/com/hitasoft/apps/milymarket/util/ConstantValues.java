@@ -177,6 +177,7 @@ public class ConstantValues {
 	//public static final String sendproduct = url
 	//		+ "api/addproduct?userId=2&itemName=TN%20Produt&itemDescription=TN%20of%20tn&itemQuantity=10&itemPrice=1&categoryIdc=2&superCatId=0&subCatId=0&gender=1&relationShip=1&businessday=1d&everyWhereCost=10&countryId=100&shipingCost=100&imageName=1391509420.jpg";
 	public static final String sendproduct = url+"api/addproduct";
+	public static final String sellerSignup = url+"api/sellersignup";
 	// public static final String TAG_CAT_STATUS = "status";
 	// public static final String TAG_CAT_RESULT = "result";
 	// public static final String TAG_CATEGORY = "Category";
@@ -308,6 +309,8 @@ public class ConstantValues {
 	public static final String TAG_CMT_INFO = "comments";
 	public static final String TAG_SPU_INFO = "shopPhotoUser";
 	public static final String TAG_USIMG_INFO = "user_img";
+	public static final String TAG_SELLER_TYPE = "sellertype";
+	public static final String TAG_ENABLE_PAIEMENT = "enablepaiement";
 
 	/*
 	 * Follow UnFollow

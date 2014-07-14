@@ -126,7 +126,7 @@ public class MostPopular extends SherlockFragment implements
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
-		centerHome = (TextView) getView().findViewById(R.id.homenulltext);
+		centerHome = (TextView) getView().findViewById(R.id.homenulltext2);
 		centerHome.setVisibility(View.INVISIBLE);
 		bottomLoading = (LinearLayout) getView().findViewById(R.id.bottomhome);
 		bottomLoading.setVisibility(View.VISIBLE);

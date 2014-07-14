@@ -98,7 +98,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 	private static final int LoginCall = 1;
 	private ImageLoader detailImageLoader;
 	private ViewPager viewPager;
-	private ImageButton back, fashionupload, like, listview;
+	private ImageButton back;
 	ImageView image, sellerimage;
 	private LinearLayout addtocartlay, followlay;
 	private HashMap<String, String> tempMap;
@@ -197,7 +197,6 @@ public class DetailActivity extends Activity implements OnClickListener,
 		detailImageLoader.init(config);
 		defaultOptions = new DisplayImageOptions.Builder().cacheInMemory()
 				.cacheOnDisc().build();
-		fashionupload = (ImageButton) findViewById(R.id.fashionUpload);
 		viewPager = (ViewPager) findViewById(R.id.detail_view_pager);
 		ImageView comment_image = (ImageView) findViewById(R.id.comment_image);
 	    sellerimage = (ImageView) findViewById(R.id.detailuserimage);
@@ -210,8 +209,6 @@ public class DetailActivity extends Activity implements OnClickListener,
 		TextView fancy = (TextView) findViewById(R.id.detail_fancyit);
 		TextView fashionCount = (TextView) findViewById(R.id.detail_fashiontxt);
 		fashionLayout = (RelativeLayout) findViewById(R.id.fashionlay);
-		like = (ImageButton) findViewById(R.id.likedimg);
-		listview = (ImageButton) findViewById(R.id.listview);
 		moreproduct_grid.setOnItemClickListener(this);
 		followlay = (LinearLayout) findViewById(R.id.followlay);
 		back = (ImageButton) findViewById(R.id.smenu);
@@ -289,8 +286,8 @@ public class DetailActivity extends Activity implements OnClickListener,
 				ConstantValues.editor.putString("userprefid",sellerid);
 				ConstantValues.editor.commit();
 				FragmentChangeActivity.rsprofile = true;
-				FragmentChangeActivity.filter_icon=false;
-				FragmentChangeActivity.menumap=true;
+				//FragmentChangeActivity.filter_icon=false;
+				//FragmentChangeActivity.menumap=true;
 				 invalidateOptionsMenu();
 				startActivity(new Intent(DetailActivity.this, FragmentChangeActivity.class));
 		
@@ -349,24 +346,6 @@ public class DetailActivity extends Activity implements OnClickListener,
 		});
 
 		String liked = tempMap.get(ConstantValues.TAG_LIKED);
-		if (liked.equalsIgnoreCase("Yes")) {
-			like.setImageResource(R.drawable.m_favo);
-		} else
-			like.setImageResource(R.drawable.unliked);
-
-		like.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if (GetSet.isLogged() == false) {
-					adialog.show();
-				} else {
-					String id = item_id;
-					new SendFancy().execute(Integer.parseInt(id));
-				}
-			}
-
-		});
 
 		back.setOnClickListener(new OnClickListener() {
 
@@ -438,22 +417,6 @@ public class DetailActivity extends Activity implements OnClickListener,
 			}
 		});
 
-		listview.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if(GetSet.isLogged()==true){
-				Intent i = new Intent(DetailActivity.this, List_Detail.class);
-				i.putExtra("itemid", item_id);
-				startActivity(i);
-				}
-				else{
-					adialog.show();
-				}
-
-			}
-
-		});
 
 		addtocartlay.setOnClickListener(new OnClickListener() {
 
@@ -470,22 +433,6 @@ public class DetailActivity extends Activity implements OnClickListener,
 			}
 		});
 
-		fashionupload.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				if(GetSet.isLogged()==true){
-				Intent i = new Intent(DetailActivity.this,
-						Fashion_uploads.class);
-				i.putExtra("position", tempMap.get(ConstantValues.TAG_ID));
-				startActivity(i);
-				}
-				else{
-					adialog.show();
-				}
-			}
-
-		});
 
 		fashionLayout.setOnClickListener(new OnClickListener() {
 
@@ -580,19 +527,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 		
 		pagerAdapter = new ViewPagerAdapter(getBaseContext(), newarry);
 		viewPager.setAdapter(pagerAdapter);
-		
-		
-		ImageButton share = (ImageButton) findViewById(R.id.share);
-		share.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				shareImage();
-			}
-		});
-		
 	}
-	
 	
 
 
@@ -1098,7 +1033,6 @@ public class DetailActivity extends Activity implements OnClickListener,
 							"Item Liked")) {
 						Toast.makeText(getBaseContext(), "Item Fantacy'd",
 								Toast.LENGTH_LONG).show();
-						like.setImageResource(R.drawable.m_favo);
 						String c = fancy.getText().toString();
 						int m = Integer.parseInt(c) + 1;
 						fancy.setText(Integer.toString(m));
@@ -1123,7 +1057,6 @@ public class DetailActivity extends Activity implements OnClickListener,
 					} else {
 						Toast.makeText(getBaseContext(), "Item UnFantacy'd",
 								Toast.LENGTH_LONG).show();
-						like.setImageResource(R.drawable.unliked);
 						String c = fancy.getText().toString();
 						int m = Integer.parseInt(c) - 1;
 						fancy.setText(Integer.toString(m));
