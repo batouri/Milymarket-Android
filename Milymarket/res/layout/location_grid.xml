@@ -56,6 +56,17 @@
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </LinearLayout>
         </RelativeLayout>
+
+        <TextView
+            android:id="@+id/homenulltext2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/loadImageLayout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="125dp"
+            android:text="@string/noItem"
+            android:textSize="20sp" />
+
     </RelativeLayout>
 
     <RelativeLayout
@@ -133,7 +144,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/homenulltext"
+        android:id="@+id/homenulltext2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

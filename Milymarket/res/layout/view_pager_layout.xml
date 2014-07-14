@@ -21,15 +21,16 @@
 
             <ImageButton
                 android:id="@+id/smenu"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_weight="2"
+                android:layout_gravity="center"
+                android:layout_weight="1.5"
                 android:background="@null"
                 android:padding="5dp"
-                android:layout_gravity="center"
                 android:src="@drawable/back" />
 
+<!--
             <ImageButton
                 android:id="@+id/likedimg"
                 android:layout_width="0dp"
@@ -59,7 +60,7 @@
                 android:padding="5dp"
                 android:layout_gravity="center"
                 android:src="@drawable/camerabig" />
-
+-->
             <!-- <ImageButton -->
             <!-- android:id="@+id/addToCart" -->
             <!-- android:layout_width="wrap_content" -->
@@ -67,7 +68,7 @@
             <!-- android:background="@null" -->
             <!-- android:padding="10dp" -->
             <!-- android:src="@drawable/cart" /> -->
-
+<!--
             <ImageButton
                 android:id="@+id/listview"
                 android:layout_width="wrap_content"
@@ -76,7 +77,16 @@
                 android:background="@null"
                 android:padding="5dp"
                 android:layout_gravity="center"
-                android:src="@drawable/addtolist" />
+                android:src="@drawable/addtolist" />-->
+
+            <Button
+                android:id="@+id/btn_contactSeller"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="7.5"
+                android:text="Contacter le vendeur" />
+
         </LinearLayout>
     </RelativeLayout>
 
@@ -127,43 +137,43 @@
                 android:background="@drawable/layout_bg"
                 android:padding="20dp" >
 
-    			<RelativeLayout
-                    android:id="@+id/namedetaillay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:background="#ffffff"
-                    android:padding="5dp" >
-					<RelativeLayout
-                        android:id="@+id/titlelay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true">
+    			<LinearLayout
+    			    android:id="@+id/namedetaillay"
+    			    android:layout_width="match_parent"
+    			    android:layout_height="wrap_content"
+    			    android:layout_centerHorizontal="true"
+    			    android:background="#ffffff"
+    			    android:orientation="horizontal"
+    			    android:padding="5dp" >
                         
                     <TextView
                         android:id="@+id/detail_item_bottom_title"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:singleLine="true"
+                        android:layout_weight="3"
+                        android:singleLine="false"
                         android:text="title"
-                        android:textSize="16dp"
+                        android:textSize="12sp"
                         android:textStyle="bold" />
-                    </RelativeLayout>
-                    <RelativeLayout
-                        android:id="@+id/costlay"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true">
-                    <TextView
-                        android:id="@+id/detail_cost"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="cost"
-                        android:textStyle="bold" />
-                    </RelativeLayout>
-                </RelativeLayout>
+
+                     <TextView
+                         android:id="@+id/detail_cost"
+                         android:layout_width="0dp"
+                         android:layout_height="wrap_content"
+                         android:layout_marginRight="2dp"
+
+            android:layout_alignParentRight="true"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:textColor="#99CC33"
+                         android:singleLine="true"
+                         android:text="cost"
+                         android:textSize="12sp"
+                         android:textStyle="bold" />
+                    
+                </LinearLayout>
 
                 <ImageView
                     android:id="@+id/border1"
@@ -171,19 +181,18 @@
                     android:layout_height="1dp"
                     android:layout_below="@+id/namedetaillay"
                     android:background="@drawable/div_line"
-                    android:padding="5dp" />
-                    
-                    
-                    
+                    android:padding="5dp"
+                    android:visibility="gone" />
                     
                     <RelativeLayout
-                    android:id="@+id/facycommentcamlay"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/border1"
-                    android:layout_centerHorizontal="true"
-                    android:background="#ffffff"
-                    android:padding="5dp" >
+                        android:id="@+id/facycommentcamlay"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/border1"
+                        android:layout_centerHorizontal="true"
+                        android:background="#ffffff"
+                        android:padding="5dp"
+                        android:visibility="gone" >
 
                     <RelativeLayout
                         android:id="@+id/facyitlay"
@@ -330,7 +339,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingRight="5dp"
-                            android:singleLine="true"
+                            android:singleLine="false"
                             android:text="user"
                             android:textStyle="bold" />
 
@@ -339,9 +348,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/detail_username"
-                            android:layout_marginTop="15dp"
+                            android:layout_marginTop="5dp"
                             android:paddingRight="5dp"
-                            android:singleLine="true"
+                            android:singleLine="false"
                             android:text="address" />
                     </RelativeLayout>
                 </RelativeLayout>
@@ -389,7 +398,8 @@
                         android:background="@drawable/shapebg"
                         android:clickable="true"
                         android:padding="6dp"
-                        android:textStyle="bold" >
+                        android:textStyle="bold"
+                        android:visibility="gone" >
 
                         <TextView
                             android:id="@+id/addcart"
@@ -398,7 +408,9 @@
                             android:paddingRight="10dp"
                             android:singleLine="true"
                             android:text="Ajouter au panier"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+
                     </LinearLayout>
                 </RelativeLayout>
             </RelativeLayout>
@@ -439,10 +451,11 @@
                         android:layout_height="450dp"
                         android:layout_below="@+id/morefrom_user"
                         android:layout_centerHorizontal="true"
-                        android:horizontalSpacing="10dp"
-                        android:verticalSpacing="10dp"
+                        android:horizontalSpacing="5dp"
                         android:numColumns="3"
-                        android:padding="5dp" />
+                        android:padding="5dp"
+                        android:verticalSpacing="5dp" />
+
                 </RelativeLayout>
             </RelativeLayout>
         </RelativeLayout>

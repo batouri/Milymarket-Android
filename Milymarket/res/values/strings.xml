@@ -12,10 +12,10 @@
     <string name="signUpText">S\u0027inscrire</string>
     <string name="alreadyUser">Vous avez un compte? Connectez vous</string>
     <string name="net">Désolé\u002C vous n\u0027avez pas un actif \n Connexion Internet \n Ou votre deveice peut avoir \nproblème de réseau.</string>
-    <string name="neterror">désolé\u002C Votre connexion Internet est trop lent pour traiter, Ou votre dispositif comportant problème de réseau.</string>
+    <string name="neterror">Oups!!! On dirait que votre réseau a un problème. Réessayez un tout petit peu plus tard.</string>
     <string name="exit">quitter</string>
     <string name="Retry">réessayez</string>
-    <string name="Filter">Filter</string>
+    <string name="Filter">Filtrer</string>
     <string name="Cancel">Annuler</string>
     <string name="Apply">Apply</string>
     <string name="save">Sauver</string>
@@ -28,7 +28,7 @@
     <string name="shippingNo">Expédition indisponible</string>
     <string name="Payment">Paiement</string>
     <string name="orderFrom">Vendeur: </string>
-    <string name="noItem">Pas plus Eléments à afficher</string>
+    <string name="noItem">Aucun élément à afficher pour l\'instant</string>
     <string name="Order">Order</string>
     <string name="total">Item total</string>
     <string name="Shipping">Shipping</string>
@@ -49,13 +49,13 @@
     <string name="Email">Email</string>
     <string name="Password">Mot de passe</string>
     <string name="RememberMe">Se souvenir de moi</string>
-    <string name="home">Accueil </string>
+    <string name="home">Récemment ajoutés </string>
     <string name="category">Catégorie </string>
     <string name="search">Recherche  </string>
     <string name="addproduct">Ajouter un article</string>
     <string name="messages">Notifications</string>
-    <string name="nearme">Near me</string>
-    <string name="location">Emplacement</string>
+    <string name="nearme">Autour de moi</string>
+    <string name="location">Autour de moi</string>
     <string name="MostPopular">Plus populaires</string>
     <string name="cart">Painer</string>
     <string name="myorders">Mes commandes</string>
@@ -69,12 +69,12 @@
     <string name="reallySignOut">Voulez\u002Dvous vraiment SignOut\u003F</string>
     <string name="yes">Oui</string>
     <string name="no">pas</string>
-    <string name="PleaseLoginToContinue">Please Login To continue</string>
+    <string name="PleaseLoginToContinue">Connectez vous pour profiter de Milymarket</string>
     <string name="Profile">PROFIL</string>
     <string name="ChangePassword">Changer de mot de passe</string>
     <string name="timeLineContents">Page d\u0027accueil</string>
     <string name="everything">Everything</string>
-    <string name="Following">Aboonements</string>
+    <string name="Following">Abonnements</string>
     <string name="miscellenout">Autres</string>
     <string name="NotificationSettings">Notification Settings</string>
     <string name="AppVersion">Version</string>
@@ -85,5 +85,13 @@
     <string name="title_activity_map">Map</string>
     <string name="title_activity_twitter_post">TwitterPost</string>
     <string name="category_hint">Select Category</string>
+    <string name="ManageSellerAccount">Modifier mon compte vendeur</string>
+    <string name="select">Type de vendeur</string>
+    <string name="Menu">Menu</string>
+    <string-array name="seller_array">
+        <item>Particulier</item>
+        <item>Professionel</item>
+        <item>Association</item>
+    </string-array>
 
 </resources>

@@ -32,7 +32,9 @@
                 android:layout_alignParentRight="true"
                 android:background="#00000000"
                 android:padding="10dp"
-                android:text="Recherche" />
+                android:text="Recherche"
+                android:visibility="gone" />
+
         </RelativeLayout>
 
         <LinearLayout
@@ -58,7 +60,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="4.5"
                 android:gravity="center"
                 android:orientation="horizontal" >
 
@@ -68,8 +70,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Article"
-                    android:padding="7dp"
+                    android:text="Articles"
+                    android:padding="5dp"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
 
@@ -80,7 +82,8 @@
                 android:layout_gravity="center"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:orientation="horizontal" >
+                android:orientation="horizontal"
+                android:visibility="gone" >
 
                 <Button
                     android:id="@+id/txmembers"
@@ -88,8 +91,8 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:gravity="center"
-                    android:text="Menbres"
-                    android:padding="7dp"
+                    android:text="Membres"
+                    android:padding="5dp"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
 
@@ -98,7 +101,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_weight="3"
+                android:layout_weight="4.5"
                 android:gravity="center"
                 android:orientation="horizontal" >
 
@@ -109,7 +112,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="Boutiques"
-                    android:padding="7dp"
+                    android:padding="5dp"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
             </LinearLayout>
             </LinearLayout>

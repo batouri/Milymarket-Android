@@ -13,7 +13,9 @@
         android:layout_margin="5dp"
         android:gravity="left"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:textSize="13sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/fullname"
@@ -23,7 +25,8 @@
         android:layout_margin="5dp"
         android:gravity="left"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="#000000" />
+        android:textColor="#000000"
+        android:textSize="12sp" />
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -33,10 +36,10 @@
         <ImageView
             android:id="@+id/followingimage"
             android:layout_width="fill_parent"
-            android:layout_height="180dp"
+            android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:scaleType="fitXY"
-            android:src="@drawable/blue"/>
+            android:src="@drawable/blue" />
 
         <ProgressBar
             android:id="@+id/progressBar1"
