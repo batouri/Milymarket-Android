@@ -131,6 +131,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 	public static ArrayList<HashMap<String, String>> tmp3;
 	public static HashMap<String, String> tmpMap3;
 	ArrayList<String> map = null;
+	Button contactSeller;
 	TextView fancy, followtxt;
 	public static boolean sellerfollow, sellerunfollow;
 	private ClipboardManager myClipboard;
@@ -158,12 +159,14 @@ public class DetailActivity extends Activity implements OnClickListener,
 		menu = (ImageButton) findViewById(R.id.btn_menu);
 		fancy = (TextView) findViewById(R.id.detail_fancyit);
 		followtxt = (TextView) findViewById(R.id.followtxt);
+		contactSeller = (Button) findViewById(R.id.btn_contactSeller);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
 		shop.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
+		contactSeller.setOnClickListener(this);
 		
 		//sview.fullScroll(View.FOCUS_UP);
 		//sview.smoothScrollTo(0, 0);
@@ -1584,12 +1587,22 @@ public class DetailActivity extends Activity implements OnClickListener,
 		}
 
 	}
+	
+	private void contactSeller(){
+		Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+	            "mailto","service@milymarket.com", null));
+	emailIntent.putExtra(Intent.EXTRA_SUBJECT, "EXTRA_SUBJECT");
+	startActivity(Intent.createChooser(emailIntent, "Send email..."));
+
+	}
 
 	@SuppressLint("NewApi")
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
-
+		case R.id.btn_contactSeller:
+			contactSeller();
+			break;
 		case R.id.btn_home:
 			FragmentChangeActivity.rshome = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
