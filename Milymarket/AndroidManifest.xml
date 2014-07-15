@@ -110,11 +110,6 @@
             android:name="com.hitasoft.apps.milymarket.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.Sherlock.Light.NoActionBar" >
-           <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
- 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
