@@ -186,7 +186,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		sview=(BounceScrollView) findViewById(R.id.scrollbar);
 		 adialog=new AlertDialog.Builder(DetailActivitynew.this).create();
 			adialog.setTitle("Alert");
-			adialog.setMessage("Vous n'êtes pas connecter!!! Connectez vous pour profiter de Milymarket!!!");
+			adialog.setMessage("Vous n'êtes pas connecté!!! Bienvenue sur Milymarket. Connectez vous!!!");
 			adialog.setButton("OK",new DialogInterface.OnClickListener() {
 				
 				@Override
@@ -728,7 +728,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 		};
 
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Connectez vous pour profiter de Milymarket")
+		builder.setMessage("Bienvenue sur Milymarket. Connectez vous")
 				.setPositiveButton("Connexion", dialogClickListener)
 				.setNegativeButton("Pas tout de suite", dialogClickListener).show();
 	}

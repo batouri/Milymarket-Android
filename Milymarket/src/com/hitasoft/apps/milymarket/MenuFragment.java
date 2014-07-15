@@ -108,17 +108,9 @@ public class MenuFragment extends SherlockListFragment implements
 		alert.setOnClickListener((OnClickListener) this);
 		menu.setOnClickListener((OnClickListener) this);
 		
-		profileImage.setOnClickListener(new OnClickListener()
-		{
-
-			@Override
-			public void onClick(View v) {
-				Intent i=new Intent(MenuFragment.this.getActivity(),userimage_upload.class);
-				startActivity(i);
-			}
-			
-		});
-		
+		profileImage.setOnClickListener((OnClickListener) this);
+		firstName.setOnClickListener((OnClickListener) this);
+		userName.setOnClickListener((OnClickListener) this);
 		if (GetSet.isLogged()) {
 			try {
 				new GetSettings().execute();
@@ -134,7 +126,7 @@ public class MenuFragment extends SherlockListFragment implements
 				new GetSettings().execute();
 			}
 		} else {
-			Toast.makeText(getActivity(), "Connectez vous pour profiter de Milymarket",
+			Toast.makeText(getActivity(), "Bienvenue sur Milymarket. Connectez vous",
 					Toast.LENGTH_LONG).show();
 		}
 
@@ -195,6 +187,21 @@ public class MenuFragment extends SherlockListFragment implements
 				Intent i=new Intent(MenuFragment.this.getActivity(),LoginActivity.class);
 				startActivity(i);
 			}
+			break;
+		case R.id.profileImage:
+		case R.id.userName:
+		case R.id.firstName:
+			if(GetSet.isLogged()==true){
+				FragmentChangeActivity.rsprofile = true;
+				FragmentChangeActivity.menumap = false;
+				FragmentChangeActivity.filter_icon=false;
+				getActivity().supportInvalidateOptionsMenu();
+				fca.switchContent(new ProfileFragment());
+				}
+				else{
+					Intent i=new Intent(MenuFragment.this.getActivity(),LoginActivity.class);
+					startActivity(i);
+				}
 			break;
 
 		}
@@ -375,6 +382,7 @@ public class MenuFragment extends SherlockListFragment implements
 				} catch (JSONException e) {
 					e.printStackTrace();
 				}
+				if(MenuFragment.this != null && MenuFragment.this.getView() != null)
 				MenuFragment.this.getView().setVisibility(View.VISIBLE);
 				if (pgsDialog.isShowing()) {
 					pgsDialog.dismiss();

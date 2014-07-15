@@ -1016,7 +1016,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 		long pressTime = System.currentTimeMillis();
 
 		// If double click...
-		if (pressTime - lastPressTime <= DOUBLE_PRESS_INTERVAL) {
+		/*if (pressTime - lastPressTime <= DOUBLE_PRESS_INTERVAL) {
 			mHasDoubleClicked = true;
 
 			LinearLayout ll = (LinearLayout) gridView.getChildAt(arg2);
@@ -1048,11 +1048,11 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 					}
 				}, 1500); // 3 seconds
 			} else {
-				Toast.makeText(getActivity(), "Connectez vous pour profiter de Milymarket",
+				Toast.makeText(getActivity(), "Bienvenue sur Milymarket. Connectez vous",
 						Toast.LENGTH_LONG).show();
 			}
 
-		} else { // If not double click....
+		} else {*/ // If not double click....
 			mHasDoubleClicked = false;
 			Handler myHandler = new Handler() {
 				public void handleMessage(Message m) {
@@ -1083,7 +1083,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 			};
 			Message m = new Message();
 			myHandler.sendMessageDelayed(m, DOUBLE_PRESS_INTERVAL);
-		}
+		//}
 		// record the last time the menu button was pressed.
 		lastPressTime = pressTime;
 

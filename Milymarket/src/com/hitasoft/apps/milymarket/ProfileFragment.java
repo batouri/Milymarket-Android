@@ -465,6 +465,8 @@ public class ProfileFragment extends SherlockFragment implements
 			Log.v("weight",""+width);
 			Log.v("height",""+height);
 			//Toast.makeText(getActivity(), height, Toast.LENGTH_SHORT).show();
+			if(i==1)
+				i = 2;
 			int height2=0;
 			if(height>=1900){
 				Log.v("1900","1900");
@@ -542,6 +544,11 @@ public class ProfileFragment extends SherlockFragment implements
 		@Override
 		protected void onPostExecute(ArrayList<String> result) {
 			try {
+				
+				followtxt.setText("S'abonner");
+				followlay.setBackgroundColor(Color.RED);
+				sellerfollow = true;
+				
 				if (result.size() != 0) {
 					outerloop: for (int i = 0; i < result.size(); i++) {
 						String fuserid = result.get(i);
@@ -551,12 +558,7 @@ public class ProfileFragment extends SherlockFragment implements
 							sellerunfollow = true;
 							break outerloop;
 
-						} else {
-							followtxt.setText("S'abonner");
-							followlay.setBackgroundColor(Color.RED);
-							sellerfollow = true;
-
-						}
+						} 
 					}
 				}
 			} catch (Exception e) {

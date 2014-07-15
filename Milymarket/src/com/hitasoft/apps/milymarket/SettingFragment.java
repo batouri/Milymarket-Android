@@ -67,7 +67,7 @@ import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 public class SettingFragment extends SherlockFragment implements
 		OnClickListener {
 
-	private TextView  manageSeller;
+	private TextView  manageSeller, semail, passchange;
 	HashMap<String, String> tempMap = new HashMap<String, String>();
 	public static Dialog dialog;
 	private EditText oldpassword, newpassword, confirmpassword;
@@ -145,9 +145,41 @@ public class SettingFragment extends SherlockFragment implements
 				new GetSettings().execute();
 			}
 		} else {
-			Toast.makeText(getActivity(), "Connectez vous pour profiter de Milymarket",
+			Toast.makeText(getActivity(), "Bienvenue sur Milymarket. Connectez vous",
 					Toast.LENGTH_LONG).show();
 		}
+		
+		
+			passchange = (TextView) getView().findViewById(R.id.passchange);
+			passchange.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				dialog = new Dialog(getActivity());
+				dialog.setContentView(R.layout.change_password);
+				dialog.setTitle("Changer de mot de passe");
+				dialog.setCancelable(true);
+				dialog.setCanceledOnTouchOutside(true);
+				dialog.show();
+				passchangebutton();
+
+			}
+			});
+
+			semail = (TextView) getView().findViewById(R.id.semail);
+			semail.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+                Log.v("emailSettingsValues",""+emailSettingsValues);
+                Intent emailsetting = new Intent(getActivity(),
+                		EmailSettings.class);
+                emailsetting.putExtra("data", emailSettingsValues);
+                startActivity(emailsetting);
+				}
+			});
+		
+		
 		
 		manageSeller = (TextView) getView().findViewById(R.id.sellermanage);
 		manageSeller.setOnClickListener(new OnClickListener() {
@@ -216,6 +248,58 @@ public class SettingFragment extends SherlockFragment implements
 		});
 		dialog.show();
 	}
+	
+	public void passchangebutton() {
+
+		oldpassword = (EditText) dialog.findViewById(R.id.oldpassword);
+		newpassword = (EditText) dialog.findViewById(R.id.newpassword);
+		confirmpassword = (EditText) dialog.findViewById(R.id.confirmpassword);
+
+		oldpass = oldpassword.getText().toString();
+		newpass = newpassword.getText().toString();
+		confirmpass = confirmpassword.getText().toString();
+
+		save = (Button) SettingFragment.dialog.findViewById(R.id.save);
+		save.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				Log.v("current", GetSet.getPassword());
+				if (GetSet.getPassword().equals(
+						oldpassword.getText().toString())) {
+					Log.v("old", oldpassword.getText().toString());
+					Log.v("newpass", newpass);
+					Log.v("confirmpass", confirmpass);
+					if ((oldpassword.getText().toString()).equals("")
+							|| (newpassword.getText().toString()).equals("")
+							|| (confirmpassword.getText().toString())
+									.equals("")) {
+						oldpassword.setError("Please fill the fields");
+					} else if ((newpassword.getText().toString())
+							.equals(confirmpassword.getText().toString())) {
+						Log.v("success", newpass);
+						new ChangePass().execute();
+					} else {
+						confirmpassword.setError("password Mismatched.");
+					}
+				} else {
+					oldpassword.setError("Wrong Password.");
+
+				}
+			}
+		});
+
+		cancel = (Button) SettingFragment.dialog.findViewById(R.id.cancel);
+		cancel.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				SettingFragment.dialog.cancel();
+
+			}
+		});
+	}
+
 
 	class CheckedSetting extends
 			AsyncTask<HashMap<String, String>, Void, JSONObject> {

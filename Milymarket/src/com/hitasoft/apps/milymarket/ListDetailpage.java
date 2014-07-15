@@ -397,7 +397,7 @@ public class ListDetailpage extends Activity implements OnScrollListener,
 						new SendFancy().execute(point);
 					} else {
 						Toast.makeText(getBaseContext(),
-								"Connectez vous pour profiter de Milymarket", Toast.LENGTH_LONG)
+								"Bienvenue sur Milymarket. Connectez vous", Toast.LENGTH_LONG)
 								.show();
 					}
 				}

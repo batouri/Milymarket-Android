@@ -105,10 +105,10 @@ public class userimage_upload extends Activity{
 				FragmentChangeActivity.rssetg = true;
 				FragmentChangeActivity.menumap = false;
 				FragmentChangeActivity.filter_icon=false;
-				invalidateOptionsMenu();
-				startActivity(new Intent(userimage_upload.this, FragmentChangeActivity.class));
+				moveTaskToBack(true);
+				//invalidateOptionsMenu();
+				//startActivity(new Intent(userimage_upload.this, FragmentChangeActivity.class));
 				
-				//userimage_upload.this.finish();
 			}
 		});
 		btnup.setOnClickListener(new OnClickListener() {

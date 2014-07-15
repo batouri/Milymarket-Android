@@ -140,6 +140,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 	ImageLoaderConfiguration config;
 	String imageloadingurl;
 	AlertDialog adialog;
+	TextView sellername, title;
 	
 
 	@SuppressLint("UseSparseArrays")
@@ -203,9 +204,9 @@ public class DetailActivity extends Activity implements OnClickListener,
 		viewPager = (ViewPager) findViewById(R.id.detail_view_pager);
 		ImageView comment_image = (ImageView) findViewById(R.id.comment_image);
 	    sellerimage = (ImageView) findViewById(R.id.detailuserimage);
-		TextView title = (TextView) findViewById(R.id.detail_item_bottom_title);
+		title = (TextView) findViewById(R.id.detail_item_bottom_title);
 		TextView description = (TextView) findViewById(R.id.detail_item_bottom_description);
-		TextView sellername = (TextView) findViewById(R.id.detail_username);
+		sellername = (TextView) findViewById(R.id.detail_username);
 		TextView address = (TextView) findViewById(R.id.detail_address);
 		TextView cost = (TextView) findViewById(R.id.detail_cost);
 		TextView comments = (TextView) findViewById(R.id.detail_item_bottom_comments_count);
@@ -279,6 +280,47 @@ public class DetailActivity extends Activity implements OnClickListener,
 			newarry = HomeFragment.urls.get("detialimage" + i);
 			AppConstant.Detailurls.clear();
 		}
+		
+		sellername.setOnClickListener(new OnClickListener()
+		{
+
+			@SuppressLint("NewApi")
+			@Override
+			public void onClick(View v) {
+				ConstantValues.editor.clear();
+				ConstantValues.editor.putString("userprefid",sellerid);
+				ConstantValues.editor.commit();
+				FragmentChangeActivity.rsprofile = true;
+				//FragmentChangeActivity.filter_icon=false;
+				//FragmentChangeActivity.menumap=true;
+				 invalidateOptionsMenu();
+				startActivity(new Intent(DetailActivity.this, FragmentChangeActivity.class));
+		
+				
+			}
+			
+		});
+		
+		address.setOnClickListener(new OnClickListener()
+		{
+
+			@SuppressLint("NewApi")
+			@Override
+			public void onClick(View v) {
+				ConstantValues.editor.clear();
+				ConstantValues.editor.putString("userprefid",sellerid);
+				ConstantValues.editor.commit();
+				FragmentChangeActivity.rsprofile = true;
+				//FragmentChangeActivity.filter_icon=false;
+				//FragmentChangeActivity.menumap=true;
+				 invalidateOptionsMenu();
+				startActivity(new Intent(DetailActivity.this, FragmentChangeActivity.class));
+		
+				
+			}
+			
+		});
+		
 		sellerimage.setOnClickListener(new OnClickListener()
 		{
 
@@ -829,11 +871,15 @@ public class DetailActivity extends Activity implements OnClickListener,
 			String path = Images.Media.insertImage(getContentResolver(),
 					mutableBitmap, "Nur", null);
 			Uri uri = Uri.parse(path);
-			final Intent emailIntent = new Intent(
-					android.content.Intent.ACTION_SEND);
+			String titleText = title.getText().toString();
+			String sellerNameText = sellername.getText().toString();
+			final Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+		            "mailto","service@milymarket.com", null));
 			emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
+			emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Je suis intéressé par " + titleText + "du vendeur" + sellerNameText);
 			emailIntent.setType("image/png");
-			startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+			startActivity(Intent.createChooser(emailIntent, "Bonjour, votre article est il encore disponible?"));
+			
 		}
 
 	}
@@ -1588,20 +1634,28 @@ public class DetailActivity extends Activity implements OnClickListener,
 
 	}
 	
-	private void contactSeller(){
+	/*private void contactSeller(){
+		Bitmap mutableBitmap = result.copy(Bitmap.Config.ARGB_8888, true);
+		View view = new View(DetailActivity.this);
+		view.draw(new Canvas(mutableBitmap));
+		String path = Images.Media.insertImage(getContentResolver(),
+		mutableBitmap, "Nur", null);
+		Uri uri = Uri.parse(path);
 		Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
 	            "mailto","service@milymarket.com", null));
-	emailIntent.putExtra(Intent.EXTRA_SUBJECT, "EXTRA_SUBJECT");
-	startActivity(Intent.createChooser(emailIntent, "Send email..."));
+		emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
+		emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Je suis intéressé par " + title.getText.toString() + "du vendeur" + sellername.getText.toString());
+		emailIntent.setType("image/png");
+		startActivity(Intent.createChooser(emailIntent, "Bonjour, votre article est il encore disponible?"));
 
-	}
+	}*/
 
 	@SuppressLint("NewApi")
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_contactSeller:
-			contactSeller();
+			new sendMail().execute();
 			break;
 		case R.id.btn_home:
 			FragmentChangeActivity.rshome = true;

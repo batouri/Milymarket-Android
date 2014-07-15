@@ -1700,7 +1700,7 @@ public class LocationFragment extends SherlockFragment implements
 					}
 				}, 1500);
 			} else {
-				Toast.makeText(getActivity(), "Connectez vous pour profiter de Milymarket",
+				Toast.makeText(getActivity(), "Bienvenue sur Milymarket. Connectez vous",
 						Toast.LENGTH_LONG).show();
 			}
 

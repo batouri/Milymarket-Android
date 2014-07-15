@@ -483,7 +483,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			if (GetSet.isLogged()) {
 				SendPorValues();
 			} else {
-				Toast.makeText(getActivity(), "Connectez vous pour profiter de Milymarket",
+				Toast.makeText(getActivity(), "Bienvenue sur Milymarket. Connectez vous",
 						Toast.LENGTH_SHORT).show();
 			}
 			break;
