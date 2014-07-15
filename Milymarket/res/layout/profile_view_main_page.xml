@@ -205,6 +205,39 @@
                         android:background="#bdbdbd" />
 
                     <LinearLayout
+                        android:id="@+id/followersLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.25"
+                        android:orientation="vertical" >
+
+                        <TextView
+                            android:id="@+id/prifilePage_followers_count"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="0"
+                            android:textAppearance="@android:style/TextAppearance.Small"
+                            android:textColor="#000000"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="Abonnés"
+                            android:textAppearance="@android:style/TextAppearance.Small"
+                            android:textColor="#000000"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="fill_parent"
+                        android:layout_marginRight="4dp"
+                        android:background="#bdbdbd" />
+
+                    <LinearLayout
                         android:id="@+id/followingLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -216,56 +249,22 @@
                             android:id="@+id/prifilePage_following_count"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center"
                             android:text="0"
-                            android:textStyle="bold"
-                            android:layout_gravity="center"
                             android:textAppearance="@android:style/TextAppearance.Small"
-                            android:textColor="#000000" />
+                            android:textColor="#000000"
+                            android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Abonnés"
-                            android:textStyle="bold"
                             android:layout_gravity="center"
-                            android:textAppearance="@android:style/TextAppearance.Small"
-                            android:textColor="#000000" />
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="1dip"
-                        android:layout_height="fill_parent"
-                        android:layout_marginRight="4dp"
-                        android:background="#bdbdbd" />
-
-                    <LinearLayout
-                        android:id="@+id/followersLayout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_weight="0.25"
-                        android:orientation="vertical" >
-
-                        <TextView
-                            android:id="@+id/prifilePage_followers_count"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                             android:textStyle="bold"
-                            android:layout_gravity="center"
-                            android:textAppearance="@android:style/TextAppearance.Small"
-                            android:textColor="#000000" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:text="Abonnements"
-                             android:textStyle="bold"
-                            android:layout_gravity="center"
                             android:textAppearance="@android:style/TextAppearance.Small"
-                            android:textColor="#000000" />
+                            android:textColor="#000000"
+                            android:textStyle="bold" />
                     </LinearLayout>
+
                 </LinearLayout>
             </LinearLayout>
 
