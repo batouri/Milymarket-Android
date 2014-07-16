@@ -7,7 +7,7 @@ import java.util.List;
 
 public class AppConstant {
 	// Facebook App_ID
-	public static final String App_ID = "1420801311504041";
+	public static final String App_ID = "470091279731392";
 
 	// Number of columns of Grid View
 	public static final int NUM_OF_COLUMNS = 3;

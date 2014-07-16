@@ -204,7 +204,7 @@ public class CartFragmentClass extends SherlockFragment implements
 
 		@Override
 		protected void onPreExecute() {
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);

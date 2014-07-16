@@ -13,6 +13,8 @@ package com.hitasoft.apps.milymarket;
  \************************************************************/
 
 import java.io.BufferedReader;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Map;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -64,6 +66,10 @@ import android.content.IntentFilter;
 import android.content.IntentSender.SendIntentException;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.Signature;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -74,6 +80,7 @@ import android.os.Message;
 import android.os.PowerManager;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -275,7 +282,25 @@ public class LoginActivity extends Activity implements OnClickListener,
 	    GCMRegistrar.checkManifest(this);
 	    // Register custom Broadcast receiver to show messages on activity
         registerReceiver(mHandleMessageReceiver, "Com.MilyMarket.APPS");
-	    
+        /*
+        
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo(
+                    "com.hitasoft.apps.milymarket", 
+                    PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                String inf = Base64.encodeToString(md.digest(), Base64.DEFAULT);
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                }
+        } catch (NameNotFoundException e) {
+
+        } catch (NoSuchAlgorithmException e) {
+
+        }
+
+	    */
 
 		uName.addTextChangedListener(new TextWatcher() {
 			public void afterTextChanged(Editable s) {
@@ -496,7 +521,7 @@ public class LoginActivity extends Activity implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("S'il vous plaît attendre...");
+			this.dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();
@@ -1082,7 +1107,7 @@ public class LoginActivity extends Activity implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
@@ -1151,7 +1176,7 @@ public class LoginActivity extends Activity implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
@@ -1223,7 +1248,7 @@ public class LoginActivity extends Activity implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);

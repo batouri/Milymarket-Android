@@ -146,7 +146,7 @@ public class MessagesFragment extends SherlockFragment implements
 
 		@Override
 		protected void onPreExecute() {
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.setIndeterminate(true);

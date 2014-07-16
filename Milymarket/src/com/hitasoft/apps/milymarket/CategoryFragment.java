@@ -956,7 +956,7 @@ public class CategoryFragment extends SherlockFragment implements
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.setCancelable(false);
 			dialog.setIndeterminate(true);

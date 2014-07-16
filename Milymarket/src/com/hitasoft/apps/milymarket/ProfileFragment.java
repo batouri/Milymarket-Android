@@ -840,7 +840,10 @@ public class ProfileFragment extends SherlockFragment implements
 		//favouratedcount.setText(userDatas
 		//		.get(ConstantValues.TAG_PROFILE_FAVOURATED));
 		addedcount.setText(userDatas.get(ConstantValues.TAG_PROFILE_ADDED));
-		about.setText(userDatas.get(ConstantValues.TAG_PROFILE_ABOUT));
+		String desc = userDatas.get(ConstantValues.TAG_PROFILE_ABOUT);
+		if(desc == "null")
+			desc = "";
+		about.setText(desc);
 		//Log.v("setabout", "" + userDatas.get(ConstantValues.TAG_PROFILE_ABOUT));
 
 	}
@@ -1907,7 +1910,7 @@ public class ProfileFragment extends SherlockFragment implements
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("S'il vous plaît attendre...");
+			this.dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();
@@ -1967,7 +1970,7 @@ public class ProfileFragment extends SherlockFragment implements
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("S'il vous plaît attendre...");
+			this.dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();

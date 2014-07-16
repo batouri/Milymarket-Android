@@ -1018,7 +1018,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
@@ -1035,7 +1035,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 				Toast.makeText(getBaseContext(), status, Toast.LENGTH_LONG)
 						.show();
 			} catch (JSONException e) {
-				Toast.makeText(getBaseContext(), "Sorry, something went wrong",
+				Toast.makeText(getBaseContext(), "Oops il y a un problème",
 						Toast.LENGTH_LONG).show();
 				e.printStackTrace();
 			}
@@ -1061,7 +1061,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
@@ -1197,7 +1197,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
@@ -1720,7 +1720,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("S'il vous plaît attendre...");
+			this.dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();
@@ -1780,7 +1780,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("S'il vous plaît attendre...");
+			this.dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();

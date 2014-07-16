@@ -361,7 +361,7 @@ public class SettingFragment extends SherlockFragment implements
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("S'il vous plaît attendre...");
+			this.dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();
@@ -434,7 +434,7 @@ public class SettingFragment extends SherlockFragment implements
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			pgsDialog.setMessage("S'il vous plaît attendre...");
+			pgsDialog.setMessage("Un instant s'il vous plait");
 			pgsDialog.setIndeterminate(true);
 			pgsDialog.setCancelable(false);
 			pgsDialog.show();

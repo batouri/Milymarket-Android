@@ -316,7 +316,7 @@ public class InviteFriends extends SherlockFragment implements OnClickListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();

@@ -515,7 +515,7 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("S'il vous plaît attendre...");
+			this.dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();
@@ -582,7 +582,7 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("S'il vous plaît attendre...");
+			this.dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();

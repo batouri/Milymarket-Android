@@ -278,7 +278,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("S'il vous plaît attendre...");
+			dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.setCancelable(false);
 			dialog.setIndeterminate(true);
@@ -589,7 +589,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("S'il vous plaît attendre...");
+			this.dialog.setMessage("Un instant s'il vous plait");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();

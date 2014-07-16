@@ -327,7 +327,7 @@ public class MenuFragment extends SherlockListFragment implements
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			pgsDialog.setMessage("S'il vous plaît attendre...");
+			pgsDialog.setMessage("Un instant s'il vous plait");
 			pgsDialog.setIndeterminate(true);
 			pgsDialog.setCancelable(false);
 			pgsDialog.show();
