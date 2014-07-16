@@ -276,7 +276,7 @@
             android:value="v3" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
-            android:value="1420801311504041" />
+            android:value="470091279731392" />
     </application>
 
 </manifest>
