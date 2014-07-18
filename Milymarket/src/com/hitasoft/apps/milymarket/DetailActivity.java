@@ -873,13 +873,17 @@ public class DetailActivity extends Activity implements OnClickListener,
 			Uri uri = Uri.parse(path);
 			String titleText = title.getText().toString();
 			String sellerNameText = sellername.getText().toString();
-			final Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
-		            "mailto","service@milymarket.com", null));
+			//final Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+		        //    "mailto","service@milymarket.com", null));
+		         
+		     	final Intent emailIntent = new Intent(Intent.ACTION_SEND);
+		     	emailIntent.setType("application/image");
+			String[] recipients = new String[]{"service@milymarket.com", "",};
+			emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, recipients); 
 			emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
-			emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Je suis intéressé par " + titleText + "du vendeur" + sellerNameText);
-			emailIntent.setType("image/png");
-			startActivity(Intent.createChooser(emailIntent, "Bonjour, votre article est il encore disponible?"));
-			
+			emailIntent.putExtra(Intent.EXTRA_SUBJECT, titleText + " du vendeur " + sellerNameText);
+			emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "Bonjour, je suis intéressé par votre "+titleText+". Cet article est il encore disponible?");
+			startActivity(Intent.createChooser(emailIntent, "L'article est encore disponible?"));
 		}
 
 	}

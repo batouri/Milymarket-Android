@@ -81,6 +81,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 	private ArrayList<String> genderID = new ArrayList<String>();
 	private ArrayList<String> shippingID = new ArrayList<String>();
 	private ArrayList<String> genderCategory = new ArrayList<String>();
+	String latitude,longitude;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -125,6 +126,8 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		CountryItems = new ArrayList<HashMap<String, String>>();
 		GenderItems = new ArrayList<HashMap<String, String>>();
 		ShippingItems = new ArrayList<HashMap<String, String>>();
+		
+		//getUserData();
 
 		new GetCategories().execute();
 
@@ -264,6 +267,72 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 				.setTitle(spannable);
 
 	}
+	
+	
+		public void getUserData() {
+	JSONParser jParser = new JSONParser();
+	String userId = GetSet.getUserId();
+	String url = ConstantValues.userProfile + userId;
+	Log.v("loadingurl", url);
+	JSONObject userData = jParser.getJSONFromUrl(url);
+	try {
+		String response = userData.getString(ConstantValues.status);
+		if (response.equalsIgnoreCase("true")) {
+			JSONObject results = userData.getJSONObject(ConstantValues.TAG_RESULT);
+			latitude = results.getString(ConstantValues.TAG_PROFILE_LAT);
+			longitude = results.getString(ConstantValues.TAG_PROFILE_LON);
+
+			if(latitude.equalsIgnoreCase("null")&&longitude.equalsIgnoreCase("null")){
+				AddProduct.this.getActivity().runOnUiThread(new Runnable() {
+				    public void run() {
+				showMsgToCreateSellerAccount();
+				    }
+			});
+			
+		} else {
+			String message = userData.getString(ConstantValues.msg);
+			Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
+			FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
+			FragmentChangeActivity.menumap = false;
+						FragmentChangeActivity.filter_icon = false;
+						getActivity().supportInvalidateOptionsMenu();
+						fca.switchContent(new HomeFragment());
+		}
+	}
+	}catch (JSONException e) {
+	e.printStackTrace();
+	}
+}
+	
+	
+		protected void showMsgToCreateSellerAccount() {
+		DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				switch (which) {
+					case DialogInterface.BUTTON_POSITIVE:
+						Intent i = new Intent(AddProduct.this.getActivity(), ManageSellerFragment.class);
+						startActivity(i);
+						break;
+
+					case DialogInterface.BUTTON_NEGATIVE:
+						FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
+						FragmentChangeActivity.menumap = false;
+						FragmentChangeActivity.filter_icon = false;
+						getActivity().supportInvalidateOptionsMenu();
+						fca.switchContent(new HomeFragment());
+						break;
+				}
+			}
+		};
+
+		AlertDialog.Builder builder = new AlertDialog.Builder(AddProduct.this.getActivity());
+		builder.setMessage("Vous devez créer un compte vendeur pour vendre un article").setPositiveButton("Créer mon compte vendeur", dialogClickListener)
+		.setNegativeButton("Pas tout de suite", dialogClickListener).show();
+		}
+
+
+	
 
 	class GetCategories extends AsyncTask<Void, Void, Void> {
 
@@ -459,6 +528,9 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 					subCategory.put(name, subCat);
 				}
 			}
+			
+			getUserData();
+			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
