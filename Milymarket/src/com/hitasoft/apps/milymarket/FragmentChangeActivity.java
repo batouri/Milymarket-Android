@@ -724,7 +724,7 @@ public class FragmentChangeActivity extends SlidingFragmentActivity {
 					Log.v("uploadedimgname",""+uploadedimgname);
 				}
 
-				Toast.makeText(getBaseContext(), "Photo uploaded successfully",
+				Toast.makeText(getBaseContext(), "L'image a été téléchargée",
 						Toast.LENGTH_SHORT).show();
 
 			} catch (Exception e) {

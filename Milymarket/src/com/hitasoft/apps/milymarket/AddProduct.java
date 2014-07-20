@@ -81,7 +81,6 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 	private ArrayList<String> genderID = new ArrayList<String>();
 	private ArrayList<String> shippingID = new ArrayList<String>();
 	private ArrayList<String> genderCategory = new ArrayList<String>();
-	String latitude,longitude;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -113,12 +112,12 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		item_desc = (EditText) getView().findViewById(R.id.add_itemdesc);
 		item_price = (EditText) getView().findViewById(R.id.add_itemprice);
 		item_quan = (EditText) getView().findViewById(R.id.add_itemquan);
-		/*addprice1 = (EditText) getView().findViewById(R.id.add_price1);
+		addprice1 = (EditText) getView().findViewById(R.id.add_price1);
 		addprice2 = (EditText) getView().findViewById(R.id.add_price2);
 		relation = (Spinner) getView().findViewById(R.id.add_Relationship);
 		country = (Spinner) getView().findViewById(R.id.add_editcountry);
 		gender = (Spinner) getView().findViewById(R.id.add_gender);
-		shipping = (Spinner) getView().findViewById(R.id.add_shipping);*/
+		shipping = (Spinner) getView().findViewById(R.id.add_shipping);
 		send = (Button) getView().findViewById(R.id.sendpro);
 
 		CategoryItems = new ArrayList<HashMap<String, String>>();
@@ -126,8 +125,6 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		CountryItems = new ArrayList<HashMap<String, String>>();
 		GenderItems = new ArrayList<HashMap<String, String>>();
 		ShippingItems = new ArrayList<HashMap<String, String>>();
-		
-		//getUserData();
 
 		new GetCategories().execute();
 
@@ -163,9 +160,9 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 					long arg3) {
 				String mainName = globalArrlist.get(pos);
 				if (!mainName.equals("Choisissez une catégorie")) {
-					mSubCategory1.setVisibility(View.VISIBLE);
+					//mSubCategory1.setVisibility(View.VISIBLE);
 					ArrayList<String> sub = subCategory1.get(mainName);
-					genericSpinnerAdapter(mSubCategory1, sub);
+					//genericSpinnerAdapter(mSubCategory1, sub);
 				} else {
 					mSubCategory1.setVisibility(View.GONE);
 				}
@@ -192,7 +189,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 
 		});
 
-		/*gender.setOnItemSelectedListener(new OnItemSelectedListener() {
+		gender.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			@Override
 			public void onItemSelected(AdapterView<?> parent, View view,
@@ -249,7 +246,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			public void onNothingSelected(AdapterView<?> arg0) {
 
 			}
-		});*/
+		});
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
@@ -267,72 +264,6 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 				.setTitle(spannable);
 
 	}
-	
-	
-		public void getUserData() {
-	JSONParser jParser = new JSONParser();
-	String userId = GetSet.getUserId();
-	String url = ConstantValues.userProfile + userId;
-	Log.v("loadingurl", url);
-	JSONObject userData = jParser.getJSONFromUrl(url);
-	try {
-		String response = userData.getString(ConstantValues.status);
-		if (response.equalsIgnoreCase("true")) {
-			JSONObject results = userData.getJSONObject(ConstantValues.TAG_RESULT);
-			latitude = results.getString(ConstantValues.TAG_PROFILE_LAT);
-			longitude = results.getString(ConstantValues.TAG_PROFILE_LON);
-
-			if(latitude.equalsIgnoreCase("null")&&longitude.equalsIgnoreCase("null")){
-				AddProduct.this.getActivity().runOnUiThread(new Runnable() {
-				    public void run() {
-				showMsgToCreateSellerAccount();
-				    }
-			});
-			
-		} else {
-			String message = userData.getString(ConstantValues.msg);
-			Toast.makeText(getActivity(), message, Toast.LENGTH_LONG).show();
-			FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
-			FragmentChangeActivity.menumap = false;
-						FragmentChangeActivity.filter_icon = false;
-						getActivity().supportInvalidateOptionsMenu();
-						fca.switchContent(new HomeFragment());
-		}
-	}
-	}catch (JSONException e) {
-	e.printStackTrace();
-	}
-}
-	
-	
-		protected void showMsgToCreateSellerAccount() {
-		DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				switch (which) {
-					case DialogInterface.BUTTON_POSITIVE:
-						Intent i = new Intent(AddProduct.this.getActivity(), ManageSellerFragment.class);
-						startActivity(i);
-						break;
-
-					case DialogInterface.BUTTON_NEGATIVE:
-						FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
-						FragmentChangeActivity.menumap = false;
-						FragmentChangeActivity.filter_icon = false;
-						getActivity().supportInvalidateOptionsMenu();
-						fca.switchContent(new HomeFragment());
-						break;
-				}
-			}
-		};
-
-		AlertDialog.Builder builder = new AlertDialog.Builder(AddProduct.this.getActivity());
-		builder.setMessage("Vous devez créer un compte vendeur pour vendre un article").setPositiveButton("Créer mon compte vendeur", dialogClickListener)
-		.setNegativeButton("Pas tout de suite", dialogClickListener).show();
-		}
-
-
-	
 
 	class GetCategories extends AsyncTask<Void, Void, Void> {
 
@@ -347,7 +278,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("Un instant s'il vous plait");
+			dialog.setMessage("Un instant s'il vous plaît");
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.setCancelable(false);
 			dialog.setIndeterminate(true);
@@ -369,7 +300,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			/*
 			 * RELATIONSHIP
 			 */
-			/*relationspin.add("Relation");
+			relationspin.add("Relation");
 			relationID.add(null);
 			for (int i = 0; i < relationlist.size(); i++) {
 				String jsn = relationlist.get(i);
@@ -387,12 +318,12 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 					android.R.layout.simple_spinner_item, relationspin);
 			reladapter
 					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			relation.setAdapter(reladapter);*/
+			relation.setAdapter(reladapter);
 
 			/*
 			 * COUNTRY
 			 */
-			/*countryspin.add("Sélectionnez un pays");
+			countryspin.add("Sélectionnez un pays");
 
 			countryID.add(null);
 			for (int i = 0; i < countrylist.size(); i++) {
@@ -417,7 +348,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			 * GENDER
 			 */
 
-			/*genderspin.add("Sexe");
+			genderspin.add("Sexe");
 			genderID.add(null);
 			for (int i = 0; i < genderlist.size(); i++) {
 				String jsn = genderlist.get(i);
@@ -440,7 +371,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			/*
 			 * SHIPPING
 			 */
-			/*shippingspin.add("Livraison");
+			shippingspin.add("Livraison");
 			shippingID.add(null);
 			for (int i = 0; i < shippinglist.size(); i++) {
 				String jsn = shippinglist.get(i);
@@ -458,7 +389,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 					android.R.layout.simple_spinner_item, shippingspin);
 			shippingadapter
 					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			shipping.setAdapter(shippingadapter);*/
+			shipping.setAdapter(shippingadapter);
 
 		}
 	}
@@ -528,9 +459,6 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 					subCategory.put(name, subCat);
 				}
 			}
-			
-			getUserData();
-			
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
@@ -545,7 +473,6 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 
 	@Override
 	public void onClick(View v) {
-
 		FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
 		switch (v.getId()) {
 		case R.id.add_uploadbtn:
@@ -555,7 +482,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			if (GetSet.isLogged()) {
 				SendPorValues();
 			} else {
-				Toast.makeText(getActivity(), "Bienvenue sur Milymarket. Connectez vous",
+				Toast.makeText(getActivity(), "Please signin to continue",
 						Toast.LENGTH_SHORT).show();
 			}
 			break;
@@ -597,14 +524,14 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 
 	private void selectImage() {
 
-		final CharSequence[] options = { "Take Photo", "Choose from Gallery",
-				"Cancel" };
+		final CharSequence[] options = { "Prendre une Photo", "Choisir dans l'album",
+				"Annuler" };
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		builder.setTitle("Add Photo!");
+		builder.setTitle("Ajouter une Photo!");
 		builder.setItems(options, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int item) {
-				if (options[item].equals("Take Photo")) {
+				if (options[item].equals("Prendre une Photo")) {
 					try {
 						Intent intent = new Intent(
 								MediaStore.ACTION_IMAGE_CAPTURE);
@@ -614,19 +541,19 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 								Uri.fromFile(f));
 						getActivity().startActivityForResult(intent, 1);
 					} catch (ActivityNotFoundException anfe) {
-						String errorMessage = "Whoops - your device doesn't support capturing images!";
+						String errorMessage = "Ooops votre appareil a un problème avec les photos!";
 						Toast toast = Toast.makeText(getActivity(),
 								errorMessage, Toast.LENGTH_SHORT);
 						toast.show();
 					}
 
-				} else if (options[item].equals("Choose from Gallery")) {
+				} else if (options[item].equals("Choisir dans l'album")) {
 					Intent intent = new Intent(
 							Intent.ACTION_PICK,
 							android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 					getActivity().startActivityForResult(intent, 2);
 
-				} else if (options[item].equals("Cancel")) {
+				} else if (options[item].equals("Annuler")) {
 					dialog.dismiss();
 				}
 			}
@@ -635,17 +562,17 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 	}
 
 	public void SendPorValues() {
-		if (mrelationid.equals(null) || mcountryid.equals(null)
+		/*if (mrelationid.equals(null) || mcountryid.equals(null)
 				|| mgenderid.equals(null) || mshippingid.equals(null)) {
 			Toast.makeText(getActivity(), "Please select all details",
 					Toast.LENGTH_SHORT).show();
-		} else {
+		} else {*/
 			try {
 				new SendProducts().execute();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+		//}
 	}
 
 	class SendProducts extends AsyncTask<Void, Void, String> {
@@ -677,10 +604,15 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 				JSONObject jonj = new JSONObject(result);
 				if (jonj.getString(ConstantValues.status).equalsIgnoreCase(
 						"true")) {
-					Toast.makeText(getActivity(), "Product Added Successfully",
+					Toast.makeText(getActivity(), "Votre produit a été ajouté avec succès. Après validation, il sera affiché sur la place de marché.",
 							Toast.LENGTH_LONG).show();
+					FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
+					FragmentChangeActivity.menumap = false;
+					FragmentChangeActivity.filter_icon = false;
+					getActivity().supportInvalidateOptionsMenu();
+					fca.switchContent(new HomeFragment());
 				} else {
-					Toast.makeText(getActivity(), "problem occurred",
+					Toast.makeText(getActivity(), "Nous n'avons pas pu ajouté votre produit. Veuillez vérifier tous les champs et réessayer.",
 							Toast.LENGTH_LONG).show();
 				}
 			} catch (Exception e) {
@@ -714,17 +646,23 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			nameValuePairs.add(new BasicNameValuePair("subCatId", msubcatid1));
 			nameValuePairs.add(new BasicNameValuePair("imageName",
 					FragmentChangeActivity.uploadedimgname));
-			nameValuePairs.add(new BasicNameValuePair("relationShip",
-					mrelationid));
+			/*nameValuePairs.add(new BasicNameValuePair("relationShip",mrelationid));
 			nameValuePairs.add(new BasicNameValuePair("gender", mgenderid));
 			nameValuePairs.add(new BasicNameValuePair("countryId", mcountryid));
-			nameValuePairs.add(new BasicNameValuePair("shipingCost", addprice1
-					.getText().toString()));
-			nameValuePairs.add(new BasicNameValuePair("businessday",
-					mshippingid));
-			nameValuePairs.add(new BasicNameValuePair("everyWhereCost",
-					addprice2.getText().toString()));
-			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+			nameValuePairs.add(new BasicNameValuePair("shipingCost", addprice1.getText().toString()));
+			nameValuePairs.add(new BasicNameValuePair("businessday",mshippingid));
+			nameValuePairs.add(new BasicNameValuePair("everyWhereCost",addprice2.getText().toString()));*/
+			
+			
+			nameValuePairs.add(new BasicNameValuePair("relationShip","1"));
+			nameValuePairs.add(new BasicNameValuePair("gender", "1"));
+			nameValuePairs.add(new BasicNameValuePair("countryId", "73"));
+			nameValuePairs.add(new BasicNameValuePair("shipingCost", "4"));
+			nameValuePairs.add(new BasicNameValuePair("businessday","3d"));
+			nameValuePairs.add(new BasicNameValuePair("everyWhereCost","10"));
+			
+			
+			httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs,"UTF-8"));
 
 			HttpResponse response = httpclient.execute(httppost);
 			int status = response.getStatusLine().getStatusCode();
