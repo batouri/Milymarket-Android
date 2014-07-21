@@ -74,6 +74,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 	private List<String> shippinglist = new ArrayList<String>();
 	private ArrayList<String> globalArrlist = new ArrayList<String>();
 	private ArrayList<String> categID1 = new ArrayList<String>();
+	private HashMap<String, ArrayList<String>> dicCategID2 = new HashMap<String, ArrayList<String>>();
 	private ArrayList<String> categID2 = new ArrayList<String>();
 	private ArrayList<String> categID3 = new ArrayList<String>();
 	private ArrayList<String> relationID = new ArrayList<String>();
@@ -143,6 +144,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 					mSubCategory.setVisibility(View.GONE);
 					mSubCategory1.setVisibility(View.GONE);
 				}
+				if(pos >= 1) pos= pos-1;
 				maincatid = categID1.get(pos);
 
 			}
@@ -166,7 +168,9 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 				} else {
 					mSubCategory1.setVisibility(View.GONE);
 				}
-				msubcatid = categID2.get(pos);
+				if(pos >= 1) pos= pos-1;
+				msubcatid = dicCategID2.get(maincatid).get(pos);
+				//msubcatid = categID2.get(pos);
 			}
 
 			@Override
@@ -423,7 +427,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 				for (int s = 0; s < shipping.length(); s++) {
 					shippinglist.add(shipping.getString(s));
 				}
-
+				
 				genderCategory.add("Choisissez une catégorie");
 				JSONObject jCategory = res.getJSONObject("Category");
 				JSONArray jParent = jCategory.getJSONArray("parent");
@@ -436,6 +440,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 					categID1.add(id1);
 					ArrayList<String> subCat = new ArrayList<String>();
 					subCat.add("Choisissez une catégorie");
+					categID2 = new ArrayList<String>();
 					for (int j = 0; j < subCategoryArr.length(); j++) {
 						JSONObject subJson = subCategoryArr.getJSONObject(j);
 						String id2 = subJson.getString("id");
@@ -453,7 +458,9 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 						}
 						subCat.add(subJson.getString("name"));
 						subCategory1.put(subJson.getString("name"), subCat1);
+						dicCategID2.put(id1, categID2);
 					}
+					
 					String name = jsonObj.getString("name");
 					genderCategory.add(name);
 					subCategory.put(name, subCat);
@@ -524,30 +531,14 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 
 	private void selectImage() {
 
-		final CharSequence[] options = { "Prendre une Photo", "Choisir dans l'album",
+		final CharSequence[] options = { "Choisir dans l'album",
 				"Annuler" };
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		builder.setTitle("Ajouter une Photo!");
 		builder.setItems(options, new DialogInterface.OnClickListener() {
 			@Override
 			public void onClick(DialogInterface dialog, int item) {
-				if (options[item].equals("Prendre une Photo")) {
-					try {
-						Intent intent = new Intent(
-								MediaStore.ACTION_IMAGE_CAPTURE);
-						File f = new File(android.os.Environment
-								.getExternalStorageDirectory(), "temp.jpg");
-						intent.putExtra(MediaStore.EXTRA_OUTPUT,
-								Uri.fromFile(f));
-						getActivity().startActivityForResult(intent, 1);
-					} catch (ActivityNotFoundException anfe) {
-						String errorMessage = "Ooops votre appareil a un problème avec les photos!";
-						Toast toast = Toast.makeText(getActivity(),
-								errorMessage, Toast.LENGTH_SHORT);
-						toast.show();
-					}
-
-				} else if (options[item].equals("Choisir dans l'album")) {
+				if (options[item].equals("Choisir dans l'album")) {
 					Intent intent = new Intent(
 							Intent.ACTION_PICK,
 							android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -654,8 +645,8 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			nameValuePairs.add(new BasicNameValuePair("everyWhereCost",addprice2.getText().toString()));*/
 			
 			
-			nameValuePairs.add(new BasicNameValuePair("relationShip","1"));
-			nameValuePairs.add(new BasicNameValuePair("gender", "1"));
+			nameValuePairs.add(new BasicNameValuePair("relationShip","0"));
+			nameValuePairs.add(new BasicNameValuePair("gender", "0"));
 			nameValuePairs.add(new BasicNameValuePair("countryId", "73"));
 			nameValuePairs.add(new BasicNameValuePair("shipingCost", "4"));
 			nameValuePairs.add(new BasicNameValuePair("businessday","3d"));

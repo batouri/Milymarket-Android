@@ -1688,7 +1688,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
-			FragmentChangeActivity.rsprofile = true;
+			FragmentChangeActivity.rsmenu = true;
 			FragmentChangeActivity.menumap = true;
 			FragmentChangeActivity.filter_icon=false;
 			invalidateOptionsMenu();
