@@ -371,20 +371,19 @@
                     android:padding="10dp" >
 
                     <LinearLayout
-                            android:id="@+id/followlay"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentLeft="true"
-                            android:background="#dc143c"
-                            android:clickable="true"
-                            android:padding="6dp"
-                            android:textStyle="bold" >
+                        android:id="@+id/followlay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:background="#dc143c"
+                        android:clickable="true"
+                        android:padding="5dp"
+                        android:textStyle="bold" >
 
                             <TextView
                                 android:id="@+id/followtxt"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:paddingLeft="10dp"
                                 android:singleLine="true"
                                 android:text="status"
                                 android:textStyle="bold" />
