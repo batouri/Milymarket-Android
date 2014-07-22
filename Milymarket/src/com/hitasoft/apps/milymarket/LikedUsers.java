@@ -375,7 +375,7 @@ public class LikedUsers extends Activity implements OnClickListener{
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("Please Wait...");
+			this.dialog.setMessage("Un instant s'il vous plait...");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();
@@ -442,7 +442,7 @@ public class LikedUsers extends Activity implements OnClickListener{
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("Please Wait...");
+			this.dialog.setMessage("Un instant s'il vous plait...");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();

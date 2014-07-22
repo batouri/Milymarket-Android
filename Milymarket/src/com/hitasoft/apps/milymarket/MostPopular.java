@@ -746,7 +746,7 @@ public class MostPopular extends SherlockFragment implements
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("Please wait...");
+			dialog.setMessage("Un instant s'il vous plait...");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
@@ -816,7 +816,7 @@ public class MostPopular extends SherlockFragment implements
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			Log.v("shop clicked", "");
-			fca.switchContent(new CartFragment());
+			fca.switchContent(new CartFragmentClass());
 			break;
 		case R.id.btn_alert:
 			FragmentChangeActivity.menumap = false;

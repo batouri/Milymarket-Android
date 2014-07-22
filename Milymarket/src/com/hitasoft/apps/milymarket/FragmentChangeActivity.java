@@ -340,13 +340,13 @@ public class FragmentChangeActivity extends SlidingFragmentActivity {
 			resumecart = false;
 			menumap = false;
 			filter_icon = false;
-			switchContent(new CartFragment());
+			switchContent(new CartFragmentClass());
 		} else if(rscart){
 			resumecart = false;
 			menumap = false;
 			filter_icon = false;
 			supportInvalidateOptionsMenu();
-			switchContent(new CartFragment());
+			switchContent(new CartFragmentClass());
 		}
 		else if (resumeHome) {
 			resumeHome = false;

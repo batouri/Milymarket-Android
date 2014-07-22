@@ -438,8 +438,8 @@ public class CartDetailClass extends Activity implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setTitle("Please Wait");
-			dialog.setMessage("Initializing payment");
+			dialog.setTitle("Un instant s'il vous plait");
+			dialog.setMessage("Nous mettons en place le paiement");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
@@ -543,9 +543,9 @@ public class CartDetailClass extends Activity implements OnClickListener {
 				} else {
 					ProgressDialog dialog_false = new ProgressDialog(
 							CartDetailClass.this);
-					dialog_false.setTitle("!Warning");
+					dialog_false.setTitle("Attention!");
 					dialog_false
-							.setMessage("Your Shipping address is Missing.Please provide the shipping address");
+							.setMessage("Vous n'avez pas renseigné votre adresse de livraison.Veuillez fournir une adresse de livraison");
 					dialog_false.setCancelable(true);
 					dialog_false.setCanceledOnTouchOutside(true);
 					dialog_false.show();
@@ -970,8 +970,8 @@ public class CartDetailClass extends Activity implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setTitle("Please Wait");
-			dialog.setMessage("Removing selected Item");
+			dialog.setTitle("Un instant s'il vous plait");
+			dialog.setMessage("Nous retirons l'article sélectionné");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();
@@ -1016,8 +1016,8 @@ public class CartDetailClass extends Activity implements OnClickListener {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setTitle("Please Wait");
-			dialog.setMessage("Updating quantity");
+			dialog.setTitle("Un instant s'il vous plait");
+			dialog.setMessage("Nous mettons en place la quantité");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			dialog.show();

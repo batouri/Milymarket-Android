@@ -145,7 +145,7 @@ public class UserListActivity extends Activity implements OnClickListener {
 			fca.switchContent(new LocationFragment());
 			break;
 		case R.id.btn_cart:
-			fca.switchContent(new CartFragment());
+			fca.switchContent(new CartFragmentClass());
 			break;
 		case R.id.btn_alert:
 			fca.switchContent(new MessagesFragment());

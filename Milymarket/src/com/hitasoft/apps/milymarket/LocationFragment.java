@@ -1080,7 +1080,7 @@ public class LocationFragment extends SherlockFragment implements
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("Please Wait...");
+			this.dialog.setMessage("Un instant s'il vous plait...");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();
@@ -1145,7 +1145,7 @@ public class LocationFragment extends SherlockFragment implements
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			this.dialog.setMessage("Please Wait...");
+			this.dialog.setMessage("Un instant s'il vous plait...");
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
 			this.dialog.show();
@@ -1477,7 +1477,7 @@ public class LocationFragment extends SherlockFragment implements
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("Please wait...");
+			dialog.setMessage("Un instant s'il vous plait...");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);

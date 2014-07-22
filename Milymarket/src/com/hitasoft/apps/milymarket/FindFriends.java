@@ -284,7 +284,7 @@ public class FindFriends extends SherlockFragment implements OnClickListener {
 			getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new CartFragment());
+			fca.switchContent(new CartFragmentClass());
 			break;
 		case R.id.btn_alert:
 			FragmentChangeActivity.menumap = false;

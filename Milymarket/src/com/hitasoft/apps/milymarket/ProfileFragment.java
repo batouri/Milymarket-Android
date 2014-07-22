@@ -1764,7 +1764,7 @@ public class ProfileFragment extends SherlockFragment implements
 				// getActivity().supportInvalidateOptionsMenu();
 				FragmentChangeActivity.filter_icon = false;
 				getActivity().supportInvalidateOptionsMenu();
-				fca.switchContent(new CartFragment());
+				fca.switchContent(new CartFragmentClass());
 				}
 				else{
 					Intent i=new Intent(ProfileFragment.this.getActivity(),LoginActivity.class);

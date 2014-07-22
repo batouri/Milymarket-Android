@@ -509,7 +509,7 @@ public class ListDetailpage extends Activity implements OnScrollListener,
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			dialog.setMessage("Please wait...");
+			dialog.setMessage("Un instant s'il vous plait...");
 			dialog.setIndeterminate(true);
 			dialog.setCancelable(false);
 			dialog.setCanceledOnTouchOutside(false);
