@@ -66,15 +66,16 @@
                     android:id="@+id/txt1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Loading"
+                    android:text="Chargement..."
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <TextView
                     android:id="@+id/txt2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Please Wait......"
+                    android:text="Un instant s&apos;il vous plait"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
+
             </LinearLayout>
         </RelativeLayout>
 

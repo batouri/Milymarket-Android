@@ -397,8 +397,7 @@
                         android:background="@drawable/shapebg"
                         android:clickable="true"
                         android:padding="6dp"
-                        android:textStyle="bold"
-                        android:visibility="gone" >
+                        android:textStyle="bold">
 
                         <TextView
                             android:id="@+id/addcart"
@@ -407,8 +406,7 @@
                             android:paddingRight="10dp"
                             android:singleLine="true"
                             android:text="Ajouter au panier"
-                            android:textStyle="bold"
-                            android:visibility="gone" />
+                            android:textStyle="bold" />
 
                     </LinearLayout>
                 </RelativeLayout>

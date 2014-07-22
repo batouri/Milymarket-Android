@@ -23,7 +23,7 @@
     <string name="NewPassword">Nouveau mot de passe</string>
     <string name="ConfirmPassword">Mot de passe actuel(Vide si vous n\u0027en avez pas)</string>
     <string name="passwordCondition">Le mot de passe doit comporter au moins 6 caractères</string>
-    <string name="nomoreItemInCart">Pas plus d\u0027articles dans le panier</string>
+    <string name="nomoreItemInCart">Vous n\'avez pour l\'instant aucun article dans le panier</string>
     <string name="Remove">Supprimer</string>
     <string name="shippingNo">Expédition indisponible</string>
     <string name="Payment">Paiement</string>

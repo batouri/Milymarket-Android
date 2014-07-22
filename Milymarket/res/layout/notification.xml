@@ -22,10 +22,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
             android:text="@string/noItem"
             android:textColor="#000000"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:visibility="invisible" />
+
     </RelativeLayout>
 
     <include
