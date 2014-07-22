@@ -79,6 +79,7 @@ public class FragmentChangeActivity extends SlidingFragmentActivity {
 	private static boolean resumecart = false;
 	private static boolean resumeHome = false;
 	private static boolean resumeActivity = false;
+	public static boolean rscart = false;
 	public static boolean rshome = false;
 	public static boolean rsnear = false;
 	public static boolean rsshop = false;
@@ -340,7 +341,14 @@ public class FragmentChangeActivity extends SlidingFragmentActivity {
 			menumap = false;
 			filter_icon = false;
 			switchContent(new CartFragment());
-		} else if (resumeHome) {
+		} else if(rscart){
+			resumecart = false;
+			menumap = false;
+			filter_icon = false;
+			supportInvalidateOptionsMenu();
+			switchContent(new CartFragment());
+		}
+		else if (resumeHome) {
 			resumeHome = false;
 			menumap = false;
 			filter_icon = false;
@@ -355,7 +363,7 @@ public class FragmentChangeActivity extends SlidingFragmentActivity {
 		} else if (rsnear) {
 			rsnear = false;
 			menumap = false;
-			filter_icon = true;
+			filter_icon = false;
 			supportInvalidateOptionsMenu();
 			switchContent(new LocationFragment());
 		} else if (rsshop) {

@@ -29,7 +29,7 @@ public class ProfileTabHolder extends SherlockFragmentActivity implements
 	protected static ImageButton smenu;
 	String userId = null;
 	private static ImageView tabIndictr;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 
 	@Override
 	protected void onCreate(Bundle arg0) {
@@ -37,13 +37,13 @@ public class ProfileTabHolder extends SherlockFragmentActivity implements
 		setContentView(R.layout.profile_tabs);
 		home = (ImageButton) findViewById(R.id.btn_home);
 		near = (ImageButton) findViewById(R.id.btn_near);
-		shop = (ImageButton) findViewById(R.id.btn_shop);
+		cart = (ImageButton) findViewById(R.id.btn_cart);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
 		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		tabIndictr = (ImageView) findViewById(R.id.customTabIndicator);
@@ -159,8 +159,8 @@ public class ProfileTabHolder extends SherlockFragmentActivity implements
 			FragmentChangeActivity.rsnear = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.rsshop = true;
+		case R.id.btn_cart:
+			FragmentChangeActivity.rscart = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
 		case R.id.btn_alert:

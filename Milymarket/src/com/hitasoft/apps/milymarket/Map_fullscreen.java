@@ -33,7 +33,7 @@ public class Map_fullscreen extends Activity implements OnClickListener {
 	public static LatLng lastLatLng;
 	public static String gotcomment = "current location", key = "YourLocation";
 	ImageButton back;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 
 	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
 	@SuppressLint("NewApi")
@@ -46,13 +46,13 @@ public class Map_fullscreen extends Activity implements OnClickListener {
 
 		home = (ImageButton) findViewById(R.id.btn_home);
 		near = (ImageButton) findViewById(R.id.btn_near);
-		shop = (ImageButton) findViewById(R.id.btn_shop);
+		cart = (ImageButton) findViewById(R.id.btn_cart);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
 		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
@@ -115,8 +115,8 @@ public class Map_fullscreen extends Activity implements OnClickListener {
 			FragmentChangeActivity.rsnear = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.rsshop = true;
+		case R.id.btn_cart:
+			FragmentChangeActivity.rscart = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
 		case R.id.btn_alert:

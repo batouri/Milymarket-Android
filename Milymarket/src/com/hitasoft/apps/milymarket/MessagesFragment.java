@@ -59,7 +59,7 @@ public class MessagesFragment extends SherlockFragment implements
 	public static ArrayList<HashMap<String, String>> Messagepageitems;
 	public static String noti_user_id = null, notifiid = null,
 			notif_itemid = null;
-	ImageButton home, near, shop, alert, menu;
+	ImageButton home, near, cart, alert, menu;
 	TextView nulltxt;
 
 	@Override
@@ -87,14 +87,14 @@ public class MessagesFragment extends SherlockFragment implements
 		ConstantValues.editor = ConstantValues.pref.edit();
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 		alert.setImageResource(R.drawable.tab_bar_alert_selected);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		nulltxt = (TextView) getView().findViewById(R.id.notenulltxt);
@@ -662,12 +662,21 @@ public class MessagesFragment extends SherlockFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.menumap = false;
-			FragmentChangeActivity.filter_icon = false;
-			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ShopFragment());
-			break;
+		case R.id.btn_cart:
+			if(GetSet.isLogged()==true){
+				ConstantValues.editor.clear();
+				ConstantValues.editor.putString("userprefid", GetSet.getUserId());
+				ConstantValues.editor.commit();
+				FragmentChangeActivity.menumap = false;
+				FragmentChangeActivity.filter_icon = false;
+				getActivity().supportInvalidateOptionsMenu();
+				fca.switchContent(new CartFragmentClass());
+			}
+			else{
+				Intent i=new Intent(MessagesFragment.this.getActivity(),LoginActivity.class);
+				startActivity(i);
+			}
+		break;
 		case R.id.btn_alert:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.menumap = false;
@@ -684,7 +693,7 @@ public class MessagesFragment extends SherlockFragment implements
 			if(GetSet.isLogged()==true){
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MenuFragment());

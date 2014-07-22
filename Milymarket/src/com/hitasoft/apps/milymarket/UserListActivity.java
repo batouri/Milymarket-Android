@@ -30,7 +30,7 @@ public class UserListActivity extends Activity implements OnClickListener {
 	ImageLoader imageLoader;
 	LazyAdapter adapter;
 	ArrayList<HashMap<String, String>> userList = null;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -40,13 +40,13 @@ public class UserListActivity extends Activity implements OnClickListener {
 
 		home = (ImageButton) findViewById(R.id.btn_home);
 		near = (ImageButton) findViewById(R.id.btn_near);
-		shop = (ImageButton) findViewById(R.id.btn_shop);
+		cart = (ImageButton) findViewById(R.id.btn_cart);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
 		menu = (ImageButton) findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
@@ -144,8 +144,8 @@ public class UserListActivity extends Activity implements OnClickListener {
 		case R.id.btn_near:
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
-			fca.switchContent(new CategoryFragment());
+		case R.id.btn_cart:
+			fca.switchContent(new CartFragment());
 			break;
 		case R.id.btn_alert:
 			fca.switchContent(new MessagesFragment());

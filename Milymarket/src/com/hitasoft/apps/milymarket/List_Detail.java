@@ -54,7 +54,7 @@ public class List_Detail extends Activity implements OnClickListener {
 	public static ArrayList<HashMap<String, String>> tmp;
 	HashMap<String, String> newary;
 	private static String userEntryAddToList = null;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +63,14 @@ public class List_Detail extends Activity implements OnClickListener {
 
 		home = (ImageButton) findViewById(R.id.btn_home);
 		near = (ImageButton) findViewById(R.id.btn_near);
-		shop = (ImageButton) findViewById(R.id.btn_shop);
+		cart = (ImageButton) findViewById(R.id.btn_cart);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
 		menu = (ImageButton) findViewById(R.id.btn_menu);
 		home.setImageResource(R.drawable.tab_bar_product_selected);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
@@ -387,8 +387,8 @@ public class List_Detail extends Activity implements OnClickListener {
 			FragmentChangeActivity.rsnear = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.rsshop = true;
+		case R.id.btn_cart:
+			FragmentChangeActivity.rscart = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
 		case R.id.btn_alert:
@@ -402,10 +402,10 @@ public class List_Detail extends Activity implements OnClickListener {
 			// startActivity(i);
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 
-			FragmentChangeActivity.rsprofile = true;
+			FragmentChangeActivity.rsmenu = true;
 			invalidateOptionsMenu();
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;

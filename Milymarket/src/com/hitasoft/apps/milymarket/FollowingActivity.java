@@ -68,7 +68,7 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 	TextView username, fullname;
 	ImageView userimage;
 	Button statususer;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	AlertDialog adialog;
 	private Context profcontext = this;
 	HashMap<String, String> tempMap;
@@ -86,13 +86,13 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 		
 		home = (ImageButton) findViewById(R.id.btn_home);
 		near = (ImageButton) findViewById(R.id.btn_near);
-		shop = (ImageButton) findViewById(R.id.btn_shop);
+		cart = (ImageButton) findViewById(R.id.btn_cart);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
 		menu = (ImageButton) findViewById(R.id.btn_menu);
 		
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		/*
@@ -647,8 +647,8 @@ public class FollowingActivity extends Activity implements OnItemClickListener,O
 			FragmentChangeActivity.rsnear = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.rsshop = true;
+		case R.id.btn_cart:
+			FragmentChangeActivity.rscart = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
 		case R.id.btn_alert:

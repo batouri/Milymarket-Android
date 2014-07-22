@@ -69,7 +69,7 @@ public class CartFragment extends SherlockFragment implements
 	private static int device = 0;
 	private static int layout = 0;
 	Button btn;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -91,13 +91,13 @@ public class CartFragment extends SherlockFragment implements
 
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
@@ -598,11 +598,20 @@ public class CartFragment extends SherlockFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.menumap = false;
-			FragmentChangeActivity.filter_icon = false;
-			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ShopFragment());
+		case R.id.btn_cart:
+			if(GetSet.isLogged()==true){
+				ConstantValues.editor.clear();
+				ConstantValues.editor.putString("userprefid", GetSet.getUserId());
+				ConstantValues.editor.commit();
+				FragmentChangeActivity.menumap = false;
+				FragmentChangeActivity.filter_icon = false;
+				getActivity().supportInvalidateOptionsMenu();
+				fca.switchContent(new CartFragmentClass());
+			}
+			else{
+				Intent i=new Intent(CartFragment.this.getActivity(),LoginActivity.class);
+				startActivity(i);
+			}
 			break;
 		case R.id.btn_alert:
 			FragmentChangeActivity.menumap = false;
@@ -611,10 +620,10 @@ public class CartFragment extends SherlockFragment implements
 			fca.switchContent(new MessagesFragment());
 			break;
 		case R.id.btn_menu:
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			break;
 
 		}

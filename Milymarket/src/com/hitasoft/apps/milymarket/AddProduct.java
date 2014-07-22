@@ -52,7 +52,7 @@ import com.hitasoft.apps.milymarket.util.JSONParser;
 
 public class AddProduct extends SherlockFragment implements OnClickListener {
 
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	public static ImageView addphoto;
 	private Button send;
 	private String maincatid, msubcatid, msubcatid1, mgenderid, mshippingid,
@@ -101,7 +101,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		super.onActivityCreated(savedInstanceState);
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
@@ -254,7 +254,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		addphoto.setOnClickListener(this);
@@ -505,12 +505,22 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
+		case R.id.btn_cart:
+			if(GetSet.isLogged()==true){
+		    	ConstantValues.editor.clear();
+			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
+			ConstantValues.editor.commit();
 			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ShopFragment());
+			fca.switchContent(new CartFragmentClass());
+			}
+			else{
+				Intent i=new Intent(AddProduct.this.getActivity(),LoginActivity.class);
+				startActivity(i);
+			}
 			break;
+			
 		case R.id.btn_alert:
 			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
@@ -520,7 +530,7 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 		case R.id.btn_menu:
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MenuFragment());

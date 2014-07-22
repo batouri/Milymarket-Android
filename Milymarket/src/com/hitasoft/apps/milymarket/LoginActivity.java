@@ -223,7 +223,7 @@ public class LoginActivity extends Activity implements OnClickListener,
 	private LinearLayout horizontalOuterLayout1;
 	private HorizontalScrollView horizontalScrollview1;
 	private String[] imageNameArray;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	
 	//GCM variables
 	 AsyncTask<Void, Void, Void> mRegisterTask;
@@ -240,14 +240,14 @@ public class LoginActivity extends Activity implements OnClickListener,
 		editor = pref.edit();
 		home = (ImageButton) findViewById(R.id.btn_home);
 		near = (ImageButton) findViewById(R.id.btn_near);
-		shop = (ImageButton) findViewById(R.id.btn_shop);
+		cart = (ImageButton) findViewById(R.id.btn_cart);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
 		menu = (ImageButton) findViewById(R.id.btn_menu);
 		
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		
@@ -398,10 +398,16 @@ public class LoginActivity extends Activity implements OnClickListener,
 			FragmentChangeActivity.rsnear = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.rsshop = true;
-			startActivity(new Intent(this, FragmentChangeActivity.class));
-			break;
+		case R.id.btn_cart:
+			if(GetSet.isLogged()==true){
+				FragmentChangeActivity.rscart = true;
+				startActivity(new Intent(this, FragmentChangeActivity.class));
+				}
+				else{
+					Intent j=new Intent(LoginActivity.this,LoginActivity.class);
+					startActivity(j);
+				}
+				break;
 		case R.id.btn_alert:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.rsnote = true;
@@ -414,8 +420,8 @@ public class LoginActivity extends Activity implements OnClickListener,
 			break;
 		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
-			FragmentChangeActivity.rsprofile = true;
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.rsmenu = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon=false;
 			invalidateOptionsMenu();
 			startActivity(new Intent(this, FragmentChangeActivity.class));

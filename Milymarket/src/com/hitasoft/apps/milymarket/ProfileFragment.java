@@ -110,7 +110,7 @@ public class ProfileFragment extends SherlockFragment implements
 	// CustomListViewAdapter adapter;
 	DisplayImageOptions defaultOptions;
 	ImageLoaderConfiguration config;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	ArrayList<HashMap<String, String>> datas = null;
 	ArrayList<HashMap<String, String>> datas2 = null;
 	public static ArrayList<HashMap<String, String>> tmp2;
@@ -158,7 +158,7 @@ public class ProfileFragment extends SherlockFragment implements
 
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 		//menu.setImageResource(R.drawable.tab_bar_profile_selected);
@@ -166,7 +166,7 @@ public class ProfileFragment extends SherlockFragment implements
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		
@@ -1758,13 +1758,19 @@ public class ProfileFragment extends SherlockFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.menumap = false;
-			// getActivity().supportInvalidateOptionsMenu();
-			FragmentChangeActivity.filter_icon = false;
-			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ShopFragment());
-			break;
+		case R.id.btn_cart:
+			if(GetSet.isLogged()==true){
+				FragmentChangeActivity.menumap = false;
+				// getActivity().supportInvalidateOptionsMenu();
+				FragmentChangeActivity.filter_icon = false;
+				getActivity().supportInvalidateOptionsMenu();
+				fca.switchContent(new CartFragment());
+				}
+				else{
+					Intent i=new Intent(ProfileFragment.this.getActivity(),LoginActivity.class);
+					startActivity(i);
+				}
+				break;
 		case R.id.btn_alert:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.menumap = false;
@@ -1783,7 +1789,7 @@ public class ProfileFragment extends SherlockFragment implements
 		    ConstantValues.editor.clear();
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
-			//FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MenuFragment());

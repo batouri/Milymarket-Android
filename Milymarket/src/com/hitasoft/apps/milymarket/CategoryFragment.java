@@ -119,7 +119,7 @@ public class CategoryFragment extends SherlockFragment implements
 	private static final int XHDPI_LANDSCAPE = 10;
 	private static int device = 0;
 	private static int layout = 0;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	String u1name, u1add, u1img;
 	ArrayList<HashMap<String, String>> datas = null;
 	ArrayList<HashMap<String, String>> datas2 = null;
@@ -160,14 +160,14 @@ public class CategoryFragment extends SherlockFragment implements
 		category = (Button) getView().findViewById(R.id.category);
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		category.setOnClickListener(this);
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
@@ -920,11 +920,11 @@ public class CategoryFragment extends SherlockFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
+		case R.id.btn_cart:
 			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ShopFragment());
+			fca.switchContent(new CartFragment());
 			break;
 		case R.id.btn_alert:
 			FragmentChangeActivity.menumap = false;
@@ -935,10 +935,10 @@ public class CategoryFragment extends SherlockFragment implements
 		case R.id.btn_menu:
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 		}
 	}
 

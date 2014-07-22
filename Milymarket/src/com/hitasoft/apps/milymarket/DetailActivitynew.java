@@ -147,7 +147,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 	HashMap<String, ArrayList<String>> url;
 	ImageView sellerimg, productimg;
 	private static String userEntryAddToList = null;
-	private ImageButton home, near, shop, alert, menu, contactSeller;
+	private ImageButton home, near, cart, alert, menu, contactSeller;
 	public static LoadmoreAdapter loadmore;
 	HashMap<String, String> loadmore_map = new HashMap<String, String>();
 	private HashMap<String, String> tempMap;
@@ -198,7 +198,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 
 		home = (ImageButton) findViewById(R.id.btn_home);
 		near = (ImageButton) findViewById(R.id.btn_near);
-		shop = (ImageButton) findViewById(R.id.btn_shop);
+		cart = (ImageButton) findViewById(R.id.btn_cart);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
 		menu = (ImageButton) findViewById(R.id.btn_menu);
 		followtxt = (TextView) findViewById(R.id.followtxt);
@@ -208,7 +208,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		contactSeller.setOnClickListener(this);
@@ -1040,7 +1040,7 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 					String liked = temp.getString(ConstantValues.TAG_LIKED);
 					String seller = temp.getString(ConstantValues.TAG_SELLER);
 					String shopname = temp.getString(ConstantValues.TAG_SHOP);
-					Log.v("shop", "" + shop);
+					Log.v("shop", "" + cart);
 					// u1name = seller;
 					// u1add = shopname;
 
@@ -2726,8 +2726,8 @@ public class DetailActivitynew extends Activity implements OnClickListener,
 			FragmentChangeActivity.rsnear = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.rsshop = true;
+		case R.id.btn_cart:
+			FragmentChangeActivity.rscart = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
 		case R.id.btn_alert:

@@ -57,7 +57,7 @@ import com.hitasoft.apps.milymarket.util.JSONParser;
 
 public class InviteFriends extends SherlockFragment implements OnClickListener,
 		ConnectionCallbacks, OnConnectionFailedListener, OnPersonLoadedListener {
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	LinearLayout fb, twit, gPlus, contact;
 	WebDialog dialog;
 	private LoginButton mLoginButton;
@@ -134,13 +134,13 @@ public class InviteFriends extends SherlockFragment implements OnClickListener,
 
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		fb = (LinearLayout) getView().findViewById(R.id.fb);
@@ -389,12 +389,12 @@ public class InviteFriends extends SherlockFragment implements OnClickListener,
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
+		case R.id.btn_cart:
 			FragmentChangeActivity.menumap = false;
 			// getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new CategoryFragment());
+			fca.switchContent(new CartFragment());
 			break;
 		case R.id.btn_alert:
 			FragmentChangeActivity.menumap = false;
@@ -406,7 +406,7 @@ public class InviteFriends extends SherlockFragment implements OnClickListener,
 		case R.id.btn_menu:
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			// getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();

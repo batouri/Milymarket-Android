@@ -46,7 +46,7 @@ public class MenuFragment extends SherlockListFragment implements
 	ImageLoader laoder;
 	DisplayImageOptions defaultOptions;
 	ImageLoaderConfiguration config;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	ImageView profileImage;
 	TextView firstName, userName;
 	ProgressDialog pgsDialog;
@@ -95,7 +95,7 @@ public class MenuFragment extends SherlockListFragment implements
 		
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 		home.setImageResource(R.drawable.tab_bar_product_selected);
@@ -104,7 +104,7 @@ public class MenuFragment extends SherlockListFragment implements
 
 		home.setOnClickListener((OnClickListener) this);
 		near.setOnClickListener((OnClickListener) this);
-		shop.setOnClickListener((OnClickListener) this);
+		cart.setOnClickListener((OnClickListener) this);
 		alert.setOnClickListener((OnClickListener) this);
 		menu.setOnClickListener((OnClickListener) this);
 		
@@ -153,12 +153,20 @@ public class MenuFragment extends SherlockListFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
+		case R.id.btn_cart:
+			if(GetSet.isLogged()==true){
+		    	ConstantValues.editor.clear();
+			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
+			ConstantValues.editor.commit();
 			FragmentChangeActivity.menumap = false;
-			// getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ShopFragment());
+			fca.switchContent(new CartFragmentClass());
+			}
+			else{
+				Intent i=new Intent(MenuFragment.this.getActivity(),LoginActivity.class);
+				startActivity(i);
+			}
 			break;
 		case R.id.btn_alert:
 			if(GetSet.isLogged()==true){
@@ -175,10 +183,10 @@ public class MenuFragment extends SherlockListFragment implements
 			break;
 		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
-		    ConstantValues.editor.clear();
+		    	ConstantValues.editor.clear();
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MenuFragment());
@@ -233,19 +241,31 @@ public class MenuFragment extends SherlockListFragment implements
 			break;
 		case 2:
 			FragmentChangeActivity.menumap = false;
+			// getActivity().supportInvalidateOptionsMenu();
+			FragmentChangeActivity.filter_icon = false;
+			getActivity().supportInvalidateOptionsMenu();
+			fca.switchContent(new ShopFragment());
+			break;
+		case 3:
+			FragmentChangeActivity.menumap = false;
+			FragmentChangeActivity.filter_icon = false;
+			getActivity().supportInvalidateOptionsMenu();
+			fca.switchContent(new MyOrders());
+			break;
+		case 4:
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new InviteFriends());
-			
 			break;
-		case 3:
+		case 5:
 			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new AddProduct());
 			break;
 
-		case 4:
+		case 6:
 			fca.sm.toggle();
 			DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 				@Override

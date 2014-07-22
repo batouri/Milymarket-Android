@@ -105,7 +105,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 	TextView centerHome;
 	private static final long DOUBLE_PRESS_INTERVAL = 750; // in millis
 	private long lastPressTime;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	private static boolean mHasDoubleClicked = false;
 	String u1name, u1add, u1img;
 	ArrayList<HashMap<String, String>> datas = null;
@@ -151,14 +151,14 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 		home.setImageResource(R.drawable.tab_bar_product_selected);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
@@ -970,12 +970,20 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.menumap = false;
-			// getActivity().supportInvalidateOptionsMenu();
-			FragmentChangeActivity.filter_icon = false;
-			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ShopFragment());
+		case R.id.btn_cart:
+			if(GetSet.isLogged()==true){
+				ConstantValues.editor.clear();
+				ConstantValues.editor.putString("userprefid", GetSet.getUserId());
+				ConstantValues.editor.commit();
+				FragmentChangeActivity.menumap = false;
+				FragmentChangeActivity.filter_icon = false;
+				getActivity().supportInvalidateOptionsMenu();
+				fca.switchContent(new CartFragmentClass());
+			}
+			else{
+				Intent i=new Intent(HomeFragment.this.getActivity(),LoginActivity.class);
+				startActivity(i);
+			}
 			break;
 		case R.id.btn_alert:
 			if(GetSet.isLogged()==true){
@@ -995,7 +1003,7 @@ public class HomeFragment extends SherlockFragment implements OnClickListener,
 		    ConstantValues.editor.clear();
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			ConstantValues.editor.commit();
-			//FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new MenuFragment());

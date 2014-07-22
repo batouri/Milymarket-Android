@@ -81,7 +81,7 @@ public class SettingFragment extends SherlockFragment implements
 	TextView firstName, userName;
 	HashMap<String, String> emailSettingsValues = new HashMap<String, String>();
 	ProgressDialog pgsDialog;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -104,13 +104,13 @@ public class SettingFragment extends SherlockFragment implements
 
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
@@ -551,11 +551,20 @@ public class SettingFragment extends SherlockFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
+		case R.id.btn_cart:
+			if(GetSet.isLogged()==true){
+		    	ConstantValues.editor.clear();
+			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
+			ConstantValues.editor.commit();
 			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new CategoryFragment());
+			fca.switchContent(new CartFragmentClass());
+			}
+			else{
+				Intent i=new Intent(SettingFragment.this.getActivity(),LoginActivity.class);
+				startActivity(i);
+			}
 			break;
 		case R.id.btn_alert:
 			FragmentChangeActivity.menumap = false;

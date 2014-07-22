@@ -15,9 +15,11 @@ public class Model {
 		if (GetSet.isLogged()) {
 			Items.add(new Item(1, R.drawable.setti, R.string.settings));
 			Items.add(new Item(2, R.drawable.favo, R.string.MostPopular));
-			Items.add(new Item(3, R.drawable.invit, R.string.InviteFriends));
-			Items.add(new Item(4, R.drawable.m_add, R.string.addproduct));
-			Items.add(new Item(5, R.drawable.logout, R.string.SignOut));
+			Items.add(new Item(3, R.drawable.tab_bar_shop, R.string.search));
+			Items.add(new Item(4, R.drawable.order, R.string.myorders));
+			Items.add(new Item(5, R.drawable.invit, R.string.InviteFriends));
+			Items.add(new Item(6, R.drawable.m_add, R.string.addproduct));
+			Items.add(new Item(7, R.drawable.logout, R.string.SignOut));
 
 		} else {
 			Items.add(new Item(1, R.drawable.login, R.string.SignIn));

@@ -66,7 +66,7 @@ public class UserAddedItem extends Activity implements OnItemClickListener,OnCli
 	private static String type = null;
 	AdapterForHdpiprof hdpiAdapterprof;
 	ImageLoader profileLoader;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	public static ArrayList<HashMap<String, String>> tmp2;
 	public static HashMap<String, String> tmpMap2;
 	ArrayList<HashMap<String, String>> datas2 = null;
@@ -84,13 +84,13 @@ public class UserAddedItem extends Activity implements OnItemClickListener,OnCli
 		
 		home = (ImageButton) findViewById(R.id.btn_home);
 		near = (ImageButton) findViewById(R.id.btn_near);
-		shop = (ImageButton) findViewById(R.id.btn_shop);
+		cart = (ImageButton) findViewById(R.id.btn_cart);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
 		menu = (ImageButton) findViewById(R.id.btn_menu);
 		
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
@@ -693,8 +693,8 @@ public class UserAddedItem extends Activity implements OnItemClickListener,OnCli
 			FragmentChangeActivity.rsnear = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.rsshop = true;
+		case R.id.btn_cart:
+			FragmentChangeActivity.rscart = true;
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
 		case R.id.btn_alert:
@@ -709,8 +709,8 @@ public class UserAddedItem extends Activity implements OnItemClickListener,OnCli
 			break;
 		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
-			FragmentChangeActivity.rsprofile = true;
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.rsmenu = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon=false;
 			invalidateOptionsMenu();
 			startActivity(new Intent(this, FragmentChangeActivity.class));

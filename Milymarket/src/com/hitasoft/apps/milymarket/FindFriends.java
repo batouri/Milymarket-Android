@@ -39,7 +39,7 @@ import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 public class FindFriends extends SherlockFragment implements OnClickListener {
 
 	LinearLayout fb, twit, gPlus, contact;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	private GridView grid;
 	AdapterForHdpis hdpiAdapterprofile;
 	ArrayList<HashMap<String, String>> followingdatas = new ArrayList<HashMap<String, String>>();
@@ -64,14 +64,14 @@ public class FindFriends extends SherlockFragment implements OnClickListener {
 
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 		grid = (GridView) getView().findViewById(R.id.gridView1);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		int colorBlack = getResources().getColor(R.color.black);
@@ -279,12 +279,12 @@ public class FindFriends extends SherlockFragment implements OnClickListener {
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
+		case R.id.btn_cart:
 			FragmentChangeActivity.menumap = false;
 			getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ShopFragment());
+			fca.switchContent(new CartFragment());
 			break;
 		case R.id.btn_alert:
 			FragmentChangeActivity.menumap = false;
@@ -297,7 +297,7 @@ public class FindFriends extends SherlockFragment implements OnClickListener {
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			Log.v("present userid", "" + GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();

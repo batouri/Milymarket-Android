@@ -129,7 +129,7 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 	private static final int XHDPI_LANDSCAPE = 10;
 	private static int device = 0;
 	private static int layout = 0;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	String u1name, u1add, u1img;
 	ArrayList<HashMap<String, String>> datas = null;
 	ArrayList<HashMap<String, String>> datas2 = null;
@@ -193,15 +193,15 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 		btn_search = (Button) getView().findViewById(R.id.btn_search);
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
-		shop.setImageResource(R.drawable.tab_bar_shop_selected);
+		cart.setImageResource(R.drawable.tab_bar_shop_selected);
 
 		btn_search.setOnClickListener(this);
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
@@ -295,7 +295,7 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 
 		setColumns();
 		loadData();
-		shop.setImageResource(R.drawable.tab_bar_shop_selected);
+		//shop.setImageResource(R.drawable.tab_bar_shop_selected);
 		int colorBlack = getResources().getColor(R.color.black);
 		String text = getString(R.string.search);
 		SpannableString spannable = new SpannableString(text);
@@ -2572,12 +2572,20 @@ public class ShopFragment extends SherlockFragment implements OnScrollListener,
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.menumap = false;
-			// getActivity().supportInvalidateOptionsMenu();
-			FragmentChangeActivity.filter_icon = false;
-			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ShopFragment());
+		case R.id.btn_cart:
+			if(GetSet.isLogged()==true){
+				ConstantValues.editor.clear();
+				ConstantValues.editor.putString("userprefid", GetSet.getUserId());
+				ConstantValues.editor.commit();
+				FragmentChangeActivity.menumap = false;
+				FragmentChangeActivity.filter_icon = false;
+				getActivity().supportInvalidateOptionsMenu();
+				fca.switchContent(new CartFragmentClass());
+			}
+			else{
+				Intent i=new Intent(ShopFragment.this.getActivity(),LoginActivity.class);
+				startActivity(i);
+			}
 			break;
 		case R.id.btn_alert:
 			if(GetSet.isLogged()==true){

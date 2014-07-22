@@ -82,7 +82,7 @@ public class MostPopular extends SherlockFragment implements
 	private static String type;
 	LinearLayout bottomhome;
 	TextView centerText;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	public static ArrayList<HashMap<String, String>> tmp2;
 	public static HashMap<String, String> tmpMap2;
 	ArrayList<HashMap<String, String>> datas = null;
@@ -116,13 +116,13 @@ public class MostPopular extends SherlockFragment implements
 
 		home = (ImageButton) getView().findViewById(R.id.btn_home);
 		near = (ImageButton) getView().findViewById(R.id.btn_near);
-		shop = (ImageButton) getView().findViewById(R.id.btn_shop);
+		cart = (ImageButton) getView().findViewById(R.id.btn_cart);
 		alert = (ImageButton) getView().findViewById(R.id.btn_alert);
 		menu = (ImageButton) getView().findViewById(R.id.btn_menu);
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 
@@ -574,7 +574,7 @@ public class MostPopular extends SherlockFragment implements
 					ConstantValues.editor.commit();
 					//Toast.makeText(getActivity(), "image is clicked" + uid,
 					//		Toast.LENGTH_SHORT).show();
-					FragmentChangeActivity.menumap = true;
+					FragmentChangeActivity.menumap = false;
 					FragmentChangeActivity.filter_icon = false;
 					getActivity().supportInvalidateOptionsMenu();
 					FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
@@ -811,12 +811,12 @@ public class MostPopular extends SherlockFragment implements
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new LocationFragment());
 			break;
-		case R.id.btn_shop:
+		case R.id.btn_cart:
 			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			Log.v("shop clicked", "");
-			fca.switchContent(new ShopFragment());
+			fca.switchContent(new CartFragment());
 			break;
 		case R.id.btn_alert:
 			FragmentChangeActivity.menumap = false;
@@ -828,10 +828,10 @@ public class MostPopular extends SherlockFragment implements
 			ConstantValues.editor.putString("userprefid", GetSet.getUserId());
 			Log.v("present userid", "" + GetSet.getUserId());
 			ConstantValues.editor.commit();
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new ProfileFragment());
+			fca.switchContent(new MenuFragment());
 			break;
 		}
 	}

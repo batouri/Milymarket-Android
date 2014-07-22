@@ -124,7 +124,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 	public static String item_id=null;
 	public static String sellerid=null;
 	int x, j, v = 0, length = 0,inc=0;
-	private ImageButton home, near, shop, alert, menu;
+	private ImageButton home, near, cart, alert, menu;
 	public static LoadmoreAdapter loadmore;
 	public static ArrayList<HashMap<String, String>> tmp2;
 	public static HashMap<String, String> tmpMap2;
@@ -155,7 +155,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 		sview=(BounceScrollView) findViewById(R.id.scrollbar);
 		home = (ImageButton) findViewById(R.id.btn_home);
 		near = (ImageButton) findViewById(R.id.btn_near);
-		shop = (ImageButton) findViewById(R.id.btn_shop);
+		cart = (ImageButton) findViewById(R.id.btn_cart);
 		alert = (ImageButton) findViewById(R.id.btn_alert);
 		menu = (ImageButton) findViewById(R.id.btn_menu);
 		fancy = (TextView) findViewById(R.id.detail_fancyit);
@@ -164,7 +164,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 
 		home.setOnClickListener(this);
 		near.setOnClickListener(this);
-		shop.setOnClickListener(this);
+		cart.setOnClickListener(this);
 		alert.setOnClickListener(this);
 		menu.setOnClickListener(this);
 		contactSeller.setOnClickListener(this);
@@ -291,8 +291,8 @@ public class DetailActivity extends Activity implements OnClickListener,
 				ConstantValues.editor.putString("userprefid",sellerid);
 				ConstantValues.editor.commit();
 				FragmentChangeActivity.rsprofile = true;
-				//FragmentChangeActivity.filter_icon=false;
-				//FragmentChangeActivity.menumap=true;
+				FragmentChangeActivity.filter_icon=false;
+				FragmentChangeActivity.menumap=false;
 				 invalidateOptionsMenu();
 				startActivity(new Intent(DetailActivity.this, FragmentChangeActivity.class));
 		
@@ -1668,14 +1668,20 @@ public class DetailActivity extends Activity implements OnClickListener,
 		case R.id.btn_near:
 			FragmentChangeActivity.rsnear = true;
 			FragmentChangeActivity.menumap = false;
-			FragmentChangeActivity.filter_icon=true;
+			FragmentChangeActivity.filter_icon=false;
 			invalidateOptionsMenu();
 			startActivity(new Intent(this, FragmentChangeActivity.class));
 			break;
-		case R.id.btn_shop:
-			FragmentChangeActivity.rsshop = true;
-			startActivity(new Intent(this, FragmentChangeActivity.class));
-			break;
+		case R.id.btn_cart:
+			if(GetSet.isLogged()==true){
+				FragmentChangeActivity.rscart = true;
+				startActivity(new Intent(this, FragmentChangeActivity.class));
+				}
+				else{
+					Intent i=new Intent(DetailActivity.this,LoginActivity.class);
+					startActivity(i);
+				}
+				break;
 		case R.id.btn_alert:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.rsnote = true;
@@ -1689,7 +1695,7 @@ public class DetailActivity extends Activity implements OnClickListener,
 		case R.id.btn_menu:
 			if(GetSet.isLogged()==true){
 			FragmentChangeActivity.rsmenu = true;
-			FragmentChangeActivity.menumap = true;
+			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon=false;
 			invalidateOptionsMenu();
 			startActivity(new Intent(this, FragmentChangeActivity.class));
