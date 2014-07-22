@@ -403,7 +403,7 @@
                             android:id="@+id/addcart"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:paddingRight="10dp"
+                            android:layout_gravity="center_horizontal"
                             android:singleLine="true"
                             android:text="Ajouter au panier"
                             android:textStyle="bold" />
