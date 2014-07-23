@@ -135,7 +135,7 @@ public class CartDetailClass extends Activity implements OnClickListener {
 					doPayment();
 				} else {
 					Toast.makeText(getBaseContext(),
-							"One of the items cannot be ship.",
+							"Un des articles ne peut être expédié.",
 							Toast.LENGTH_LONG).show();
 				}
 			}
@@ -206,9 +206,9 @@ public class CartDetailClass extends Activity implements OnClickListener {
 					String grandTotal = item.getString("grandTotal");
 					String shipping = item.getString("shipping");
 					CartDetailClass.merchant.setText(merchantname);
-					CartDetailClass.itemprice.setText("$ " + totalCost);
-					CartDetailClass.total.setText("$ " + grandTotal);
-					CartDetailClass.shipprice.setText("$ " + shipping);
+					CartDetailClass.itemprice.setText("€ " + totalCost);
+					CartDetailClass.total.setText("€ " + grandTotal);
+					CartDetailClass.shipprice.setText("€ " + shipping);
 					JSONArray products = item.getJSONArray("products");
 
 					for (int i = 0; i < products.length(); i++) {
@@ -233,7 +233,7 @@ public class CartDetailClass extends Activity implements OnClickListener {
 					}
 				} else {
 					Toast.makeText(getBaseContext(),
-							"Sorry something went wrong", Toast.LENGTH_LONG)
+							"Oops... il y a eu un problème", Toast.LENGTH_LONG)
 							.show();
 				}
 			} catch (JSONException e) {
@@ -305,7 +305,7 @@ public class CartDetailClass extends Activity implements OnClickListener {
 
 			title.setText(tempMap.get("itemName"));
 			title.setSelected(true);
-			cst.setText("$ " + tempMap.get("itemPrice"));
+			cst.setText("€ " + tempMap.get("itemPrice"));
 			if (tempMap.get("itemApprove").equalsIgnoreCase("0")) {
 				id.setVisibility(View.VISIBLE);
 			} else {
@@ -413,13 +413,13 @@ public class CartDetailClass extends Activity implements OnClickListener {
 				} else {
 
 					Toast.makeText(getBaseContext(),
-							"The Count doesn't changed.", Toast.LENGTH_LONG)
+							"La quantité n'a pas changé.", Toast.LENGTH_LONG)
 							.show();
 				}
 			}
 
 		});
-		countDialog.setTitle("Select Count");
+		countDialog.setTitle("Choisissez une quantité");
 		countDialog.show();
 	}
 
@@ -621,7 +621,7 @@ public class CartDetailClass extends Activity implements OnClickListener {
 			ArrayList<HashMap<String, String>> admininvoiceData2,
 			ArrayList<HashMap<String, String>> sellerinvoiceData2) {
 		PayPalPayment payment = new PayPalPayment();
-		payment.setCurrencyType("USD");
+		payment.setCurrencyType("EUR");
 		HashMap<String, String> map23 = receiptent2.get(0);
 		// payment.setPaymentType(PayPal.PAY_TYPE_PARALLEL);
 		payment.setPaymentType(PayPal.PAYMENT_TYPE_GOODS);
@@ -666,7 +666,7 @@ public class CartDetailClass extends Activity implements OnClickListener {
 
 		switch (resultCode) {
 		case Activity.RESULT_OK:
-			Toast.makeText(this, "Payment Successful", Toast.LENGTH_LONG)
+			Toast.makeText(this, "Paiement accepté", Toast.LENGTH_LONG)
 					.show();
 			Intent datas = new Intent();
 			datas.putExtra("returnKey1", "Swinging on a star. ");
@@ -674,7 +674,7 @@ public class CartDetailClass extends Activity implements OnClickListener {
 			CartDetailClass.this.finish();
 			break;
 		case Activity.RESULT_CANCELED:
-			Toast.makeText(this, "Paymnet Cancel", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "Le paiement a été annulé", Toast.LENGTH_LONG).show();
 			Intent datasw = new Intent();
 			datasw.putExtra("returnKey1", "Swinging on a star. ");
 			setResult(RESULT_OK, datasw);
@@ -686,7 +686,7 @@ public class CartDetailClass extends Activity implements OnClickListener {
 			String errorMessage = data
 					.getStringExtra(PayPalActivity.EXTRA_ERROR_MESSAGE);
 			Toast.makeText(this,
-					"Paymnet Failed" + errorID + ":" + errorMessage,
+					"Le paiement a échoué" + errorID + ":" + errorMessage,
 					Toast.LENGTH_LONG).show();
 			Intent datasww = new Intent();
 			datasww.putExtra("returnKey1", "Swinging on a star. ");
@@ -904,7 +904,7 @@ public class CartDetailClass extends Activity implements OnClickListener {
 		PayPalAdvancedPayment payment = new PayPalAdvancedPayment();
 		PayPalReceiverDetails admin = new PayPalReceiverDetails();
 		PayPalReceiverDetails seller = new PayPalReceiverDetails();
-		payment.setCurrencyType("USD");
+		payment.setCurrencyType("EUR");
 		payment.setMemo(memos);
 		HashMap<String, String> map23 = receiptent2.get(0);
 		HashMap<String, String> map22 = receiptent2.get(1);

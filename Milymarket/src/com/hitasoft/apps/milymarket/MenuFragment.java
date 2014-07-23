@@ -350,7 +350,7 @@ public class MenuFragment extends SherlockListFragment implements
 			pgsDialog.setMessage("Un instant s'il vous plait");
 			pgsDialog.setIndeterminate(true);
 			pgsDialog.setCancelable(false);
-			pgsDialog.show();
+			//pgsDialog.show();
 		}
 
 		@Override
