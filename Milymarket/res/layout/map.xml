@@ -222,9 +222,7 @@
                     android:id="@+id/map"
                     android:name="com.google.android.gms.maps.MapFragment"
                     android:layout_width="fill_parent"
-                    android:layout_height="250dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@+id/textView1" />
+                    android:layout_height="250dp" />
             </LinearLayout>
 
             <View
