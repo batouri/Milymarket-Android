@@ -67,7 +67,7 @@ import com.nostra13.universalimageloader.core.assist.ImageLoadingListener;
 public class SettingFragment extends SherlockFragment implements
 		OnClickListener {
 
-	private TextView  manageSeller, semail, passchange;
+	private TextView  manageSeller, semail, passchange, manageAddress;
 	HashMap<String, String> tempMap = new HashMap<String, String>();
 	public static Dialog dialog;
 	private EditText oldpassword, newpassword, confirmpassword;
@@ -179,6 +179,16 @@ public class SettingFragment extends SherlockFragment implements
 				}
 			});
 		
+			manageAddress = (TextView) getView().findViewById(R.id.manageaddress);
+			manageAddress.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View arg0) {
+					Intent i = new Intent(SettingFragment.this.getActivity(),
+							ManageAddress.class);
+					startActivity(i);
+				}
+			});
 		
 		
 		manageSeller = (TextView) getView().findViewById(R.id.sellermanage);
