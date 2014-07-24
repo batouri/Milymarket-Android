@@ -321,5 +321,21 @@ public class ConstantValues {
 	public static final String FollowUserIDs = url + "api/followingid";
 	public static final String Category = url + "api/morecategoryitems";
 	public static final String TAG_CHECKED = "checked";
+	
+	/*
+	 * Address
+	 * 
+	 */
+	public static final String updateAddress = url + "api/updateaddress";
+	public static final String getAddress = url + "api/getaddress";
+	public static final String TAG_ADDRESS_SHIPPINGID = "shippingid";
+	public static final String TAG_ADDRESS_NICKNAME = "nickname";
+	public static final String TAG_ADDRESS_ADDRESS1 = "address1";
+	public static final String TAG_ADDRESS_ADDRESS2 = "address2";
+	public static final String TAG_ADDRESS_TOWN = "town";
+	public static final String TAG_ADDRESS_STATE = "state";
+	public static final String TAG_ADDRESS_POSTALCODE = "postalcode";
+	public static final String TAG_ADDRESS_PHONE = "phone";
+	public static final String TAG_ADDRESS_COUNTRYID = "countryid";
 
 }
