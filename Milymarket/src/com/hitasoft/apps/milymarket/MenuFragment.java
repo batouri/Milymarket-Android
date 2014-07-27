@@ -237,35 +237,41 @@ public class MenuFragment extends SherlockListFragment implements
 			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new MostPopular());
+			fca.switchContent(new MyShopFragment());
 			break;
 		case 2:
+			FragmentChangeActivity.menumap = false;
+			FragmentChangeActivity.filter_icon = false;
+			getActivity().supportInvalidateOptionsMenu();
+			fca.switchContent(new MostPopular());
+			break;
+		case 3:
 			FragmentChangeActivity.menumap = false;
 			// getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
 			fca.switchContent(new ShopFragment());
 			break;
-		case 3:
-			FragmentChangeActivity.menumap = false;
-			FragmentChangeActivity.filter_icon = false;
-			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new MyOrders());
-			break;
 		case 4:
 			FragmentChangeActivity.menumap = false;
+			// getActivity().supportInvalidateOptionsMenu();
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new InviteFriends());
+			fca.switchContent(new ManageAddress());
 			break;
 		case 5:
 			FragmentChangeActivity.menumap = false;
 			FragmentChangeActivity.filter_icon = false;
 			getActivity().supportInvalidateOptionsMenu();
-			fca.switchContent(new AddProduct());
+			fca.switchContent(new MyOrders());
 			break;
-
 		case 6:
+			FragmentChangeActivity.menumap = false;
+			FragmentChangeActivity.filter_icon = false;
+			getActivity().supportInvalidateOptionsMenu();
+			fca.switchContent(new InviteFriends());
+			break;
+		case 7:
 			fca.sm.toggle();
 			DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
 				@Override

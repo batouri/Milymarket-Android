@@ -347,6 +347,8 @@ public class AddProduct extends SherlockFragment implements OnClickListener {
 			countryadapter
 					.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			country.setAdapter(countryadapter);
+			//France by default
+			country.setSelection(73);
 
 			/*
 			 * GENDER
