@@ -72,7 +72,7 @@ public class ManageAddress extends SherlockFragment implements OnClickListener {
     
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        final View v = inflater.inflate(R.layout.add_product, container, false);
+        final View v = inflater.inflate(R.layout.manage_address, container, false);
         return v;
     }
     
@@ -188,9 +188,11 @@ public class ManageAddress extends SherlockFragment implements OnClickListener {
                 String jsn = countrylist.get(i);
                 try {
                     JSONObject countryJson = new JSONObject(jsn);
-                    String countryid = countryJson.getString("id");
+                    JSONObject countryelt = countryJson.getJSONObject("Country");
+                    String countryid = countryelt.getString("id");
+                    
                     countryID.add(countryid);
-                    String countryname = countryJson.getString("CountryName");
+                    String countryname = countryelt.getString("country");
                     countryArr.add(countryname);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -206,14 +208,14 @@ public class ManageAddress extends SherlockFragment implements OnClickListener {
     public void parseValues() {
         JSONParser parser = new JSONParser();
         String userId = GetSet.getUserId();
-        String urlAddr = ConstantValues.getAddress + userId;
+        String urlAddr = ConstantValues.getShippingAddress + userId;
         JSONObject useraddress = parser.getJSONFromUrl(urlAddr);
         String stats;
         try {
             stats = useraddress.getString(ConstantValues.status);
             if (stats.equalsIgnoreCase("true")) {
                 JSONObject results = useraddress.getJSONObject("result");
-                JSONArray country = results.getJSONArray("Country");
+                JSONArray country = results.getJSONArray("countrylist");
                 userId = results.getString(ConstantValues.TAG_PROFILE_USERID);
                 String shippingId = results.getString(ConstantValues.TAG_ADDRESS_SHIPPINGID);
                 String mfullName = results.getString(ConstantValues.TAG_PROFILE_FULLNAME);
@@ -370,7 +372,7 @@ public class ManageAddress extends SherlockFragment implements OnClickListener {
     public String postData() {
         String result = null;
         HttpClient httpclient = new DefaultHttpClient();
-        HttpPost httppost = new HttpPost(ConstantValues.updateAddress);
+        HttpPost httppost = new HttpPost(ConstantValues.updateShippingAddress);
         try {
             List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(12);
             nameValuePairs.add(new BasicNameValuePair("userid", GetSet.getUserId()));

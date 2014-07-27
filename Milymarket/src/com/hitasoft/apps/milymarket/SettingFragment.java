@@ -184,9 +184,11 @@ public class SettingFragment extends SherlockFragment implements
 
 				@Override
 				public void onClick(View arg0) {
-					Intent i = new Intent(SettingFragment.this.getActivity(),
-							ManageAddress.class);
-					startActivity(i);
+					FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
+					getActivity().supportInvalidateOptionsMenu();
+					FragmentChangeActivity.menumap = false;
+					FragmentChangeActivity.filter_icon = false;
+					fca.switchContent(new ManageAddress());
 				}
 			});
 		

@@ -326,8 +326,8 @@ public class ConstantValues {
 	 * Address
 	 * 
 	 */
-	public static final String updateAddress = url + "api/updateaddress";
-	public static final String getAddress = url + "api/getaddress";
+	public static final String updateShippingAddress = url + "api/updateshippingaddress";
+	public static final String getShippingAddress = url + "api/getshippingaddress?userId=";
 	public static final String TAG_ADDRESS_SHIPPINGID = "shippingid";
 	public static final String TAG_ADDRESS_NICKNAME = "nickname";
 	public static final String TAG_ADDRESS_ADDRESS1 = "address1";
