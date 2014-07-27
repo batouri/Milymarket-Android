@@ -115,7 +115,7 @@
                 android:clickable="true"
                 android:padding="10dp"
                 android:textAppearance="@android:style/TextAppearance.Medium"
-                android:text="Adresse d'expédition"
+                android:text="Modifier mon adresse de livraison"
                 android:textColor="@color/black" />
             
             <TextView

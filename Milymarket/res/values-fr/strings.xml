@@ -11,7 +11,7 @@
     <string name="twitter_callback">twitter-callback:///</string>
     <string name="signUpText">Commencez? Créer un compte de Fantacy</string>
     <string name="alreadyUser">Déjà un utilisateur? Connectez-vous à Fantacy</string>
-    <string name="net">Désolé\u002C vous n\u0027avez pas un actif \n Connexion Internet \n Ou votre deveice peut avoir \nproblème de réseau.</string>
+    <string name="net">Votre connexion internet n\'est pas active. Veuillez activer votre connexion internet</string>
     <string name="neterror">désolé\u002C Votre connexion Internet est trop lent pour traiter, Ou votre dispositif comportant problème de réseau.</string>
     <string name="exit">quitter</string>
     <string name="Retry">réessayez</string>
@@ -68,7 +68,6 @@
     <string name="ChangePassword">modifier mot de passe</string>
     <string name="timeLineContents">CONTENU DU CALENDRIER</string>
     <string name="everything">tous</string>
-    <string name="Following">suivant</string>
     <string name="miscellenout">DIVERS</string>
     <string name="NotificationSettings">Paramètres de notification</string>
     <string name="AppVersion">App Version</string>
