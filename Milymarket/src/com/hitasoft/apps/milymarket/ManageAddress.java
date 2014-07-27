@@ -97,7 +97,7 @@ public class ManageAddress extends SherlockFragment implements OnClickListener {
         countryspin = (Spinner) getView().findViewById(R.id.spin_country);
         send = (Button) getView().findViewById(R.id.sendaddress);
         userDatas = new HashMap<String, String>();
-        
+        mshippingId = "";
         
         CountryItems = new ArrayList<HashMap<String, String>>();
         
@@ -251,7 +251,7 @@ public class ManageAddress extends SherlockFragment implements OnClickListener {
     public void onClick(View v) {
         FragmentChangeActivity fca = (FragmentChangeActivity) getActivity();
         switch (v.getId()) {
-            case R.id.sendpro:
+            case R.id.sendaddress:
                 if (GetSet.isLogged()) {
                     SendAddressValues();
                 } else {
@@ -314,7 +314,7 @@ public class ManageAddress extends SherlockFragment implements OnClickListener {
     }
     
     public void SendAddressValues() {
-        if (isEmpty(fullname) || isEmpty(nickname)    || isEmpty(address1) || isEmpty(address2) || isEmpty(town) || isEmpty(postalcode)) {
+        if (isEmpty(fullname) || isEmpty(nickname)    || (isEmpty(address1) && isEmpty(address2)) || isEmpty(town) || isEmpty(postalcode)) {
             Toast.makeText(getActivity(), "Remplissez tous les champs svp",
             Toast.LENGTH_SHORT).show();
         } else {
