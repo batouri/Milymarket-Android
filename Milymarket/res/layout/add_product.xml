@@ -219,7 +219,8 @@
                     android:background="@drawable/rounded_edittext"
                     android:padding="10dp"
                     android:prompt="@string/category_hint"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:visibility="visible" />
 
                 <ImageView
                     android:layout_width="fill_parent"
@@ -242,22 +243,28 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:visibility="gone" >
+                android:visibility="visible" >
 
                 <TextView
                     android:id="@+id/add_country"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Pays de livraison"
+                    android:text="Détails de livraison"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
 
+                
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" >
+                
                 <TextView
                     android:id="@+id/add_shipto"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="5dp"
-                    android:text="Livrer à:"
+                    android:text="Pays"
                     android:textAppearance="?android:attr/textAppearanceMedium" />
 
                 <Spinner
@@ -268,6 +275,7 @@
                     android:padding="10dp"
                     android:prompt="@string/category_hint"
                     android:textAppearance="?android:attr/textAppearanceLarge" />
+                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -275,7 +283,7 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical"
                 android:padding="5dp"
-                android:visibility="gone" >
+                android:visibility="visible" >
 
                 <TextView
                     android:id="@+id/add_country"
@@ -283,20 +291,22 @@
                     android:layout_height="wrap_content"
                     android:padding="5dp"
                     android:text="Détails de livraison"
-                    android:textAppearance="?android:attr/textAppearanceLarge" />
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal" >
-
+              
                     <TextView
                         android:id="@+id/add_shipto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="5dp"
-                        android:text="Livrer à:"
-                        android:textAppearance="?android:attr/textAppearanceMedium" />
+                        android:text="Pays"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/get_country"
@@ -310,7 +320,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="2dp"
                     android:background="@drawable/divider"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:visibility="gone" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -329,7 +340,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_edittext"
-                        android:hint="$"
+                        android:hint="€"
                         android:padding="10dp"
                         android:paddingLeft="5dp"
                         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -339,7 +350,8 @@
                     android:layout_width="fill_parent"
                     android:layout_height="2dp"
                     android:background="@drawable/divider"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:visibility="gone" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -365,7 +377,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_edittext"
-                        android:hint="$"
+                        android:hint="€"
                         android:padding="10dp"
                         android:paddingLeft="5dp"
                         android:textAppearance="?android:attr/textAppearanceLarge" />

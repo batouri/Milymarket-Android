@@ -88,7 +88,8 @@
     <string name="ManageSellerAccount">Modifier mon compte vendeur</string>
     <string name="select">Type de vendeur</string>
     <string name="Menu">Menu</string>
-    <string name="ManageAddress">Adresse d\'expédition</string>
+    <string name="ManageAddress">Adresse de livraison</string>
+    <string name="ManageShop">Ma boutique</string>
     <string-array name="seller_array">
         <item>Particulier</item>
         <item>Professionel</item>

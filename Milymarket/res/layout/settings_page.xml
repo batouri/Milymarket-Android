@@ -98,7 +98,8 @@
                 android:padding="10dp"
                 android:text="@string/ManageSellerAccount"
                 android:textAppearance="@android:style/TextAppearance.Medium"
-                android:textColor="#000000" />
+                android:textColor="#000000"
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"
